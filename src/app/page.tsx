@@ -1,6 +1,7 @@
 'use client'
 import { Button } from "./common/Components/buttons";
-import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, WorkTitle, WorkWrapper, Wrapper } from "./styledHome";
+import { HowItWorks } from "./common/arrays";
+import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, WorkContainer, WorkTile, WorkTileNumber, WorkTileText, WorkTitle, WorkWrapper, Wrapper } from "./styledHome";
 
 export default function Home() {
 
@@ -37,7 +38,15 @@ export default function Home() {
       </PropositionsWrapper>
 
       <WorkWrapper>
-          <WorkTitle>Jak to działa?</WorkTitle>
+        <WorkTitle>Jak to działa?</WorkTitle>
+        <WorkContainer>
+          {HowItWorks.map((tile) => (
+            <WorkTile key={tile.number}>
+              <WorkTileNumber>{tile.number}</WorkTileNumber>
+              <WorkTileText>{tile.text}</WorkTileText>
+            </WorkTile>
+          ))}
+        </WorkContainer>
       </WorkWrapper>
     </Wrapper>
   );

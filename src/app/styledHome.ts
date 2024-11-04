@@ -138,7 +138,7 @@ export const WorkWrapper = styled.section`
     display: grid;
     justify-content: center;
     gap: 40px;
-    margin-top: 60px;
+    margin-top: 64px;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         padding: 40px 12px;
@@ -213,3 +213,35 @@ export const WorkTileText = styled.p`
     
 `;
 
+
+export const IdeaWrapper = styled.section`
+    max-width: 1200px; 
+    margin: 64px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+`;
+
+export const IdeaTextWrapper = styled.div`
+    display: grid;
+    gap: 20px;
+    text-align: center;
+`;
+
+export const IdeaTitle = styled.h4`
+    font-size: 40px;
+    font-weight: normal;
+`;
+
+export const IdeaText = styled.p`
+    font-size: 24px;
+    text-align: justify;
+    opacity: 0.7;
+`;
+
+export const IdeaImage = styled.img`
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 25px 25px 31px 1px rgba(66, 68, 90, 1);
+    border-radius: 20px;
+`;

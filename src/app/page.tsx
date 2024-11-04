@@ -1,7 +1,30 @@
 'use client'
 import { Button } from "./common/Components/buttons";
 import { HowItWorks } from "./common/arrays";
-import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, WorkContainer, WorkTile, WorkTileNumber, WorkTileText, WorkTitle, WorkWrapper, Wrapper } from "./styledHome";
+import {
+  Header,
+  HeaderTitle,
+  IdeaImage,
+  IdeaText,
+  IdeaTextWrapper,
+  IdeaTitle,
+  IdeaWrapper,
+  PropositionTile,
+  PropositionsContainer,
+  PropositionsTitle,
+  PropositionsWrapper,
+  TileDate,
+  TileTitle,
+  WorkContainer,
+  WorkTile,
+  WorkTileNumber,
+  WorkTileText,
+  WorkTitle,
+  WorkWrapper,
+  Wrapper
+}
+  from "./styledHome";
+import hall from './common/Images/HomeImages/headerBackground.svg';
 
 export default function Home() {
 
@@ -37,6 +60,7 @@ export default function Home() {
         />
       </PropositionsWrapper>
 
+
       <WorkWrapper>
         <WorkTitle>Jak to działa?</WorkTitle>
         <WorkContainer>
@@ -48,6 +72,18 @@ export default function Home() {
           ))}
         </WorkContainer>
       </WorkWrapper>
+
+
+      <IdeaWrapper>
+        <IdeaTextWrapper>
+          <IdeaTitle>Skąd pomysł na taką stronę?</IdeaTitle>
+          <IdeaText>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem sed sint asperiores eum nobis doloribus minima alias eius? Accusamus dignissimos praesentium quos vitae hic enim quis ut rem est.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem sed sint asperiores eum nobis doloribus minima alias eius? Accusamus dignissimos praesentium quos vitae hic enim quis ut rem est.
+          </IdeaText>
+        </IdeaTextWrapper>
+        <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
+      </IdeaWrapper>
     </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "./common/Components/buttons";
-import { Header, HeaderTitle, Wrapper } from "./styledHome";
+import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, Wrapper } from "./styledHome";
 
 export default function Home() {
   return (
@@ -13,6 +13,19 @@ export default function Home() {
         />
       </Header>
 
+
+      <PropositionsWrapper>
+        <PropositionsTitle>
+          Najnowsze propozycje wyjść
+        </PropositionsTitle>
+
+        <PropositionsContainer>
+          <PropositionTile>
+            <TileTitle>Rysy</TileTitle>
+            <TileDate>24.08.2024</TileDate>
+          </PropositionTile>
+        </PropositionsContainer>
+      </PropositionsWrapper>
     </Wrapper>
   );
 }

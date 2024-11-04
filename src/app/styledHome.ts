@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import headerBackground from './common/Images/HomeImages/headerBackground.jpg';
+import headerBackground from './common/Images/HomeImages/headerBackground.svg';
+import tileBackground from './common/Images/HomeImages/tileBackground.svg';
 
 export const Wrapper = styled.main`
 
@@ -16,6 +17,7 @@ export const Header = styled.header`
     align-items: center;
     padding: 20px;
     gap: 20px;
+    box-shadow: inset  0px -200px 65px -44px rgba(245, 245, 245, 1);
 `;
 
 export const HeaderTitle = styled.h1`
@@ -24,4 +26,44 @@ export const HeaderTitle = styled.h1`
     text-align: center;
     max-width: 1000px;
     font-weight: light;
+`;
+
+export const PropositionsWrapper = styled.section`
+    margin-top: -320px;
+    padding: 0 80px;
+`;
+
+export const PropositionsTitle = styled.h2`
+    font-size: 40px;
+    color: white;
+    font-weight: normal;
+`;
+
+export const PropositionsContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+`;
+
+export const PropositionTile = styled.div`
+    background-image: url(${tileBackground.src});
+    background-size: cover;
+    background-position: center;
+    padding: 20px 40px;
+    min-height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+`;
+
+export const TileTitle = styled.span`
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+`;
+
+export const TileDate = styled.p`
+    font-size: 20px;
+    color: white;
 `;

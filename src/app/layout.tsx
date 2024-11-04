@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
 import icon from './common/Images/icon.svg'
+import { Kameron } from 'next/font/google';
+import StyledComponentsRegistry from "./core/StyledComponents/register";
+import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
+
+const kameron = Kameron({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-kameron',
+  weight: ['400', '500', '600', '700',]
+});
 
 export const metadata: Metadata = {
   title: "Chodźmy w góry!",
@@ -16,8 +26,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={icon.src} />
       </head>
-      <body>
-        {children}
+      <body className={kameron.className}>
+        <StyledComponentsRegistry>
+          <GlobalStyle />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html >
   );

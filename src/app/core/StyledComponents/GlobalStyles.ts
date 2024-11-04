@@ -11,6 +11,5 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
     background-color: ${theme.bodyColor};
-    font-family: 'Mulish';
 }
 `;

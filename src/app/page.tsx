@@ -30,6 +30,10 @@ export default function Home() {
             </PropositionTile>
           ))}
         </PropositionsContainer>
+        <Button
+          text="Sprawdź wszytskie propozycje"
+          onClick={() => alert('Button clicked!')}
+        />
       </PropositionsWrapper>
     </Wrapper>
   );

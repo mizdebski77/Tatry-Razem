@@ -5,7 +5,7 @@ import { theme } from "./core/StyledComponents/theme";
 
 export const Wrapper = styled.main`
 
-`;
+ `;
 
 export const Header = styled.header`
     background-image: url(${headerBackground.src});
@@ -14,9 +14,8 @@ export const Header = styled.header`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 120px 20px;
     gap: 20px;
     box-shadow: inset  0px -200px 65px -44px rgba(245, 245, 245, 1);
 `;
@@ -30,8 +29,10 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const PropositionsWrapper = styled.section`
-    margin-top: -320px;
     padding: 0 80px;
+    max-width: 1920px;
+    margin: -340px auto 0;
+    display: grid;
 `;
 
 export const PropositionsTitle = styled.h2`
@@ -43,7 +44,7 @@ export const PropositionsTitle = styled.h2`
 export const PropositionsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin-top: 20px;
+    margin: 20px 0;
     gap: 40px;
 `;
 
@@ -52,7 +53,7 @@ export const PropositionTile = styled.div`
     background-size: cover;
     background-position: center;
     padding: 20px 40px;
-    min-height: 200px;
+    min-height: 260px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;

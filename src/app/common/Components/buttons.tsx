@@ -11,7 +11,7 @@ const StyledButton = styled.button`
     font-size: 18px;
     padding: 12px 40px;
     transition: 0.3s;
-    
+    margin: 0 auto;
     &:hover {
         background: #3469d8;
         transform: translateY(-3px)

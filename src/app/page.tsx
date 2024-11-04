@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "./common/Components/buttons";
-import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, Wrapper } from "./styledHome";
+import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, WorkTitle, WorkWrapper, Wrapper } from "./styledHome";
 
 export default function Home() {
 
@@ -35,6 +35,10 @@ export default function Home() {
           onClick={() => alert('Button clicked!')}
         />
       </PropositionsWrapper>
+
+      <WorkWrapper>
+          <WorkTitle>Jak to działa?</WorkTitle>
+      </WorkWrapper>
     </Wrapper>
   );
 }

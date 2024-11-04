@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import headerBackground from './common/Images/HomeImages/headerBackground.svg';
 import tileBackground from './common/Images/HomeImages/tileBackground.svg';
 import { theme } from "./core/StyledComponents/theme";
+import workBackground from './common/Images/HomeImages/howItWorksBackground.svg';
 
 export const Wrapper = styled.main`
 
@@ -49,11 +50,15 @@ export const HeaderTitle = styled.h1`
     };
 `;
 
+
+
+
 export const PropositionsWrapper = styled.section`
     padding: 0 80px;
     max-width: 1920px;
     margin: -340px auto 0;
     display: grid;
+    gap: 20px;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         padding: 0 12px;
@@ -124,3 +129,30 @@ export const TileDate = styled.p`
         font-size: 16px;
     };
 `;
+
+export const WorkWrapper = styled.section`
+    background-image: url(${workBackground.src});
+    background-position: center;
+    background-size: cover;
+`;
+
+export const WorkTitle = styled.h3`
+    font-size: 80px;
+`;
+
+export const WorkContainer = styled.div`
+
+`;
+
+export const WorkTile = styled.div`
+
+`;
+
+export const WorkTileNumber = styled.span`
+
+`;
+
+export const WorkTileText = styled.p`
+
+`;
+

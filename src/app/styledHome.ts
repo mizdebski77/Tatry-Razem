@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import headerBackground from './common/Images/HomeImages/headerBackground.svg';
 import tileBackground from './common/Images/HomeImages/tileBackground.svg';
+import { theme } from "./core/StyledComponents/theme";
 
 export const Wrapper = styled.main`
 
@@ -43,6 +44,7 @@ export const PropositionsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 20px;
+    gap: 40px;
 `;
 
 export const PropositionTile = styled.div`
@@ -55,6 +57,13 @@ export const PropositionTile = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: end;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 10px ${theme.palette.blue};
+    }
 `;
 
 export const TileTitle = styled.span`

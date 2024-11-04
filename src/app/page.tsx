@@ -3,6 +3,9 @@ import { Button } from "./common/Components/buttons";
 import { Header, HeaderTitle, PropositionTile, PropositionsContainer, PropositionsTitle, PropositionsWrapper, TileDate, TileTitle, Wrapper } from "./styledHome";
 
 export default function Home() {
+
+  const tiles = Array.from({ length: 8 });
+
   return (
     <Wrapper>
       <Header>
@@ -20,10 +23,12 @@ export default function Home() {
         </PropositionsTitle>
 
         <PropositionsContainer>
-          <PropositionTile>
-            <TileTitle>Rysy</TileTitle>
-            <TileDate>24.08.2024</TileDate>
-          </PropositionTile>
+          {tiles.map((_, index) => (
+            <PropositionTile key={index}>
+              <TileTitle>Rysy</TileTitle>
+              <TileDate>24.08.2024</TileDate>
+            </PropositionTile>
+          ))}
         </PropositionsContainer>
       </PropositionsWrapper>
     </Wrapper>

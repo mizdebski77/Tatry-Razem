@@ -15,17 +15,38 @@ export const Header = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 120px 20px;
+    justify-content: center;
+    padding: 20px;
     gap: 20px;
     box-shadow: inset  0px -200px 65px -44px rgba(245, 245, 245, 1);
+
+    @media (max-width: ${theme.mediaQuery.screen}) {
+        padding: 120px 20px;
+        justify-content: start;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        min-height: 70vh;
+        padding: 40px 12px;
+        justify-content: center;
+    };
 `;
 
 export const HeaderTitle = styled.h1`
-    font-size: 96px;
+    font-size: 4vw;
     color: white;
     text-align: center;
-    max-width: 1000px;
+    max-width: 1920px;
     font-weight: light;
+
+    @media (max-width: ${theme.mediaQuery.screen}) {
+        font-size: 5vw;
+        max-width: 1000px;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        font-size: 32px;
+    };
 `;
 
 export const PropositionsWrapper = styled.section`
@@ -33,19 +54,33 @@ export const PropositionsWrapper = styled.section`
     max-width: 1920px;
     margin: -340px auto 0;
     display: grid;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 0 12px;
+        margin: -100px auto 0;
+    };
 `;
 
 export const PropositionsTitle = styled.h2`
     font-size: 40px;
     color: white;
     font-weight: normal;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 24px;
+        color: black;
+    };
 `;
 
 export const PropositionsContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     margin: 20px 0;
     gap: 40px;
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 `;
 
 export const PropositionTile = styled.div`
@@ -64,16 +99,28 @@ export const PropositionTile = styled.div`
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 0 10px ${theme.palette.blue};
-    }
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        min-height: 180px;
+    };
 `;
 
 export const TileTitle = styled.span`
     font-size: 24px;
     color: white;
     font-weight: bold;
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        font-size: 20px;
+    };
 `;
 
 export const TileDate = styled.p`
     font-size: 20px;
     color: white;
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        font-size: 16px;
+    };
 `;

@@ -6,15 +6,9 @@ export const theme = {
     blue: '#2659C3',
   },
 
-  textSize: {
-
-  },
-
-  borderRadius: {
-
-  },
-
   mediaQuery: {
-
+    screen: '1920px',
+    mobileMd: '720px',
+    mobileSm:'500px'
   }
 };

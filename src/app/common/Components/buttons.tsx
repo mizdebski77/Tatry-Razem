@@ -19,7 +19,11 @@ const StyledButton = styled.button`
 
     &:active {
         background: #4a7add;
-    }
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 14px;
+    };
 `;
 
 

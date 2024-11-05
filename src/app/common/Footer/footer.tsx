@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react';
-import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, Wrapper } from './styledFooter';
+import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, SocialLink, Wrapper } from './styledFooter';
 import app from '../Images/FooterImages/phone.svg';
 import google from '../Images/FooterImages/googleStore.svg';
 import store from '../Images/FooterImages/appStore.svg';
+import { SocialLinks } from '../arrays';
 
 export const Footer = () => {
     return (
@@ -20,10 +21,13 @@ export const Footer = () => {
                     </AppStoresWrapper>
                 </AppTextWrapper>
             </AppSection>
-            
+
 
             <Content>
-                xd
+                <ContentLogo>CHwG</ContentLogo>
+                {SocialLinks.map((link) => (
+                    <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
+                ))}
             </Content>
         </Wrapper>
     );

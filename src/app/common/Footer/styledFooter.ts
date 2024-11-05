@@ -31,7 +31,7 @@ export const AppTextWrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 32px;
 `;
 
 export const AppTextTitle = styled.text`
@@ -55,14 +55,33 @@ export const AppStoresWrapper = styled.div`
 
 export const AppStore = styled.img`
     max-width: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
 `;
 
 export const Content = styled.div`
-    min-height: 300px;
+    padding: 120px 80px;
+    display: flex;
+    justify-content: space-evenly;
 `;
 
 export const ContentLogo = styled.span`
+    font-size: 40px;
+    color: white;
+`;
 
+export const SocialsWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+`;
+
+export const SocialLink = styled.img`
+    
 `;
 
 

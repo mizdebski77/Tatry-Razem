@@ -5,8 +5,8 @@ export const Wrapper = styled.footer`
     background-image: url(${background.src});
     background-position: center;
     background-size: cover;
-    padding: 80px;
-    box-shadow: inset 0px -100px 182px 141px #141414;
+    padding: 120px 80px;
+    box-shadow:inset 0px -300px 303px 323px #000000;
 `;
 
 export const AppSection = styled.div`
@@ -16,7 +16,7 @@ export const AppSection = styled.div`
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 80px;
+    gap: 20px;
 `;
 
 export const AppImage = styled.img`
@@ -58,7 +58,7 @@ export const AppStore = styled.img`
 `;
 
 export const Content = styled.div`
-
+    min-height: 300px;
 `;
 
 export const ContentLogo = styled.span`

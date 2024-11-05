@@ -3,6 +3,7 @@ import icon from './common/Images/icon.svg'
 import { Kameron } from 'next/font/google';
 import StyledComponentsRegistry from "./core/StyledComponents/register";
 import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
+import { Footer } from "./common/Footer/footer";
 
 const kameron = Kameron({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
           <GlobalStyle />
           {children}
         </StyledComponentsRegistry>
+        <Footer />
       </body>
     </html >
   );

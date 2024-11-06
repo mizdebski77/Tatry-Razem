@@ -21,7 +21,6 @@ export const Footer = () => {
                 </AppTextWrapper>
             </AppSection>
 
-
             <Content>
                 <ContentLogo>CHwG</ContentLogo>
                 {FooterLinks.map((footerLink) => (

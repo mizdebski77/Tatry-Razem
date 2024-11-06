@@ -33,6 +33,7 @@ export default function Home() {
 
   return (
     <Wrapper>
+
       <Header>
         <HeaderTitle>Znajdź swojego partnera w długie wędrówki po Tatrach</HeaderTitle>
         <Button
@@ -40,7 +41,6 @@ export default function Home() {
           onClick={() => alert('Button clicked!')}
         />
       </Header>
-
 
       <PropositionsWrapper>
         <PropositionsTitle>
@@ -61,7 +61,6 @@ export default function Home() {
         />
       </PropositionsWrapper>
 
-
       <WorkWrapper>
         <WorkTitle>Jak to działa?</WorkTitle>
         <WorkContainer>
@@ -74,7 +73,6 @@ export default function Home() {
         </WorkContainer>
       </WorkWrapper>
 
-
       <IdeaWrapper>
         <IdeaTextWrapper>
           <IdeaTitle>Skąd pomysł na taką stronę?</IdeaTitle>
@@ -85,8 +83,6 @@ export default function Home() {
         </IdeaTextWrapper>
         <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
       </IdeaWrapper>
-
-
 
       <Footer />
 

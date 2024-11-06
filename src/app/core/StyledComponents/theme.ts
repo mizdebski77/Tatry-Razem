@@ -8,7 +8,8 @@ export const theme = {
 
   mediaQuery: {
     screen: '1920px',
+    tablet: '1300px',
     mobileMd: '720px',
-    mobileSm:'500px'
+    mobileSm: '500px'
   }
 };

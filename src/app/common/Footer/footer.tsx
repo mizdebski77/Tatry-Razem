@@ -1,10 +1,10 @@
 'use client'
 import React from 'react';
-import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, Link, LinksTitle, LinksWrapper, SocialLink, SocialsWrapper, Wrapper } from './styledFooter';
+import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, Creator, Link, LinksTitle, LinksWrapper, SocialContainer, SocialLink, SocialsWrapper, Wrapper } from './styledFooter';
 import app from '../Images/FooterImages/phone.svg';
 import google from '../Images/FooterImages/googleStore.svg';
 import store from '../Images/FooterImages/appStore.svg';
-import { SocialLinks } from '../arrays';
+import { FooterLinks, SocialLinks } from '../arrays';
 
 export const Footer = () => {
     return (
@@ -24,29 +24,26 @@ export const Footer = () => {
 
             <Content>
                 <ContentLogo>CHwG</ContentLogo>
-                <LinksWrapper>
-                    <LinksTitle>Mapa strony:</LinksTitle>
-                    <Link>Link 1</Link>
-                    <Link>Link 2</Link>
-                    <Link>Link 3</Link>
-                    <Link>Link 4</Link>
-                    <Link>Link 5</Link>
-                </LinksWrapper>
+                {FooterLinks.map((footerLink) => (
+                    <LinksWrapper key={footerLink.id}>
+                        <LinksTitle>{footerLink.title}:</LinksTitle>
+                        {footerLink.links.map((link) => (
+                            <Link key={link.id} href={link.link}>{link.name}</Link>
+                        ))}
+                    </LinksWrapper>
+                ))}
 
-                <LinksWrapper>
-                    <LinksTitle>Mapa strony:</LinksTitle>
-                    <Link>Link 1</Link>
-                    <Link>Link 2</Link>
-                    <Link>Link 3</Link>
-                    <Link>Link 4</Link>
-                    <Link>Link 5</Link>
-                </LinksWrapper>
                 <SocialsWrapper>
-                    {SocialLinks.map((link) => (
-                        <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
-                    ))}
+                    <LinksTitle>Obserwuj nas na:</LinksTitle>
+                    <SocialContainer>
+                        {SocialLinks.map((link) => (
+                            <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
+                        ))}
+                    </SocialContainer>
                 </SocialsWrapper>
             </Content>
+
+            <Creator>© ZSW - Projekt oraz realizacja: Marcin Izdebski</Creator>
         </Wrapper>
     );
 };

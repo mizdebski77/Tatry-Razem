@@ -17,6 +17,7 @@ export const SocialLinks = [
 
 export const FooterLinks = [
     {
+        id: 1,
         title: 'Mapa Strony',
         links: [
             { link: 'http://localhost:3000/', name: 'Link 1', id: 1 },
@@ -28,6 +29,7 @@ export const FooterLinks = [
     },
 
     {
+        id: 2,
         title: 'Mapa Strony 2',
         links: [
             { link: 'http://localhost:3000/', name: 'Link 7', id: 7 },

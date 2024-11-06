@@ -6,7 +6,7 @@ export const Wrapper = styled.footer`
     background-image: url(${background.src});
     background-position: center;
     background-size: cover;
-    padding: 120px 80px;
+    padding: 120px 80px 40px;
     box-shadow:inset 0px -300px 303px 323px #000000;
 `;
 
@@ -66,8 +66,12 @@ export const AppStore = styled.img`
 export const Content = styled.div`
     padding: 120px 80px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid #aeaeae;
+    max-width: 1920px;
+    margin: 0 auto 40px;
 `;
 
 export const ContentLogo = styled.span`
@@ -76,14 +80,19 @@ export const ContentLogo = styled.span`
 `;
 
 export const SocialsWrapper = styled.div`
-    display: flex;
+    display: grid;
     justify-content: center;
     gap: 20px;
-    max-width: 40px;
+`;
+
+export const SocialContainer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
 `;
 
 export const SocialLink = styled.img`
-    display: grid;
+    max-width: 32px;
+    cursor: pointer;
 `;
 
 export const LinksWrapper = styled.div`
@@ -92,17 +101,23 @@ export const LinksWrapper = styled.div`
 `;
 
 export const LinksTitle = styled.span`
-    color: ${theme.palette.blue};
+    color: white;
     font-size: 28px;
-    font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
 `;
 
-export const Link = styled.span`
-    color: white;
+export const Link = styled.a`
+    color: #aeaeae;
     font-size: 20px;
     text-align: center;
+`;
+
+export const Creator = styled.p`
+    color: white;
+    text-align: center;
+    color: #aeaeae;
+    font-size: 20px;
 `;
 
 

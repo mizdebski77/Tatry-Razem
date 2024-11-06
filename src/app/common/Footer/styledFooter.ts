@@ -170,7 +170,6 @@ export const Link = styled.a`
 `;
 
 export const Creator = styled.p`
-    color: white;
     text-align: center;
     color: #aeaeae;
     font-size: 20px;

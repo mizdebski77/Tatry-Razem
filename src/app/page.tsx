@@ -84,8 +84,6 @@ export default function Home() {
         <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
       </IdeaWrapper>
 
-      <Footer />
-
     </Wrapper>
   );
 }

@@ -32,7 +32,7 @@ export default function RootLayout({
           <GlobalStyle />
           {children}
         </StyledComponentsRegistry>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html >
   );

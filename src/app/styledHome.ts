@@ -216,7 +216,7 @@ export const WorkTileText = styled.p`
 
 export const IdeaWrapper = styled.section`
     max-width: 1200px; 
-    margin: 64px auto;
+    margin: 120px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;

@@ -1,5 +1,6 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 import background from '../Images/FooterImages/footerBackground.jpg';
+import { theme } from "@/app/core/StyledComponents/theme";
 
 export const Wrapper = styled.footer`
     background-image: url(${background.src});
@@ -22,7 +23,7 @@ export const AppSection = styled.div`
 export const AppImage = styled.img`
     max-width: 280px;
     width: 100%;
-
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
 `;
 
 export const AppTextWrapper = styled.div`
@@ -37,7 +38,6 @@ export const AppTextWrapper = styled.div`
 export const AppTextTitle = styled.text`
     color: white;
     font-size: 64px;
-
 `;
 
 export const AppText = styled.p`
@@ -65,7 +65,8 @@ export const AppStore = styled.img`
 
 export const Content = styled.div`
     padding: 120px 80px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     justify-content: space-evenly;
 `;
 
@@ -78,10 +79,30 @@ export const SocialsWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 20px;
+    max-width: 240px;
 `;
 
 export const SocialLink = styled.img`
-    
+    display: grid;
+`;
+
+export const LinksWrapper = styled.div`
+    display: grid;
+    gap: 20px;
+`;
+
+export const LinksTitle = styled.p`
+    color: ${theme.palette.blue};
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+`;
+
+export const Link = styled.span`
+    color: white;
+    font-size: 20px;
+    text-align: center;
 `;
 
 

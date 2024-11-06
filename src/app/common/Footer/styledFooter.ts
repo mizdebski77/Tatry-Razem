@@ -35,7 +35,7 @@ export const AppTextWrapper = styled.div`
     gap: 32px;
 `;
 
-export const AppTextTitle = styled.text`
+export const AppTextTitle = styled.span`
     color: white;
     font-size: 64px;
 `;
@@ -79,7 +79,7 @@ export const SocialsWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 20px;
-    max-width: 240px;
+    max-width: 40px;
 `;
 
 export const SocialLink = styled.img`
@@ -91,7 +91,7 @@ export const LinksWrapper = styled.div`
     gap: 20px;
 `;
 
-export const LinksTitle = styled.p`
+export const LinksTitle = styled.span`
     color: ${theme.palette.blue};
     font-size: 28px;
     font-weight: bold;

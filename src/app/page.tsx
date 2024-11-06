@@ -25,6 +25,7 @@ import {
 }
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
+import { Footer } from "./common/Footer/footer";
 
 export default function Home() {
 
@@ -84,6 +85,11 @@ export default function Home() {
         </IdeaTextWrapper>
         <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
       </IdeaWrapper>
+
+
+
+      <Footer />
+
     </Wrapper>
   );
 }

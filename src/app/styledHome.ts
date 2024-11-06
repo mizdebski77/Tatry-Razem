@@ -74,6 +74,8 @@ export const PropositionsTitle = styled.h2`
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 24px;
         color: black;
+        text-align: center;
+        font-weight: bold;
     };
 `;
 
@@ -209,8 +211,7 @@ export const WorkTileText = styled.p`
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 20px;
-    };
-    
+    }; 
 `;
 
 
@@ -220,6 +221,13 @@ export const IdeaWrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    padding: 40px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        margin: 32px auto;
+    };
 `;
 
 export const IdeaTextWrapper = styled.div`
@@ -231,12 +239,20 @@ export const IdeaTextWrapper = styled.div`
 export const IdeaTitle = styled.h4`
     font-size: 40px;
     font-weight: normal;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 28px;
+    };
 `;
 
 export const IdeaText = styled.p`
     font-size: 24px;
     text-align: justify;
     opacity: 0.7;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 16px;
+    };
 `;
 
 export const IdeaImage = styled.img`
@@ -244,4 +260,10 @@ export const IdeaImage = styled.img`
     width: 100%;
     box-shadow: 25px 25px 31px 1px rgba(66, 68, 90, 1);
     border-radius: 20px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        max-width: 360px;
+        margin: 0 auto;
+        box-shadow: 15px 15px 21px 1px rgba(66, 68, 90, 1);
+    };
 `;

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, Link, LinksTitle, LinksWrapper, SocialLink, Wrapper } from './styledFooter';
+import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, Link, LinksTitle, LinksWrapper, SocialLink, SocialsWrapper, Wrapper } from './styledFooter';
 import app from '../Images/FooterImages/phone.svg';
 import google from '../Images/FooterImages/googleStore.svg';
 import store from '../Images/FooterImages/appStore.svg';
@@ -32,7 +32,7 @@ export const Footer = () => {
                     <Link>Link 4</Link>
                     <Link>Link 5</Link>
                 </LinksWrapper>
-        
+
                 <LinksWrapper>
                     <LinksTitle>Mapa strony:</LinksTitle>
                     <Link>Link 1</Link>
@@ -41,9 +41,11 @@ export const Footer = () => {
                     <Link>Link 4</Link>
                     <Link>Link 5</Link>
                 </LinksWrapper>
-                {SocialLinks.map((link) => (
-                    <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
-                ))}
+                <SocialsWrapper>
+                    {SocialLinks.map((link) => (
+                        <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
+                    ))}
+                </SocialsWrapper>
             </Content>
         </Wrapper>
     );

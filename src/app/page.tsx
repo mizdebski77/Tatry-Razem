@@ -1,5 +1,4 @@
 'use client'
-import { Button } from "./common/Components/buttons";
 import { HowItWorks } from "./common/arrays";
 import {
   Header,
@@ -26,6 +25,7 @@ import {
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
 import { Footer } from "./common/Footer/footer";
+import { Button } from "./common/Components/components";
 
 export default function Home() {
 

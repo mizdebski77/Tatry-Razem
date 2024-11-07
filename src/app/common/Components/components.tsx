@@ -3,6 +3,7 @@ import { StyledButton, StyledButtonLink } from "./styledComponents";
 interface buttonLinkProps {
     text: string;
     href: string;
+    background: string;
 };
 
 interface buttonProps {
@@ -11,10 +12,9 @@ interface buttonProps {
 };
 
 
-
-export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href }) => {
+export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
     return (
-        <StyledButtonLink href={href}>
+        <StyledButtonLink background={background} href={href}>
             {text}
         </StyledButtonLink>
     );

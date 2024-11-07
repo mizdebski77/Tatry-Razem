@@ -1,8 +1,12 @@
 import { theme } from "@/app/core/StyledComponents/theme";
 import { styled } from "styled-components";
 
-export const StyledButtonLink = styled.a`
-    background: ${theme.palette.blue};  
+interface StyledButtonProps {
+    background: string;
+};
+
+export const StyledButtonLink = styled.a <StyledButtonProps>`
+    background: ${({ background }) => background === 'blue' ? theme.palette.blue : theme.palette.white};  
     color: white;
     border: none;
     border-radius: 8px;
@@ -11,6 +15,8 @@ export const StyledButtonLink = styled.a`
     padding: 12px 40px;
     transition: 0.3s;
     margin: 0 auto;
+    text-decoration: none;
+
     &:hover {
         background: #3469d8;
         transform: translateY(-3px)

@@ -4,6 +4,7 @@ export const theme = {
 
   palette: {
     blue: '#2659C3',
+    white: '#ffffff'
   },
 
   mediaQuery: {

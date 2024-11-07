@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { AuthLogin, AuthRegist, AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
+import { ButtonLink } from '../Components/components';
 
 
 export const Navbar = () => {
@@ -15,10 +16,9 @@ export const Navbar = () => {
             </Link>
 
             <AuthWrapper>
-                <AuthLogin href='/LogIn'>Zaloguj się</AuthLogin>
-                <AuthRegist>Rejestracja</AuthRegist>
+                <ButtonLink background='blue' text='Zaloguj się' href='/LogIn' />
             </AuthWrapper>
-        </Wrapper>
+        </Wrapper >
     );
 };
 

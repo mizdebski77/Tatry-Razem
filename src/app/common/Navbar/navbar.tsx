@@ -1,10 +1,11 @@
 'use client'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthLogin, AuthRegist, AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
 
 
 export const Navbar = () => {
+
     return (
         <Wrapper>
             <Logo href='/'>CHwG</Logo>

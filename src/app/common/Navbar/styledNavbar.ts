@@ -1,5 +1,6 @@
 import { theme } from "@/app/core/StyledComponents/theme";
 import { styled } from "styled-components";
+import css from "styled-jsx/css";
 
 export const Wrapper = styled.nav`
     padding: 28px;
@@ -12,6 +13,7 @@ export const Wrapper = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.3s ease;
 `;
 
 export const Logo = styled.a`

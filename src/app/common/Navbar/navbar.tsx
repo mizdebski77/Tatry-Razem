@@ -1,16 +1,22 @@
 'use client'
 import React from 'react';
-import { Link, LinkImage, Wrapper } from './styledNavbar';
+import { AuthLogin, AuthRegist, AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
 
 
 export const Navbar = () => {
     return (
         <Wrapper>
+            <Logo href='/'>CHwG</Logo>
             <Link href='/'>
                 <LinkImage src={homeImage.src} alt='Link' />
                 Strona Główna
             </Link>
+
+            <AuthWrapper>
+                <AuthLogin>Zaloguj się</AuthLogin>
+                <AuthRegist>Rejestracja</AuthRegist>
+            </AuthWrapper>
         </Wrapper>
     );
 };

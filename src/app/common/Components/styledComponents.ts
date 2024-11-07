@@ -41,7 +41,7 @@ export const StyledButton = styled.button`
     font-size: 18px;
     padding: 12px 40px;
     transition: 0.3s;
-    margin: 0 auto;
+
     &:hover {
         background: #3469d8;
         transform: translateY(-3px)
@@ -54,5 +54,14 @@ export const StyledButton = styled.button`
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
     };
+`;
+
+export const StyledInput = styled.input`
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    border: 2px solid ${theme.palette.blue};
+    outline: none;
+    background: none;
 `;
 

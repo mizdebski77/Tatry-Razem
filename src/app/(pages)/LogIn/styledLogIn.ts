@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import background from '../../common/Images/AuthImages/background.jpg';
+import { theme } from "@/app/core/StyledComponents/theme";
 
 export const Wrapper = styled.main`
     min-height: 100vh;
@@ -38,32 +39,35 @@ export const Form = styled.form`
     align-items: center;
     justify-content: center;
     padding: 40px;
-    height: 80%;
     width: 80%;
-
+    gap: 20px;
 `;
 
 export const FormTitle = styled.h2`
     font-size: 72px;
     letter-spacing: 12px;
     font-weight: lighter;
-`;
-
-export const FormInput = styled.input`
-
-`;
-
-export const FormSpan = styled.span`
-
+    margin-bottom: 20px;
 `;
 
 
-export const FormButton = styled.button`
+export const FormSpan = styled.a`
+    color: ${theme.palette.blue};
+    text-align: end;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
 
+    &:hover {
+        transform: translateY(-4px);
+    }
 `;
 
-export const ButtonSpan = styled.span`
 
+export const ButtonSpan = styled.p`
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
 `;
 
 export const ButtonImage = styled.img`

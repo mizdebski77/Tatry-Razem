@@ -15,7 +15,7 @@ export const Navbar = () => {
             </Link>
 
             <AuthWrapper>
-                <AuthLogin>Zaloguj się</AuthLogin>
+                <AuthLogin href='/LogIn'>Zaloguj się</AuthLogin>
                 <AuthRegist>Rejestracja</AuthRegist>
             </AuthWrapper>
         </Wrapper>

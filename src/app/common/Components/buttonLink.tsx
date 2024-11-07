@@ -26,16 +26,15 @@ const StyledButtonLink = styled.a`
     };
 `;
 
-
-interface buttonProps {
+interface buttonLinkProps {
     text: string;
-    onClick: () => void;
+    href: string;
 }
 
-export const ButtonLink: React.FC<buttonProps> = ({ text, onClick }) => {
+export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href }) => {
     return (
         <StyledButtonLink
-            onClick={onClick}
+            href={href}
         >
             {text}
         </StyledButtonLink>

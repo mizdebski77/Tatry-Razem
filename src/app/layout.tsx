@@ -4,6 +4,7 @@ import { Kameron } from 'next/font/google';
 import StyledComponentsRegistry from "./core/StyledComponents/register";
 import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
 import { Footer } from "./common/Footer/footer";
+import { Navbar } from "./common/Navbar/navbar";
 
 const kameron = Kameron({
   subsets: ['latin'],
@@ -30,10 +31,11 @@ export default function RootLayout({
       <body className={kameron.className}>
         <StyledComponentsRegistry>
           <GlobalStyle />
+          <Navbar />
           {children}
+          <Footer />
         </StyledComponentsRegistry>
 
-        <Footer />
       </body>
     </html >
   );

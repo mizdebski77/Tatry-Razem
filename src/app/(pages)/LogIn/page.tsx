@@ -1,8 +1,8 @@
 'use client'
 
 import { Button } from "@/app/common/Components/buttons";
-import { Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
-import { ButtonLink } from "@/app/common/Components/buttonLink";
+import { Form, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
+import { ButtonLink } from "@/app/common/Components/components";
 
 export default function LogIn() {
     return (
@@ -12,8 +12,13 @@ export default function LogIn() {
                 <Text>Zarejestruj się klikając w poniższy link!</Text>
                 <ButtonLink
                     href="/Register"
-                    text='Rejestracja'/>
+                    text='Rejestracja'
+                />
             </TextWrapper>
+
+            <Form>
+                <FormTitle>Logowanie</FormTitle>
+            </Form>
         </Wrapper>
     )
 }

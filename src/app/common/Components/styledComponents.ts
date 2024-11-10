@@ -63,5 +63,9 @@ export const StyledInput = styled.input`
     border: 2px solid ${theme.palette.blue};
     outline: none;
     background: none;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 16px;
+    };
 `;
 

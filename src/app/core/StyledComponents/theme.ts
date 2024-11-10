@@ -9,7 +9,9 @@ export const theme = {
 
   mediaQuery: {
     screen: '1920px',
-    tablet: '1300px',
+    tabletXl: '1600px',
+    tabletMd: '1300px',
+    mobileXl: '1000px',
     mobileMd: '720px',
     mobileSm: '500px'
   }

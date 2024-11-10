@@ -10,9 +10,14 @@ export const Wrapper = styled.main`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    
-    padding: 40px;
+    padding: 120px 40px 40px;
+    justify-content: center;
 
+    @media (max-width: ${theme.mediaQuery.tabletMd}) {
+        grid-template-columns: 1fr;
+        padding: 120px 20px 20px;
+        gap: 64px;
+    };
 `;
 
 export const TextWrapper = styled.div`
@@ -20,16 +25,28 @@ export const TextWrapper = styled.div`
     color: white;
     text-align: center;
     gap: 20px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        gap: 12px;
+    };
 `;
 
 export const Title = styled.h1`
     font-weight: bold;
     font-size: 72px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 32px;
+    };
 `;
 
 export const Text = styled.h3`
     font-weight: lighter;
     font-size: 32px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 20px;
+    };
 `;
 
 export const Form = styled.form`
@@ -41,6 +58,13 @@ export const Form = styled.form`
     padding: 40px;
     width: 80%;
     gap: 20px;
+    margin: 0 auto;
+    max-width: 980px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        box-shadow:0px 0px 31px 42px rgba(255, 255, 255, 0.9);
+        padding: 12px;
+    };
 `;
 
 export const FormTitle = styled.h2`
@@ -48,6 +72,11 @@ export const FormTitle = styled.h2`
     letter-spacing: 12px;
     font-weight: lighter;
     margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 32px;
+    };
 `;
 
 
@@ -64,7 +93,7 @@ export const FormSpan = styled.a`
 `;
 
 
-export const ButtonSpan = styled.p`
+export const SectionSpan = styled.p`
     text-align: center;
     font-size: 24px;
     margin-top: 20px;
@@ -88,11 +117,20 @@ export const AuthButton = styled.button`
 
     &:hover {
         transform: translateY(-4px);
-    }
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 16px;
+        padding: 12px 20px;
+    };
 `;
 
 
 export const AuthButtonImage = styled.img`
     max-width: 40px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        max-width: 28px;
+    };
 `;
 

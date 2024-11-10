@@ -102,7 +102,7 @@ export const Content = styled.div`
     max-width: 1920px;
     margin: 0 auto 40px;
 
-    @media (max-width: ${theme.mediaQuery.tablet}) {
+    @media (max-width: ${theme.mediaQuery.tabletMd}) {
         grid-template-columns: 1fr;
     };
 

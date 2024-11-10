@@ -70,7 +70,29 @@ export const ButtonSpan = styled.p`
     margin-top: 20px;
 `;
 
-export const ButtonImage = styled.img`
+export const AuthButtonWrapper = styled.div`
+    display: grid;
+    gap: 24px;
+`;
 
+export const AuthButton = styled.button`
+    font-size: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 12px 40px;
+    border-radius: 12px;
+    border: 2px solid #c3c3c3;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+`;
+
+
+export const AuthButtonImage = styled.img`
+    max-width: 40px;
 `;
 

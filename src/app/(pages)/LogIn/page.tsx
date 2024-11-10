@@ -1,7 +1,9 @@
 'use client'
 
-import { ButtonSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, ButtonSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
 import { Button, ButtonLink, Input } from "@/app/common/Components/components";
+import facebook from '../../common/Images/AuthImages/facebook.svg';
+import google from '../../common/Images/AuthImages/google.svg';
 
 export default function LogIn() {
     return (
@@ -23,6 +25,18 @@ export default function LogIn() {
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
                 <Button onClick={() => alert('Button clicked!')} text="Zaloguj" />
                 <ButtonSpan>Lub</ButtonSpan>
+
+                <AuthButtonWrapper>
+                    <AuthButton>
+                        <AuthButtonImage src={google.src} alt="Facebook" />
+                        <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Google</span></span>
+                    </AuthButton>
+
+                    <AuthButton>
+                        <AuthButtonImage src={facebook.src} alt="Facebook" />
+                        <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Facebook</span></span>
+                    </AuthButton>
+                </AuthButtonWrapper>
             </Form>
         </Wrapper>
     )

@@ -17,7 +17,7 @@ export const Navbar = () => {
 
             <AuthWrapper>
                 <ButtonLink background='blue' text='Zaloguj się' href='/LogIn' />
-                <ButtonLink background='white' text='Rejestracja' href='/Rejestracja' />
+                <ButtonLink background='white' text='Rejestracja' href='/Register' />
             </AuthWrapper>
         </Wrapper >
     );

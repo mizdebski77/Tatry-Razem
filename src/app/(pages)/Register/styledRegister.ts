@@ -79,18 +79,6 @@ export const FormTitle = styled.h2`
     };
 `;
 
-export const FormSpan = styled.a`
-    color: ${theme.palette.blue};
-    text-align: end;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-
-    &:hover {
-        transform: translateY(-4px);
-    }
-`;
-
 export const SectionSpan = styled.p`
     text-align: center;
     font-size: 24px;

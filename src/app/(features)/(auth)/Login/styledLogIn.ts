@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import background from '../../common/Images/AuthImages/background.jpg';
+import background from '../../../common/Images/AuthImages/background.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
 
 export const Wrapper = styled.main`

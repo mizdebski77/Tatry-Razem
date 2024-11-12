@@ -2,8 +2,8 @@
 
 import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledRegister";
 import { Button, ButtonLink, Input } from "@/app/common/Components/components";
-import facebook from '../../common/Images/AuthImages/facebook.svg';
-import google from '../../common/Images/AuthImages/google.svg';
+import facebook from '../../../common/Images/AuthImages/facebook.svg';
+import google from '../../../common/Images/AuthImages/google.svg';
 
 export default function Rejestracja() {
     return (

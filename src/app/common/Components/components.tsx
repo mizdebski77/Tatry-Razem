@@ -40,8 +40,8 @@ export const Button: React.FC<buttonProps> = ({ text, onClick }) => {
 export const Input: React.FC<inputProps> = ({ placeHolder, type, errorInput, text }) => {
     return (
         <InputWrapper>
-            <StyledInput errorInput={errorInput} placeholder={placeHolder} type={type} />
             <InputInfo>{text}</InputInfo>
+            <StyledInput errorInput={errorInput} placeholder={placeHolder} type={type} />
         </InputWrapper>
     );
 

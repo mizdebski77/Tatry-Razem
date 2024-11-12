@@ -21,7 +21,7 @@ export default function LogIn() {
             <Form>
                 <FormTitle>Logowanie</FormTitle>
                 <Input text="Niepoprawny email" errorInput={true} placeHolder="E-Mail" type="email" />
-                <Input text="Hasło niepoprawne" errorInput={false} placeHolder="Hasło" type="password" />
+                <Input text="Hasło niepoprawne email" errorInput={false} placeHolder="Hasło" type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
                 <Button onClick={() => alert('Button clicked!')} text="Zaloguj" />
                 <SectionSpan>Lub</SectionSpan>

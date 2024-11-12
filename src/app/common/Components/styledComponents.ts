@@ -61,7 +61,7 @@ export const InputWrapper = styled.label`
 `;
 
 export const InputInfo = styled.p`
-    margin-top: 10px;
+    margin-bottom: 10px;
     color: ${theme.palette.error};
 `;
 

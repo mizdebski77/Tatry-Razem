@@ -32,40 +32,12 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
 `;
 
 
-export const StyledButton = styled.button`
-    background: ${theme.palette.blue};  
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 12px 40px;
-    transition: 0.3s;
-
-    &:hover {
-        background: #3469d8;
-        transform: translateY(-3px)
-    };
-
-    &:active {
-        background: #4a7add;
-    };
-
-    @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        font-size: 14px;
-    };
-`;
-
-export const InputWrapper = styled.label`
-
-`;
-
 export const InputInfo = styled.p`
     margin-bottom: 10px;
     color: ${theme.palette.error};
 `;
 
-export const StyledInput = styled.input<{ errorInput?: boolean }>`
+export const StyledInput = styled.input<{ errorinput?: boolean }>`
     padding: 12px 20px;
     border-radius: 12px;
     font-size: 18px;
@@ -79,7 +51,7 @@ export const StyledInput = styled.input<{ errorInput?: boolean }>`
     };
 
 
-    ${({ errorInput }) => errorInput && css`
+    ${({ errorinput }) => errorinput && css`
         border: 2px solid ${theme.palette.error};
     `};
 

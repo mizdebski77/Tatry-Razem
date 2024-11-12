@@ -1,11 +1,19 @@
 'use client'
 
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
-import { Button, ButtonLink, Input } from "@/app/common/Components/components";
+import { useState } from "react";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledLogIn";
+import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
+import { createClient } from "@/app/core/subabase/server";
+import { revalidatePath } from "next/cache";
+import { redirect } from 'next/navigation'
+import { authLogin } from "../authActions";
+
 
 export default function LogIn() {
+
+
     return (
         <Wrapper>
             <TextWrapper>
@@ -18,13 +26,24 @@ export default function LogIn() {
                 />
             </TextWrapper>
 
+
             <Form>
                 <FormTitle>Logowanie</FormTitle>
-                <Input text="Niepoprawny email" errorInput={true} placeHolder="E-Mail" type="email" />
-                <Input text="Hasło niepoprawne email" errorInput={false} placeHolder="Hasło" type="password" />
+                <Input
+                    text="Niepoprawny email"
+                    errorinput={false}
+                    placeHolder="E-Mail"
+                    type="email"
+                />
+                <Input
+                    text="Hasło niepoprawne email"
+                    errorinput={false}
+                    placeHolder="Hasło"
+                    type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
-                <Button onClick={() => alert('Button clicked!')} text="Zaloguj" />
+                <Button formAction={authLogin}>Zaloguj</Button>
                 <SectionSpan>Lub</SectionSpan>
+
 
                 <AuthButtonWrapper>
                     <AuthButton>

@@ -2,7 +2,7 @@ import { login, signup } from "./action";
 
 export default function LoginPage() {
     return (
-        <form style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <form>
             <label htmlFor="email">Email:</label>
             <input id="email" name="email" type="email" required />
             <label htmlFor="password">Password:</label>

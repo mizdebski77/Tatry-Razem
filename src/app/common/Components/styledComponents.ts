@@ -1,5 +1,5 @@
 import { theme } from "@/app/core/StyledComponents/theme";
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 
 interface StyledButtonProps {
     background: string;
@@ -18,12 +18,12 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
     text-decoration: none;
 
     &:hover {
-        background: ${({ background }) => background === 'blue' ? '#3469d8': '#d1d1d1'};
+        background: ${({ background }) => background === 'blue' ? '#3469d8' : '#d1d1d1'};
         transform: translateY(-3px)
     };
 
     &:active {
-        background: ${({ background }) => background === 'blue' ? '#4a7add': '#aeaeae'};
+        background: ${({ background }) => background === 'blue' ? '#4a7add' : '#aeaeae'};
     };
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
@@ -56,16 +56,31 @@ export const StyledButton = styled.button`
     };
 `;
 
-export const StyledInput = styled.input`
+export const InputWrapper = styled.label`
+
+`;
+
+export const InputInfo = styled.p`
+    margin-top: 10px;
+    color: ${theme.palette.error};
+`;
+
+export const StyledInput = styled.input<{ errorInput?: boolean }>`
     padding: 12px 20px;
     border-radius: 12px;
     font-size: 18px;
     border: 2px solid ${theme.palette.blue};
     outline: none;
     background: none;
+    width: 100%;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 16px;
     };
-`;
 
+
+    ${({ errorInput }) => errorInput && css`
+        border: 2px solid ${theme.palette.error};
+    `};
+
+`;

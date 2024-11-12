@@ -1,4 +1,4 @@
-import { StyledButton, StyledButtonLink, StyledInput } from "./styledComponents";
+import { InputInfo, InputWrapper, StyledButton, StyledButtonLink, StyledInput } from "./styledComponents";
 
 interface buttonLinkProps {
     text: string;
@@ -14,6 +14,8 @@ interface buttonProps {
 interface inputProps {
     placeHolder: string;
     type: string;
+    errorInput: boolean;
+    text: string;
 }
 
 
@@ -35,8 +37,14 @@ export const Button: React.FC<buttonProps> = ({ text, onClick }) => {
     );
 };
 
-export const Input: React.FC<inputProps> = ({ placeHolder, type }) => {
-    return <StyledInput placeholder={placeHolder} type={type} />;
+export const Input: React.FC<inputProps> = ({ placeHolder, type, errorInput, text }) => {
+    return (
+        <InputWrapper>
+            <StyledInput errorInput={errorInput} placeholder={placeHolder} type={type} />
+            <InputInfo>{text}</InputInfo>
+        </InputWrapper>
+    );
+
 
 }
 

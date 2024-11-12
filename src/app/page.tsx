@@ -25,7 +25,7 @@ import {
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
 import { Footer } from "./common/Footer/footer";
-import { Button } from "./common/Components/components";
+// import { Button } from "./common/Components/components";
 
 export default function Home() {
 
@@ -36,10 +36,10 @@ export default function Home() {
 
       <Header>
         <HeaderTitle>Znajdź swojego partnera w długie wędrówki po Tatrach</HeaderTitle>
-        <Button
+        {/* <Button
           text="Zaproponuj trasę"
           onClick={() => alert('Button clicked!')}
-        />
+        /> */}
       </Header>
 
       <PropositionsWrapper>
@@ -55,10 +55,10 @@ export default function Home() {
             </PropositionTile>
           ))}
         </PropositionsContainer>
-        <Button
+        {/* <Button
           text="Sprawdź wszytskie propozycje"
           onClick={() => alert('Button clicked!')}
-        />
+        /> */}
       </PropositionsWrapper>
 
       <WorkWrapper>

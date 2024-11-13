@@ -1,4 +1,4 @@
-import { InputInfo, StyledButtonLink, StyledInput } from "./styledComponents";
+import { InputInfo, StyledButton, StyledButtonLink, StyledInput } from "./styledComponents";
 
 interface buttonLinkProps {
     text: string;
@@ -13,8 +13,13 @@ interface inputProps {
     required: boolean;
     name: string;
     isError?: boolean;
-}
+};
 
+interface buttonProps {
+    text: string;
+    onClick?: () => void;
+    formAction?: (formData: FormData) => Promise<void>;
+}
 
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
     return (
@@ -38,7 +43,22 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, req
             />
         </label>
     );
+};
 
 
-}
+export const Button: React.FC<buttonProps> = ({ text, onClick, formAction }) => {
+    const handleClick = async () => {
+        if (formAction) {
+            const formData = new FormData();
+            // Tutaj można pobrać i dodać dane formularza, jeśli są potrzebne
+            await formAction(formData);
+        }
+        if (onClick) onClick();
+    };
 
+    return (
+        <StyledButton onClick={handleClick}>
+            {text}
+        </StyledButton>
+    );
+};

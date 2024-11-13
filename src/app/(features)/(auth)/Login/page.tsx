@@ -30,6 +30,7 @@ export default function LogIn() {
                     text="Niepoprawny email"
                     errorinput={false}
                     placeHolder="E-Mail"
+                    name='email'
                     type="email"
                 />
                 <Input
@@ -37,9 +38,12 @@ export default function LogIn() {
                     text="Hasło niepoprawne email"
                     errorinput={false}
                     placeHolder="Hasło"
+                    name='password'
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
+
                 <Button formAction={authLogin}>Zaloguj</Button>
+
                 <SectionSpan>Lub</SectionSpan>
 
 

@@ -12,6 +12,7 @@ interface inputProps {
     errorinput: boolean;
     text: string;
     required: boolean;
+    name: string;
 }
 
 
@@ -24,7 +25,7 @@ export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }
 };
 
 
-export const Input: React.FC<inputProps> = ({ placeHolder, type, errorinput, text, required }) => {
+export const Input: React.FC<inputProps> = ({ placeHolder, type, errorinput, text, name, required }) => {
     return (
         <label>
             <InputInfo>{text}</InputInfo>
@@ -32,6 +33,7 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, errorinput, tex
                 required={required}
                 errorinput={errorinput}
                 placeholder={placeHolder}
+                name={name}
                 type={type}
             />
         </label>

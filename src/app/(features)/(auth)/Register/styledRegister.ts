@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import background from '../../common/Images/AuthImages/background.jpg';
+import background from '../../../common/Images/AuthImages/background.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
 
 export const Wrapper = styled.main`
@@ -79,10 +79,38 @@ export const FormTitle = styled.h2`
     };
 `;
 
+export const Container = styled.div`
+    display: flex;
+`;
+
 export const SectionSpan = styled.p`
     text-align: center;
     font-size: 24px;
     margin-top: 20px;
+`;
+
+export const Button = styled.button`
+    background: ${theme.palette.blue};  
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px 40px;
+    transition: 0.3s;
+
+    &:hover {
+        background: #3469d8;
+        transform: translateY(-3px)
+    };
+
+    &:active {
+        background: #4a7add;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 14px;
+    };
 `;
 
 export const AuthButtonWrapper = styled.div`

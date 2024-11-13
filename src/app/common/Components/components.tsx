@@ -1,4 +1,7 @@
-import { InputInfo, StyledButton, StyledButtonLink, StyledInput } from "./styledComponents";
+import { useState } from "react";
+import { InputButton, InputImg, InputInfo, InputWrapper, StyledButtonLink, StyledInput } from "./styledComponents";
+import showPasswordImg from '../Images/AuthImages/showPassword.svg';
+import hidePasswordImg from '../Images/AuthImages/hidePassword.svg';
 
 interface buttonLinkProps {
     text: string;
@@ -15,12 +18,6 @@ interface inputProps {
     isError?: boolean;
 };
 
-// interface buttonProps {
-//     text: string;
-//     onClick?: () => void;
-//     formAction?: (formData: FormData) => Promise<void>;
-// }
-
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
     return (
         <StyledButtonLink background={background} href={href}>
@@ -31,16 +28,34 @@ export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }
 
 
 export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, required, isError }) => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState);
+    };
+
     return (
         <label>
             <InputInfo>{text}</InputInfo>
-            <StyledInput
-                required={required}
-                placeholder={placeHolder}
-                name={name}
-                type={type}
-                errorinput={isError}
-            />
+            <InputWrapper>
+                <StyledInput
+                    required={required}
+                    placeholder={placeHolder}
+                    name={name}
+                    type={type === 'password' && showPassword ? 'text' : type}
+                    errorinput={isError}
+                />
+
+                {type === 'password' && (
+                    <InputButton
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                    >
+                        <InputImg src={showPassword ? showPasswordImg.src : hidePasswordImg.src} />
+                    </InputButton>
+                )}
+            </InputWrapper>
         </label>
     );
 };

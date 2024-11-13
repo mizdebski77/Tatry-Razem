@@ -1,11 +1,15 @@
 'use client'
 
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledRegister";
+
+import { useState } from 'react';
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledRegister";
 import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
+import { RegisterInputs } from "@/app/common/arrays";
 
 export default function Rejestracja() {
+
     return (
         <Wrapper>
             <TextWrapper>
@@ -20,12 +24,22 @@ export default function Rejestracja() {
 
             <Form>
                 <FormTitle>Rejestracja</FormTitle>
-                <Input placeHolder="Imię *" type="email" />
-                <Input placeHolder="Nazwisko *" type="email" />
-                <Input placeHolder="E-Mail *" type="email" />
-                <Input placeHolder="Hasło *" type="password" />
-                <Input placeHolder="Powtórz Hasło *" type="password" />
-                <Button onClick={() => alert('Button clicked!')} text="Zaloguj" />
+                {RegisterInputs.map((input) => (
+                    <div>
+                        <Input
+                            key={input.id}
+                            placeHolder={input.placeholder}
+                            required={input.required}
+                            text={input.text}
+                            name={input.name}
+                            type={input.type}
+                            isError={false}
+                        />
+                    </div>
+
+
+                ))}
+                <Button>Rejestracja</Button>
                 <SectionSpan>Lub</SectionSpan>
 
                 <AuthButtonWrapper>

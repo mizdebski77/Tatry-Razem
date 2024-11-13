@@ -37,11 +37,25 @@ export const InputInfo = styled.p`
     color: ${theme.palette.error};
 `;
 
-export const StyledInput = styled.input<{ errorinput?: boolean }>`
+export const InputWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    border: 2px solid ${theme.palette.blue};
     padding: 12px 20px;
     border-radius: 12px;
+`;
+
+export const InputButton = styled.button`
+    cursor: pointer;
+`;
+
+export const InputImg = styled.img`
+
+`;
+
+export const StyledInput = styled.input<{ errorinput?: boolean }>`
     font-size: 18px;
-    border: 2px solid ${theme.palette.blue};
+    border: none;
     outline: none;
     background: none;
     width: 100%;
@@ -56,7 +70,7 @@ export const StyledInput = styled.input<{ errorinput?: boolean }>`
     `};
 `;
 
-export const StyledButton = styled.button`
+/* export const StyledButton = styled.button`
     background: ${theme.palette.blue};  
     color: white;
     border: none;
@@ -78,4 +92,4 @@ export const StyledButton = styled.button`
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
     };
-`;
+`; */

@@ -37,12 +37,16 @@ export const InputInfo = styled.p`
     color: ${theme.palette.error};
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<{ errorinput?: boolean }>`
     display: flex;
     align-items: center;
     border: 2px solid ${theme.palette.blue};
     padding: 12px 20px;
     border-radius: 12px;
+
+    ${({ errorinput }) => errorinput && css`
+        border: 2px solid ${theme.palette.error};
+    `};
 `;
 
 export const InputButton = styled.button`
@@ -56,7 +60,7 @@ export const InputImg = styled.img`
     opacity: 0.6;
 `;
 
-export const StyledInput = styled.input<{ errorinput?: boolean }>`
+export const StyledInput = styled.input`
     font-size: 18px;
     border: none;
     outline: none;
@@ -66,11 +70,6 @@ export const StyledInput = styled.input<{ errorinput?: boolean }>`
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 16px;
     };
-
-
-    ${({ errorinput }) => errorinput && css`
-        border: 2px solid ${theme.palette.error};
-    `};
 `;
 
 /* export const StyledButton = styled.button`

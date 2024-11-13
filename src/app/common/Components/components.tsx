@@ -15,7 +15,7 @@ interface inputProps {
     text: string;
     required: boolean;
     name: string;
-    isError?: boolean;
+    isError: 1 | 0;
 };
 
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
@@ -38,13 +38,14 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, req
     return (
         <label>
             <InputInfo>{text}</InputInfo>
-            <InputWrapper>
+            <InputWrapper
+                errorinput={isError}
+            >
                 <StyledInput
                     required={required}
                     placeholder={placeHolder}
                     name={name}
                     type={type === 'password' && showPassword ? 'text' : type}
-                    errorinput={isError}
                 />
 
                 {type === 'password' && (

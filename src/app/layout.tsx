@@ -33,7 +33,7 @@ export default function RootLayout({
           <GlobalStyle />
           <Navbar />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </StyledComponentsRegistry>
 
       </body>

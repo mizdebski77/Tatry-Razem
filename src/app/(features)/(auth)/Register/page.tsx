@@ -8,7 +8,7 @@ import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";
 import { authSignUp } from "../authActions";
 
-export default function Rejestracja() {
+export default function Register() {
 
     return (
         <Wrapper>
@@ -32,7 +32,7 @@ export default function Rejestracja() {
                         text={input.text}
                         name={input.name}
                         type={input.type}
-                        isError={false}
+                        isError={0}
                     />
                 ))}
                 <Button formAction={authSignUp}>Rejestracja</Button>

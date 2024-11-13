@@ -28,17 +28,17 @@ export default function LogIn() {
                 <Input
                     required={true}
                     text="Niepoprawny email"
-                    errorinput={false}
                     placeHolder="E-Mail"
                     name='email'
                     type="email"
+                    isError={true}
                 />
                 <Input
                     required={true}
                     text="Hasło niepoprawne email"
-                    errorinput={false}
                     placeHolder="Hasło"
                     name='password'
+                    isError={false}
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 

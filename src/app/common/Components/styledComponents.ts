@@ -2,12 +2,12 @@ import { theme } from "@/app/core/StyledComponents/theme";
 import { styled, css } from "styled-components";
 
 interface StyledButtonProps {
-    background: string;
+    $background: string;
 };
 
 export const StyledButtonLink = styled.a <StyledButtonProps>`
-    background: ${({ background }) => background === 'blue' ? theme.palette.blue : theme.palette.white};  
-    color: ${({ background }) => background === 'blue' ? theme.palette.white : 'black'};
+    background: ${({ $background }) => $background === 'blue' ? theme.palette.blue : theme.palette.white};  
+    color: ${({ $background }) => $background === 'blue' ? theme.palette.white : 'black'};
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -18,12 +18,12 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
     text-decoration: none;
 
     &:hover {
-        background: ${({ background }) => background === 'blue' ? '#3469d8' : '#d1d1d1'};
+        background: ${({ $background }) => $background === 'blue' ? '#3469d8' : '#d1d1d1'};
         transform: translateY(-3px)
     };
 
     &:active {
-        background: ${({ background }) => background === 'blue' ? '#4a7add' : '#aeaeae'};
+        background: ${({ $background }) => $background === 'blue' ? '#4a7add' : '#aeaeae'};
     };
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {

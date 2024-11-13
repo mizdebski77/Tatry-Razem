@@ -16,8 +16,8 @@ export const Navbar = () => {
             </Link>
 
             <AuthWrapper>
-                <ButtonLink background='blue' text='Zaloguj się' href='/Login' />
-                <ButtonLink background='white' text='Rejestracja' href='/Register' />
+                <ButtonLink $background='blue' text='Zaloguj się' href='/Login' />
+                <ButtonLink $background='white' text='Rejestracja' href='/Register' />
             </AuthWrapper>
         </Wrapper >
     );

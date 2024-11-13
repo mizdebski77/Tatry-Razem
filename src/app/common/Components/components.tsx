@@ -6,7 +6,7 @@ import hidePasswordImg from '../Images/AuthImages/hidePassword.svg';
 interface buttonLinkProps {
     text: string;
     href: string;
-    background: string;
+    $background: string;
 };
 
 interface inputProps {
@@ -18,9 +18,9 @@ interface inputProps {
     isError: 1 | 0;
 };
 
-export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
+export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, $background }) => {
     return (
-        <StyledButtonLink background={background} href={href}>
+        <StyledButtonLink $background={$background} href={href}>
             {text}
         </StyledButtonLink>
     );

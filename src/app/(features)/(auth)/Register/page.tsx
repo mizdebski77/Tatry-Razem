@@ -1,7 +1,6 @@
 'use client'
 
 
-import { useState } from 'react';
 import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledRegister";
 import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
@@ -25,19 +24,15 @@ export default function Rejestracja() {
             <Form>
                 <FormTitle>Rejestracja</FormTitle>
                 {RegisterInputs.map((input) => (
-                    <div>
-                        <Input
-                            key={input.id}
-                            placeHolder={input.placeholder}
-                            required={input.required}
-                            text={input.text}
-                            name={input.name}
-                            type={input.type}
-                            isError={false}
-                        />
-                    </div>
-
-
+                    <Input
+                        key={input.id}
+                        placeHolder={input.placeholder}
+                        required={input.required}
+                        text={input.text}
+                        name={input.name}
+                        type={input.type}
+                        isError={false}
+                    />
                 ))}
                 <Button>Rejestracja</Button>
                 <SectionSpan>Lub</SectionSpan>

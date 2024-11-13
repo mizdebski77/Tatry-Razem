@@ -79,10 +79,6 @@ export const FormTitle = styled.h2`
     };
 `;
 
-export const Container = styled.div`
-    display: flex;
-`;
-
 export const SectionSpan = styled.p`
     text-align: center;
     font-size: 24px;

@@ -47,10 +47,13 @@ export const InputWrapper = styled.div`
 
 export const InputButton = styled.button`
     cursor: pointer;
+    border: none;
+    background: none;
 `;
 
 export const InputImg = styled.img`
-
+    max-width: 24px;
+    opacity: 0.6;
 `;
 
 export const StyledInput = styled.input<{ errorinput?: boolean }>`

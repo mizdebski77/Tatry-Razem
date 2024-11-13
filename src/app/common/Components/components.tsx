@@ -52,28 +52,10 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, req
                         type="button"
                         onClick={togglePasswordVisibility}
                     >
-                        <InputImg src={showPassword ? showPasswordImg.src : hidePasswordImg.src} />
+                        <InputImg src={showPassword ? hidePasswordImg.src : showPasswordImg.src} />
                     </InputButton>
                 )}
             </InputWrapper>
         </label>
     );
 };
-
-
-// export const Button: React.FC<buttonProps> = ({ text, onClick, formAction }) => {
-//     const handleClick = async () => {
-//         if (formAction) {
-//             const formData = new FormData();
-//             // Tutaj można pobrać i dodać dane formularza, jeśli są potrzebne
-//             await formAction(formData);
-//         }
-//         if (onClick) onClick();
-//     };
-
-//     return (
-//         <StyledButton onClick={handleClick}>
-//             {text}
-//         </StyledButton>
-//     );
-// };

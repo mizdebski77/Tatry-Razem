@@ -6,6 +6,7 @@ import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";
+import { authSignUp } from "../authActions";
 
 export default function Rejestracja() {
 
@@ -34,7 +35,7 @@ export default function Rejestracja() {
                         isError={false}
                     />
                 ))}
-                <Button>Rejestracja</Button>
+                <Button formAction={authSignUp}>Rejestracja</Button>
                 <SectionSpan>Lub</SectionSpan>
 
                 <AuthButtonWrapper>

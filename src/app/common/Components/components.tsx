@@ -15,11 +15,11 @@ interface inputProps {
     isError?: boolean;
 };
 
-interface buttonProps {
-    text: string;
-    onClick?: () => void;
-    formAction?: (formData: FormData) => Promise<void>;
-}
+// interface buttonProps {
+//     text: string;
+//     onClick?: () => void;
+//     formAction?: (formData: FormData) => Promise<void>;
+// }
 
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, background }) => {
     return (
@@ -46,19 +46,19 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, req
 };
 
 
-export const Button: React.FC<buttonProps> = ({ text, onClick, formAction }) => {
-    const handleClick = async () => {
-        if (formAction) {
-            const formData = new FormData();
-            // Tutaj można pobrać i dodać dane formularza, jeśli są potrzebne
-            await formAction(formData);
-        }
-        if (onClick) onClick();
-    };
+// export const Button: React.FC<buttonProps> = ({ text, onClick, formAction }) => {
+//     const handleClick = async () => {
+//         if (formAction) {
+//             const formData = new FormData();
+//             // Tutaj można pobrać i dodać dane formularza, jeśli są potrzebne
+//             await formAction(formData);
+//         }
+//         if (onClick) onClick();
+//     };
 
-    return (
-        <StyledButton onClick={handleClick}>
-            {text}
-        </StyledButton>
-    );
-};
+//     return (
+//         <StyledButton onClick={handleClick}>
+//             {text}
+//         </StyledButton>
+//     );
+// };

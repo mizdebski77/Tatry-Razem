@@ -1,7 +1,7 @@
 'use client'
 
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper } from "./styledLogIn";
-import { Button, ButtonLink, Input } from "@/app/common/Components/components";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledLogIn";
+import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { authLogin } from "../authActions";
@@ -42,10 +42,7 @@ export default function LogIn() {
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                <Button
-                    text="Zaloguj"
-                    formAction={authLogin}
-                />
+                <Button formAction={authLogin}>Zaloguj</Button>
 
                 <SectionSpan>Lub</SectionSpan>
 

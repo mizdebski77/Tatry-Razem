@@ -5,7 +5,7 @@ import homeImage from '../Images/NavImages/home.svg';
 import { ButtonLink } from '../Components/components';
 
 
-export const Navbar = () => {
+export default function Navigation() {
 
     return (
         <Wrapper>

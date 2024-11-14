@@ -30,12 +30,11 @@ export default function RootLayout({
       </head>
       <body className={kameron.className}>
         <StyledComponentsRegistry>
-          <GlobalStyle />
           <Navbar />
+          <GlobalStyle />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </StyledComponentsRegistry>
-
       </body>
     </html >
   );

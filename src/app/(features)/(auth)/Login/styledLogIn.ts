@@ -86,6 +86,12 @@ export const Button = styled.button`
         background: #4a7add;
     };
 
+    &:disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+        transform: none;
+    };
+
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
     };

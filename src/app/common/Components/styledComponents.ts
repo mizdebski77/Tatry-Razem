@@ -37,7 +37,7 @@ export const InputInfo = styled.p`
     color: ${theme.palette.error};
 `;
 
-export const InputWrapper = styled.div<{ errorinput?: boolean }>`
+export const InputWrapper = styled.div<{ errorinput?: 1 | 0 }>`
     display: flex;
     align-items: center;
     border: 2px solid ${theme.palette.blue};

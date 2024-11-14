@@ -5,9 +5,50 @@ import { ButtonLink, Input } from "@/app/common/Components/components";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { authLogin } from "../authActions";
+import React, { useState } from "react";
 
 
 export default function LogIn() {
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+
+    const isEmailValid = (email: string) => {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+    };
+
+    const isPasswordValid = (password: string) => {
+        const passwordPattern = /^[a-zA-Z0-9._-]{6,}$/;
+        return passwordPattern.test(password);
+    };
+
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setEmail(value);
+
+        if (!isEmailValid(value)) {
+            setEmailError('Niepoprawny format E-Maila');
+        } else {
+            setEmailError('');
+        }
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setPassword(value);
+
+        if (!isPasswordValid(value)) {
+            setPasswordError('Hasło powinno zawierać conajmniej 6 znaków');
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    const isFormValid = !emailError && !passwordError && email && password
 
 
     return (
@@ -16,33 +57,36 @@ export default function LogIn() {
                 <Title>Nie masz konta?</Title>
                 <Text>Zarejestruj się klikając w poniższy link!</Text>
                 <ButtonLink
-                    background="blue"
+                    $background="blue"
                     href="/Register"
                     text='Rejestracja'
                 />
             </TextWrapper>
 
-
             <Form>
                 <FormTitle>Logowanie</FormTitle>
                 <Input
+                    onChange={handleEmailChange}
                     required={true}
-                    text="Niepoprawny email"
+                    text={emailError ? emailError : ''}
                     placeHolder="E-Mail"
                     name='email'
                     type="email"
-                    isError={true}
+                    value={email}
+                    isError={emailError ? 1 : 0}
                 />
                 <Input
+                    onChange={handlePasswordChange}
                     required={true}
-                    text="Hasło niepoprawne email"
+                    text={passwordError ? passwordError : ''}
                     placeHolder="Hasło"
                     name='password'
-                    isError={false}
+                    value={password}
+                    isError={passwordError ? 1 : 0}
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                <Button formAction={authLogin}>Zaloguj</Button>
+                <Button disabled={!isFormValid} formAction={authLogin}>Zaloguj</Button>
 
                 <SectionSpan>Lub</SectionSpan>
 

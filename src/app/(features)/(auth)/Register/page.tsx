@@ -16,7 +16,7 @@ export default function Register() {
                 <Title>Posiadasz konto?</Title>
                 <Text>Zaloguj się klikając w poniższy link!</Text>
                 <ButtonLink
-                    background="blue"
+                    $background="blue"
                     href="/LogIn"
                     text='Logowanie'
                 />
@@ -32,7 +32,7 @@ export default function Register() {
                         text={input.text}
                         name={input.name}
                         type={input.type}
-                        isError={0}
+                        isError={1}
                     />
                 ))}
                 <Button formAction={authSignUp}>Rejestracja</Button>

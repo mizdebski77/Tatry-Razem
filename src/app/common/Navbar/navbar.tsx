@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { AuthLogin, AuthRegist, AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
+
+import { AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
 import { ButtonLink } from '../Components/components';
 

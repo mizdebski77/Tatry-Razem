@@ -16,6 +16,8 @@ interface inputProps {
     required: boolean;
     name: string;
     isError: 1 | 0;
+    value: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, $background }) => {
@@ -27,7 +29,7 @@ export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, $background 
 };
 
 
-export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, required, isError }) => {
+export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, required, onChange, isError, value }) => {
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -38,13 +40,13 @@ export const Input: React.FC<inputProps> = ({ placeHolder, type, text, name, req
     return (
         <label>
             <InputInfo>{text}</InputInfo>
-            <InputWrapper
-                errorinput={isError}
-            >
+            <InputWrapper errorinput={isError}>
                 <StyledInput
                     required={required}
                     placeholder={placeHolder}
                     name={name}
+                    onChange={onChange}
+                    value={value}
                     type={type === 'password' && showPassword ? 'text' : type}
                 />
 

@@ -2,7 +2,7 @@
 
 
 import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledRegister";
-import { ButtonLink, Input } from "@/app/common/Components/components";
+import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";

@@ -2,7 +2,7 @@
 
 import { AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
-import { ButtonLink } from '../Components/components';
+import { ButtonLink } from '../UI/UI';
 
 
 export default function Navigation() {

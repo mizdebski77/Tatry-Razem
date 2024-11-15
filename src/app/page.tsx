@@ -25,7 +25,7 @@ import {
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
 import { Footer } from "./common/Footer/footer";
-// import { Button } from "./common/Components/components";
+// import { Button } from "./common/UI/UI";
 
 export default function Home() {
 

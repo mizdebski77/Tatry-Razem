@@ -1,7 +1,7 @@
 'use client'
 
 import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledLogIn";
-import { ButtonLink, Input } from "@/app/common/Components/components";
+import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { authLogin } from "../authActions";

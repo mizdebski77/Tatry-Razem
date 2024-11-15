@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputButton, InputImg, InputInfo, InputWrapper, StyledButtonLink, StyledInput } from "./styledComponents";
+import { InputButton, InputImg, InputInfo, InputWrapper, StyledButtonLink, StyledInput } from "./styledUI";
 import showPasswordImg from '../Images/AuthImages/showPassword.svg';
 import hidePasswordImg from '../Images/AuthImages/hidePassword.svg';
 

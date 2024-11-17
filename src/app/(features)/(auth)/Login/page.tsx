@@ -14,9 +14,6 @@ export default function LogIn() {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-
-
-
     const isEmailValid = (email: string) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         return emailPattern.test(email);
@@ -103,6 +100,7 @@ export default function LogIn() {
                         <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Facebook</span></span>
                     </AuthButton>
                 </AuthButtonWrapper>
+                
             </Form>
         </Wrapper>
     )

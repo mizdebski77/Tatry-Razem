@@ -4,7 +4,7 @@ import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, Form
 import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
-import { authLogin } from "../authActions";
+import { authLogin, authSignUp } from "../authActions";
 import React, { useState } from "react";
 
 
@@ -13,6 +13,8 @@ export default function LogIn() {
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+
+
 
 
     const isEmailValid = (email: string) => {
@@ -24,7 +26,6 @@ export default function LogIn() {
         const passwordPattern = /^[a-zA-Z0-9._-]{6,}$/;
         return passwordPattern.test(password);
     };
-
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -50,7 +51,6 @@ export default function LogIn() {
 
     const isFormValid = !emailError && !passwordError && email && password
 
-
     return (
         <Wrapper>
             <TextWrapper>
@@ -58,7 +58,7 @@ export default function LogIn() {
                 <Text>Zarejestruj się klikając w poniższy link!</Text>
                 <ButtonLink
                     $background="blue"
-                    href="/Register"
+                    href="/Private"
                     text='Rejestracja'
                 />
             </TextWrapper>
@@ -87,6 +87,7 @@ export default function LogIn() {
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
                 <Button disabled={!isFormValid} formAction={authLogin}>Zaloguj</Button>
+                <Button disabled={!isFormValid} formAction={authSignUp}>Rejestracja</Button>
 
                 <SectionSpan>Lub</SectionSpan>
 

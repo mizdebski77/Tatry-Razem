@@ -43,10 +43,10 @@ export const FooterLinks = [
 
 
 export const RegisterInputs = [
-    { id: 1, required: true, text: 'Niepoprawny Format', placeholder: 'Imię *', name: 'name', type: 'name', },
-    { id: 2, required: true, text: 'Niepoprawny Format', placeholder: 'Nazwisko *', name: 'surname', type: 'name', },
-    { id: 3, required: true, text: 'Niepoprawny E-mail', placeholder: 'E-mail *', name: 'email', type: 'email', },
-    { id: 4, required: true, text: 'Niepoprawne Hasło', placeholder: 'Hasło *', name: 'password', type: 'password', },
-    { id: 5, required: true, text: 'Hasła nie są identyczne', placeholder: 'Powtórz hasło', name: 'rpassword', type: 'password', },
+    { id: 1, required: false, text: 'Niepoprawny Format', placeholder: 'Imię *', name: 'name', type: 'name', },
+    { id: 2, required: false, text: 'Niepoprawny Format', placeholder: 'Nazwisko *', name: 'surname', type: 'name', },
+    { id: 3, required: false, text: 'Niepoprawny E-mail', placeholder: 'E-mail *', name: 'email', type: 'email', },
+    { id: 4, required: false, text: 'Niepoprawne Hasło', placeholder: 'Hasło *', name: 'password', type: 'password', },
+    { id: 5, required: false, text: 'Hasła nie są identyczne', placeholder: 'Powtórz hasło', name: 'rpassword', type: 'password', },
 
 ]

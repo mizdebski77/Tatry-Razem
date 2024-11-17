@@ -1,13 +1,13 @@
-
 'use server'
 
-import { createClient } from "../../core/subabase/server";
+import { createClient } from '@/app/core/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
+const supabase = await createClient()
+
 
 export async function authLogin(formData: FormData) {
-    const supabase = await createClient()
 
     const data = {
         email: formData.get('email') as string,
@@ -18,7 +18,7 @@ export async function authLogin(formData: FormData) {
 
     if (error) {
         console.log(error);
-        
+
     }
 
     revalidatePath('/', 'layout')
@@ -26,7 +26,6 @@ export async function authLogin(formData: FormData) {
 };
 
 export async function authSignUp(formData: FormData) {
-    const supabase = await createClient()
 
     const data = {
         email: formData.get('email') as string,
@@ -43,4 +42,8 @@ export async function authSignUp(formData: FormData) {
 
     revalidatePath('/', 'layout')
     redirect('/')
+};
+
+export async function signOut() {
+    const { error } = await supabase.auth.signOut()
 }

@@ -47,6 +47,20 @@ export const AuthWrapper = styled.div`
     gap: 32px;
 `;
 
+export const ProfileWrapper = styled.a`
+    display: grid;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ProfileIcon = styled.img`
+    margin: 0 auto;
+`;
+
+export const ProfileSpan = styled.span`
+
+`;
+
 export const AuthLogin = styled.a`
     background: ${theme.palette.blue};  
     color: white;

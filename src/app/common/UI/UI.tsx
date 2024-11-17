@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputButton, InputImg, InputInfo, InputWrapper, StyledButtonLink, StyledInput } from "./styledUI";
+import { InputButton, InputImg, InputInfo, InputWrapper, StyledButton, StyledButtonLink, StyledInput } from "./styledUI";
 import showPasswordImg from '../Images/AuthImages/showPassword.svg';
 import hidePasswordImg from '../Images/AuthImages/hidePassword.svg';
 
@@ -7,6 +7,12 @@ interface buttonLinkProps {
     text: string;
     href: string;
     $background: string;
+};
+
+interface buttonProps {
+    text: string;
+    $background: string;
+    onClick: () => void;
 };
 
 interface inputProps {
@@ -18,6 +24,14 @@ interface inputProps {
     isError: 1 | 0;
     value: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export const Button: React.FC<buttonProps> = ({ text, onClick, $background }) => {
+    return (
+        <StyledButton $background={$background} onClick={onClick}>
+            {text}
+        </StyledButton>
+    );
 };
 
 export const ButtonLink: React.FC<buttonLinkProps> = ({ text, href, $background }) => {

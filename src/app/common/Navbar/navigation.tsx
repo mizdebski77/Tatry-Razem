@@ -1,11 +1,34 @@
-'use client'
+'use client';
 
-import { AuthWrapper, Link, LinkImage, Logo, Wrapper } from './styledNavbar';
+import { useEffect, useState } from 'react';
+import { AuthWrapper, Link, LinkImage, Logo, ProfileIcon, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
-import { ButtonLink } from '../UI/UI';
+import { Button, ButtonLink } from '../UI/UI';
+import { createClient } from '@/app/core/supabase/client';
+import profile from '../Images/NavImages/profile.svg';
+import { signOut } from '@/app/(features)/(auth)/authActions';
 
+interface User {
+    email?: string;
+}
 
 export default function Navigation() {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const supabase = createClient();
+            const { data, error } = await supabase.auth.getUser();
+
+            if (data?.user) {
+                setUser(data.user);
+            } else {
+                setUser(null);
+            }
+        };
+
+        fetchUser();
+    }, []);
 
     return (
         <Wrapper>
@@ -16,10 +39,21 @@ export default function Navigation() {
             </Link>
 
             <AuthWrapper>
-                <ButtonLink $background='blue' text='Zaloguj się' href='/Login' />
-                <ButtonLink $background='white' text='Rejestracja' href='/Register' />
+                {user ? (
+                    <>
+                        <ProfileWrapper href='/Profile'>
+                            <ProfileIcon src={profile.src} alt='profile' />
+                            <ProfileSpan>{user.email}</ProfileSpan>
+                        </ProfileWrapper>
+                        <Button $background='white' text='Wyloguj się' onClick={signOut} />
+                    </>
+                ) : (
+                    <>
+                        <ButtonLink $background='blue' text='Zaloguj się' href='/Login' />
+                        <ButtonLink $background='white' text='Rejestracja' href='/Register' />
+                    </>
+                )}
             </AuthWrapper>
-        </Wrapper >
+        </Wrapper>
     );
-};
-
+}

@@ -25,6 +25,7 @@ export default function Register() {
             <Form>
                 <FormTitle>Rejestracja</FormTitle>
                 {RegisterInputs.map((input) => (
+                    
                     <Input
                         key={input.id}
                         placeHolder={input.placeholder}

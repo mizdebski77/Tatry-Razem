@@ -31,6 +31,32 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
     };
 `;
 
+export const StyledButton = styled.button <StyledButtonProps>`
+    background: ${({ $background }) => $background === 'blue' ? theme.palette.blue : theme.palette.white};  
+    color: ${({ $background }) => $background === 'blue' ? theme.palette.white : 'black'};
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px 40px;
+    transition: 0.3s;
+    margin: 0 auto;
+    text-decoration: none;
+
+    &:hover {
+        background: ${({ $background }) => $background === 'blue' ? '#3469d8' : '#d1d1d1'};
+        transform: translateY(-3px)
+    };
+
+    &:active {
+        background: ${({ $background }) => $background === 'blue' ? '#4a7add' : '#aeaeae'};
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 14px;
+    };
+`;
+
 
 export const InputInfo = styled.p`
     margin-bottom: 10px;

@@ -1,18 +1,19 @@
 'use client'
 
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button } from "./styledLogIn";
+import React, { useState } from "react";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button, ErrorSpan } from "./styledLogIn";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { authLogin, authSignUp } from "../authActions";
-import React, { useState } from "react";
-
 
 export default function LogIn() {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [authError, setAuthError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const isEmailValid = (email: string) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,7 +47,36 @@ export default function LogIn() {
         }
     };
 
-    const isFormValid = !emailError && !passwordError && email && password
+    const isFormValid = !emailError && !passwordError && email && password;
+
+    const handleLogin = async () => {
+        setLoading(true);
+        setAuthError('');
+
+        const result = await authLogin(email, password);
+
+        if (result.error) {
+            setAuthError(result.error);
+        } else if (result.success) {
+            window.location.href = '/';
+        }
+
+        setLoading(false);
+    };
+
+
+    const handleSignUp = async () => {
+        setLoading(true);
+        setAuthError('');
+        const result = await authSignUp(email, password);
+
+        if (result.error) {
+            setAuthError(result.error);
+        } else if (result.success) {
+            window.location.href = '/';
+        }
+        setLoading(false);
+    };
 
     return (
         <Wrapper>
@@ -83,15 +113,20 @@ export default function LogIn() {
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                <Button disabled={!isFormValid} formAction={authLogin}>Zaloguj</Button>
-                <Button disabled={!isFormValid} formAction={authSignUp}>Rejestracja</Button>
+                {authError && <ErrorSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</ErrorSpan>}
+
+                <Button
+                    disabled={!isFormValid || loading}
+                    onClick={handleLogin}>
+                    {loading ? 'Trwa logowanie...' : 'Zaloguj'}
+                </Button>
+
 
                 <SectionSpan>Lub</SectionSpan>
 
-
                 <AuthButtonWrapper>
                     <AuthButton>
-                        <AuthButtonImage src={google.src} alt="Facebook" />
+                        <AuthButtonImage src={google.src} alt="Google" />
                         <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Google</span></span>
                     </AuthButton>
 
@@ -100,8 +135,8 @@ export default function LogIn() {
                         <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Facebook</span></span>
                     </AuthButton>
                 </AuthButtonWrapper>
-                
+
             </Form>
         </Wrapper>
-    )
+    );
 }

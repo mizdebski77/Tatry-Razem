@@ -7,8 +7,10 @@ import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";
 import { authSignUp } from "../authActions";
+import { useState } from "react";
 
 export default function Register() {
+
 
     return (
         <Wrapper>
@@ -25,8 +27,9 @@ export default function Register() {
             <Form>
                 <FormTitle>Rejestracja</FormTitle>
                 {RegisterInputs.map((input) => (
-                    
+
                     <Input
+              
                         key={input.id}
                         placeHolder={input.placeholder}
                         required={input.required}

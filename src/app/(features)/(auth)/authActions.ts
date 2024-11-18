@@ -2,46 +2,43 @@
 
 import { createClient } from '@/app/core/supabase/server'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 
 const supabase = await createClient()
 
 
-export async function authLogin(formData: FormData) {
-
-    const data = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
-    }
-
-    const { error } = await supabase.auth.signInWithPassword(data)
+export async function authLogin(email: string, password: string) {
+    const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+    });
 
     if (error) {
         console.log(error.message);
+
+        return { error: error.message };
     }
 
-    revalidatePath('/', 'layout')
-    redirect('/')
-};
-
-export async function authSignUp(formData: FormData) {
-    const supabase = await createClient()
-
-    const data = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
-    }
-
-    const { error } = await supabase.auth.signUp(data)
-
-    if (error) {
-        console.log(error.message);
-        redirect('/error')
-    }
-
-    revalidatePath('/', 'layout')
-    redirect('/')
+    await revalidatePath('/', 'layout');
+    return { success: true };
 }
+
+export async function authSignUp(email: string, password: string) {
+
+    const { error } = await supabase.auth.signUp({
+        email,
+        password
+    });
+
+    if (error) {
+        console.log(error.message);
+
+        return { error: error.message };
+    }
+
+    revalidatePath('/', 'layout')
+    return { success: true };
+}
+
 
 export async function signOut() {
     const { error } = await supabase.auth.signOut()

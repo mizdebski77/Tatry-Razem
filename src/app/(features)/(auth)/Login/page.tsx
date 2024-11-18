@@ -65,18 +65,6 @@ export default function LogIn() {
     };
 
 
-    const handleSignUp = async () => {
-        setLoading(true);
-        setAuthError('');
-        const result = await authSignUp(email, password);
-
-        if (result.error) {
-            setAuthError(result.error);
-        } else if (result.success) {
-            window.location.href = '/';
-        }
-        setLoading(false);
-    };
 
     return (
         <Wrapper>

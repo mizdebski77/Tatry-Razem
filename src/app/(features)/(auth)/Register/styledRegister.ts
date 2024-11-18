@@ -31,6 +31,12 @@ export const TextWrapper = styled.div`
     };
 `;
 
+export const ErrorSpan = styled.span`
+    color: ${theme.palette.error};
+    font-size: 18px;
+`;
+
+
 export const Title = styled.h1`
     font-weight: bold;
     font-size: 72px;
@@ -102,6 +108,12 @@ export const Button = styled.button`
 
     &:active {
         background: #4a7add;
+    };
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+        transform: none;
     };
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {

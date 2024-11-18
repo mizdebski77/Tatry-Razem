@@ -18,7 +18,7 @@ export async function authLogin(email: string, password: string) {
         return { error: error.message };
     }
 
-    await revalidatePath('/', 'layout');
+    revalidatePath('/', 'layout');
     return { success: true };
 }
 
@@ -31,7 +31,6 @@ export async function authSignUp(email: string, password: string) {
 
     if (error) {
         console.log(error.message);
-
         return { error: error.message };
     }
 

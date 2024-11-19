@@ -7,18 +7,23 @@ import { Button, ButtonLink } from '../UI/UI';
 import { createClient } from '@/app/core/supabase/client';
 import profile from '../Images/NavImages/profile.svg';
 import { signOut } from '@/app/(features)/(auth)/authActions';
+import { User as SupabaseUser } from '@supabase/auth-js';
 
 interface User {
-    email?: string;
+    user_metadata?: {
+        email: string;
+        name: string;
+        surname: string;
+    };
 }
 
 export default function Navigation() {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<SupabaseUser | null>(null);
 
     useEffect(() => {
         const fetchUser = async () => {
             const supabase = createClient();
-            const { data, error } = await supabase.auth.getUser();
+            const { data } = await supabase.auth.getUser();
 
             if (data?.user) {
                 setUser(data.user);
@@ -29,9 +34,6 @@ export default function Navigation() {
 
         fetchUser();
     }, []);
-
-    console.log(user);
-    
 
     return (
         <Wrapper>
@@ -46,7 +48,7 @@ export default function Navigation() {
                     <>
                         <ProfileWrapper href='/Profile'>
                             <ProfileIcon src={profile.src} alt='profile' />
-                            <ProfileSpan>{user.email}</ProfileSpan>
+                            <ProfileSpan>{user.user_metadata?.name ?? 'Użytkownik'}</ProfileSpan>
                         </ProfileWrapper>
                         <Button $background='white' text='Wyloguj się' onClick={signOut} />
                     </>

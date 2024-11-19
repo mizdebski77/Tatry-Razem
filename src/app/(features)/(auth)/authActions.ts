@@ -22,12 +22,19 @@ export async function authLogin(email: string, password: string) {
     return { success: true };
 }
 
-export async function authSignUp(email: string, password: string) {
+export async function authSignUp(email: string, password: string, name: string, surname: string) {
 
     const { error } = await supabase.auth.signUp({
         email,
-        password
+        password,
+        options: {
+            data: {
+                name: name,
+                surname: surname,
+            },
+        },
     });
+
 
     if (error) {
         console.log(error.message);

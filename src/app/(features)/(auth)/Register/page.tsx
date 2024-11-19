@@ -62,7 +62,7 @@ export default function Register() {
         setLoading(true);
         setAuthError('');
 
-        const result = await authSignUp(formData.email, formData.password);
+        const result = await authSignUp(formData.email, formData.password, formData.name, formData.surname);
 
         if (result.error) {
             setAuthError(result.error);

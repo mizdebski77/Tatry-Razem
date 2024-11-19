@@ -30,6 +30,9 @@ export default function Navigation() {
         fetchUser();
     }, []);
 
+    console.log(user);
+    
+
     return (
         <Wrapper>
             <Logo href='/'>CHwG</Logo>

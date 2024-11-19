@@ -5,6 +5,7 @@ import StyledComponentsRegistry from "./core/StyledComponents/register";
 import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
 import { Footer } from "./common/Footer/footer";
 import Navigation from "./common/Navbar/navigation";
+import { ReduxProvider } from "@/redux/features/provider";
 
 const kameron = Kameron({
   subsets: ['latin'],
@@ -32,7 +33,9 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Navigation />
           <GlobalStyle />
-          {children}
+          <ReduxProvider>
+            {children}
+          </ReduxProvider>
           <Footer />
         </StyledComponentsRegistry>
       </body>

@@ -25,14 +25,12 @@ import {
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
 import { ButtonLink } from "./common/UI/UI";
-
 export default function Home() {
 
   const tiles = Array.from({ length: 8 });
 
   return (
     <Wrapper>
-
       <Header>
         <HeaderTitle>Znajdź swojego partnera w długie wędrówki po Tatrach</HeaderTitle>
         <ButtonLink
@@ -84,7 +82,6 @@ export default function Home() {
         </IdeaTextWrapper>
         <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
       </IdeaWrapper>
-
     </Wrapper>
   );
 }

@@ -51,14 +51,18 @@ export const ProfileWrapper = styled.a`
     display: grid;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 `;
 
 export const ProfileIcon = styled.img`
     margin: 0 auto;
+    width: 100%;
+    max-width: 36px;
 `;
 
 export const ProfileSpan = styled.span`
-
+    font-size: 18px;
+    color: white;
 `;
 
 export const AuthLogin = styled.a`

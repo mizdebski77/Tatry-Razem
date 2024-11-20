@@ -9,13 +9,6 @@ import profile from '../Images/NavImages/profile.svg';
 import { signOut } from '@/app/(features)/(auth)/authActions';
 import { User as SupabaseUser } from '@supabase/auth-js';
 
-interface User {
-    user_metadata?: {
-        email: string;
-        name: string;
-        surname: string;
-    };
-}
 
 export default function Navigation() {
     const [user, setUser] = useState<SupabaseUser | null>(null);
@@ -35,6 +28,7 @@ export default function Navigation() {
         fetchUser();
     }, []);
 
+
     return (
         <Wrapper>
             <Logo href='/'>CHwG</Logo>
@@ -50,7 +44,9 @@ export default function Navigation() {
                             <ProfileIcon src={profile.src} alt='profile' />
                             <ProfileSpan>{user.user_metadata?.name ?? 'Użytkownik'}</ProfileSpan>
                         </ProfileWrapper>
-                        <Button $background='white' text='Wyloguj się' onClick={signOut} />
+                        <div>
+                            <Button $background='white' text='Wyloguj' onClick={signOut} />
+                        </div>
                     </>
                 ) : (
                     <>

@@ -28,6 +28,21 @@ export default function Navigation() {
         fetchUser();
     }, []);
 
+    console.log(user);
+
+
+
+    const handleLogout = async () => {
+        const result = await signOut();
+
+        if (!result?.error) {
+            window.location.href = '/';
+        } else {
+            console.log(result.error);
+        }
+    }
+
+
 
     return (
         <Wrapper>
@@ -45,7 +60,7 @@ export default function Navigation() {
                             <ProfileSpan>{user.user_metadata?.name ?? 'Użytkownik'}</ProfileSpan>
                         </ProfileWrapper>
                         <div>
-                            <Button $background='white' text='Wyloguj' onClick={signOut} />
+                            <Button $background='white' text='Wyloguj' onClick={handleLogout} />
                         </div>
                     </>
                 ) : (

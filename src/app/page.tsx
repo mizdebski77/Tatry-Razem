@@ -36,9 +36,10 @@ export default function Home() {
     <Wrapper>
       <Header>
         <HeaderTitle>Znajdź swojego partnera w długie wędrówki po Tatrach</HeaderTitle>
+
         <ButtonLink
           text="Zaproponuj trasę"
-          href="/Profile"
+          href="/profile"
           $background="blue"
         />
       </Header>

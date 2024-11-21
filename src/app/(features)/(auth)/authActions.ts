@@ -1,6 +1,6 @@
 'use server'
 
-import { createSupabaseClient } from '@/app/core/supabase/server'
+import { createSupabaseClient, protectRoute } from '@/app/core/supabase/server'
 import { getErrorMessage } from './utils';
 
 const supabase = await createSupabaseClient()
@@ -50,6 +50,8 @@ export const logInAction = async (formData: FormData) => {
 
 export const signOutAction = async () => {
     try {
+        await protectRoute();
+
         const { auth } = supabase;
 
         const { error } = await auth.signOut();

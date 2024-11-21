@@ -67,22 +67,6 @@ export default function LogIn() {
 
     const isFormValid = !emailError && !passwordError && email && password;
 
-    // const handleLogin = async () => {
-    //     setLoading(true);
-    //     setAuthError('');
-
-    //     const result = await authLogin(email, password);
-
-    //     if (result.error) {
-    //         setAuthError(result.error);
-    //     } else if (result.success) {
-    //         window.location.href = '/';
-    //     }
-
-    //     setLoading(false);
-    // };
-
-
 
     return (
         <Wrapper>

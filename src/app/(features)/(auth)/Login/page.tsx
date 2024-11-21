@@ -1,19 +1,37 @@
 'use client'
 
-import React, { useState } from "react";
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormSpan, FormTitle, Text, TextWrapper, Title, Wrapper, Button, ErrorSpan } from "./styledLogIn";
+import React, { useState, useTransition } from "react";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, Loader, Text, TextWrapper, Title, Wrapper, } from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
-import { authLogin, authSignUp } from "../authActions";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { Button, Form, FormSpan, FormTitle, SectionSpan } from "../authComponents";
+import { logInAction } from "../authActions";
 
 export default function LogIn() {
+
+    const router = useRouter();
+
+    const [isPending, startTransition] = useTransition();
+
+    const handleLogIn = (formData: FormData) => {
+        startTransition(async () => {
+            const { errorMessage } = await logInAction(formData);
+            if (errorMessage) {
+                toast.error(errorMessage);
+            } else {
+                toast.success("Successfully logged in");
+                router.push("/");
+            }
+        });
+    };
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [authError, setAuthError] = useState('');
-    const [loading, setLoading] = useState(false);
 
     const isEmailValid = (email: string) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -49,20 +67,20 @@ export default function LogIn() {
 
     const isFormValid = !emailError && !passwordError && email && password;
 
-    const handleLogin = async () => {
-        setLoading(true);
-        setAuthError('');
+    // const handleLogin = async () => {
+    //     setLoading(true);
+    //     setAuthError('');
 
-        const result = await authLogin(email, password);
+    //     const result = await authLogin(email, password);
 
-        if (result.error) {
-            setAuthError(result.error);
-        } else if (result.success) {
-            window.location.href = '/';
-        }
+    //     if (result.error) {
+    //         setAuthError(result.error);
+    //     } else if (result.success) {
+    //         window.location.href = '/';
+    //     }
 
-        setLoading(false);
-    };
+    //     setLoading(false);
+    // };
 
 
 
@@ -78,7 +96,7 @@ export default function LogIn() {
                 />
             </TextWrapper>
 
-            <Form>
+            <Form action={handleLogIn}>
                 <FormTitle>Logowanie</FormTitle>
                 <Input
                     onChange={handleEmailChange}
@@ -101,14 +119,12 @@ export default function LogIn() {
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                {authError && <ErrorSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</ErrorSpan>}
+                {/* {authError && <ErrorSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</ErrorSpan>} */}
 
                 <Button
-                    disabled={!isFormValid || loading}
-                    onClick={handleLogin}>
-                    {loading ? 'Trwa logowanie...' : 'Zaloguj'}
+                    disabled={!isFormValid || isPending}>
+                    {isPending ? <Loader /> : 'Zaloguj'}
                 </Button>
-
 
                 <SectionSpan>Lub</SectionSpan>
 
@@ -125,6 +141,6 @@ export default function LogIn() {
                 </AuthButtonWrapper>
 
             </Form>
-        </Wrapper>
+        </Wrapper >
     );
 }

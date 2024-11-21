@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react";
 import { InputButton, InputImg, InputInfo, InputWrapper, StyledButton, StyledButtonLink, StyledInput } from "./styledUI";
 import showPasswordImg from '../Images/AuthImages/showPassword.svg';
@@ -13,6 +15,7 @@ interface buttonProps {
     text: string;
     $background: string;
     onClick: () => void;
+    disabled: boolean;
 };
 
 interface inputProps {
@@ -26,9 +29,9 @@ interface inputProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Button: React.FC<buttonProps> = ({ text, onClick, $background }) => {
+export const Button: React.FC<buttonProps> = ({ text, onClick, $background, disabled }) => {
     return (
-        <StyledButton $background={$background} onClick={onClick}>
+        <StyledButton $background={$background} onClick={onClick} disabled={disabled}>
             {text}
         </StyledButton>
     );

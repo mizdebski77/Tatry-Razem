@@ -25,6 +25,9 @@ import {
   from "./styledHome";
 import hall from './common/Images/HomeImages/headerBackground.svg';
 import { ButtonLink } from "./common/UI/UI";
+
+
+
 export default function Home() {
 
   const tiles = Array.from({ length: 8 });
@@ -35,7 +38,7 @@ export default function Home() {
         <HeaderTitle>Znajdź swojego partnera w długie wędrówki po Tatrach</HeaderTitle>
         <ButtonLink
           text="Zaproponuj trasę"
-          href="/Login"
+          href="/Profile"
           $background="blue"
         />
       </Header>

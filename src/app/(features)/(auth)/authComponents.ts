@@ -1,6 +1,8 @@
+'use client'
 import { styled } from "styled-components";
-import background from '../../../common/Images/AuthImages/background.jpg';
+import background from '../../common/Images/AuthImages/background.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
+import { Loader2 } from "lucide-react";
 
 export const Wrapper = styled.main`
     min-height: 100vh;
@@ -166,4 +168,16 @@ export const AuthButtonImage = styled.img`
         max-width: 28px;
     };
 `;
+
+export const Loader = styled(Loader2)`
+    animation: spinner 1s linear infinite;
+
+    @keyframes spinner {
+        0% {
+        transform: rotate(0deg);
+    }
+        100% {
+        transform: rotate(360deg);
+    };
+}`;
 

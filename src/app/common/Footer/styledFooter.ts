@@ -1,3 +1,5 @@
+'use client'
+
 import { styled } from "styled-components";
 import background from '../Images/FooterImages/footerBackground.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";

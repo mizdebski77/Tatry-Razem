@@ -1,6 +1,6 @@
+'use client'
 import { theme } from "@/app/core/StyledComponents/theme";
 import { styled } from "styled-components";
-import css from "styled-jsx/css";
 
 export const Wrapper = styled.nav`
     padding: 28px;

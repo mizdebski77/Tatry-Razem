@@ -1,3 +1,4 @@
+'use client'
 import { styled } from "styled-components";
 import headerBackground from './common/Images/HomeImages/headerBackground.svg';
 import tileBackground from './common/Images/HomeImages/tileBackground.svg';

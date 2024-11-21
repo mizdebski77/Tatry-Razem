@@ -1,3 +1,5 @@
+'use client'
+
 import { styled } from "styled-components";
 import headerBackground from '../../../common/Images/Profile/header.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";

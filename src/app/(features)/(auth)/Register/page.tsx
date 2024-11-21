@@ -1,12 +1,15 @@
 'use client'
 
-import React, { useState } from "react";
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, SectionSpan, Form, FormTitle, Text, TextWrapper, Title, Wrapper, Button, ErrorSpan } from "./styledRegister";
+import React, { useState, useTransition } from "react";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, Loader, Text, TextWrapper, Title, Wrapper, } from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";
-import { authSignUp } from "../authActions";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { signUpAction } from "../authActions";
+import { Button, Form, FormTitle, SectionSpan } from "../authComponents";
 
 type formFields = {
     email: string;
@@ -17,6 +20,7 @@ type formFields = {
 };
 
 export default function Register() {
+
     const [formData, setFormData] = useState<formFields>({
         email: '',
         password: '',
@@ -24,6 +28,24 @@ export default function Register() {
         name: '',
         surname: ''
     });
+
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
+
+    const handleSignUp = (formData: FormData) => {
+        startTransition(async () => {
+            const { errorMessage } = await signUpAction(formData);
+
+            if (errorMessage) {
+                toast.error(errorMessage);
+            } else {
+                router.push("/");
+                toast.success("A verification link has been sent to your email");
+            }
+        });
+    };
+
+
 
     const [formErrors, setFormErrors] = useState<formFields>({
         email: '',
@@ -33,8 +55,6 @@ export default function Register() {
         surname: ''
     });
 
-    const [loading, setLoading] = useState(false);
-    const [authError, setAuthError] = useState('');
 
     const validations: Record<keyof formFields, (value: string) => true | string> = {
         email: (value: string) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value) || 'Niepoprawny E-mail',
@@ -58,19 +78,7 @@ export default function Register() {
     const isFormValid = Object.values(formErrors).every(error => error === '') &&
         Object.values(formData).every(value => value !== '');
 
-    const handleSignUp = async () => {
-        setLoading(true);
-        setAuthError('');
 
-        const result = await authSignUp(formData.email, formData.password, formData.name, formData.surname);
-
-        if (result.error) {
-            setAuthError(result.error);
-        } else if (result.success) {
-            window.location.href = '/';
-        }
-        setLoading(false);
-    };
 
     return (
         <Wrapper>
@@ -84,7 +92,7 @@ export default function Register() {
                 />
             </TextWrapper>
 
-            <Form>
+            <Form action={handleSignUp}>
                 <FormTitle>Rejestracja</FormTitle>
                 {RegisterInputs.map(input => (
                     <Input
@@ -99,11 +107,8 @@ export default function Register() {
                         onChange={handleInputChange}
                     />
                 ))}
-                {authError && <ErrorSpan>{authError}</ErrorSpan>}
-                <Button
-                    disabled={!isFormValid || loading}
-                    onClick={handleSignUp}>
-                    {loading ? 'Rejestracja...' : 'Zarejestruj'}
+                <Button disabled={isPending}>
+                    {isPending ? <Loader /> : 'Zarejestruj'}
                 </Button>
                 <SectionSpan>Lub</SectionSpan>
 

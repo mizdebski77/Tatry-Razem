@@ -4,8 +4,10 @@ import { Kameron } from 'next/font/google';
 import StyledComponentsRegistry from "./core/StyledComponents/register";
 import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
 import { Footer } from "./common/Footer/footer";
-import Navigation from "./common/Navbar/navigation";
 import { ReduxProvider } from "@/redux/features/provider";
+import { TanstackProvider } from "./core/TanstackQuery/tanstackProvider";
+import { Toaster } from "react-hot-toast";
+import Navigation from "./common/Navbar/navigation";
 
 const kameron = Kameron({
   subsets: ['latin'],
@@ -31,13 +33,21 @@ export default function RootLayout({
       </head>
       <body className={kameron.className}>
         <StyledComponentsRegistry>
-          <Navigation />
-          <GlobalStyle />
-          <ReduxProvider>
-            {children}
-          </ReduxProvider>
-          <Footer />
+          <TanstackProvider>
+            <Navigation />
+            <GlobalStyle />
+            <ReduxProvider>
+              {children}
+            </ReduxProvider>
+            <Footer />
+          </TanstackProvider>
         </StyledComponentsRegistry>
+        <Toaster
+          toastOptions={{
+            style: {
+              textAlign: 'center'
+            }
+          }} />
       </body>
     </html >
   );

@@ -1,7 +1,7 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export async function createClient() {
+export async function createSupabaseClient() {
     const cookieStore = await cookies()
 
     return createServerClient(
@@ -26,4 +26,17 @@ export async function createClient() {
             },
         }
     )
+}
+
+export async function getUser() {
+    const supabase = await createSupabaseClient();
+    const { auth } = supabase;
+    const user = (await auth.getUser()).data.user;
+
+    return user;
+}
+
+export async function protectRoute() {
+    const user = await getUser();
+    if (!user) throw new Error("Unauthorized");
 }

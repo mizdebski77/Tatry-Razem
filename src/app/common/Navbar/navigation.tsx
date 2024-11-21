@@ -1,47 +1,13 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { AuthWrapper, Link, LinkImage, Logo, ProfileIcon, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
-import { Button, ButtonLink } from '../UI/UI';
-import { createClient } from '@/app/core/supabase/client';
+import { ButtonLink } from '../UI/UI';
 import profile from '../Images/NavImages/profile.svg';
-import { signOut } from '@/app/(features)/(auth)/authActions';
-import { User as SupabaseUser } from '@supabase/auth-js';
+import { SignOut } from '@/app/(features)/(auth)/singOut/signOut';
+import { getUser } from '@/app/core/supabase/server';
 
+export default async function Navigation() {
 
-export default function Navigation() {
-    const [user, setUser] = useState<SupabaseUser | null>(null);
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const supabase = createClient();
-            const { data } = await supabase.auth.getUser();
-
-            if (data?.user) {
-                setUser(data.user);
-            } else {
-                setUser(null);
-            }
-        };
-
-        fetchUser();
-    }, []);
-
-    console.log(user);
-
-
-
-    const handleLogout = async () => {
-        const result = await signOut();
-
-        if (!result?.error) {
-            window.location.href = '/';
-        } else {
-            console.log(result.error);
-        }
-    }
-
+    const user = await getUser();
 
 
     return (
@@ -60,7 +26,7 @@ export default function Navigation() {
                             <ProfileSpan>{user.user_metadata?.name ?? 'Użytkownik'}</ProfileSpan>
                         </ProfileWrapper>
                         <div>
-                            <Button $background='white' text='Wyloguj' onClick={handleLogout} />
+                            <SignOut />
                         </div>
                     </>
                 ) : (
@@ -73,3 +39,4 @@ export default function Navigation() {
         </Wrapper>
     );
 }
+

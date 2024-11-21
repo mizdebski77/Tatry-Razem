@@ -1,22 +1,17 @@
-'use client'
 
-import { createClient } from '@/app/core/supabase/server'
-import { redirect } from 'next/navigation'
+
 import { Header, HeaderTitle, Wrapper } from './styledProfile'
+import { getUser } from '@/app/core/supabase/server'
 
 
 export default async function PrivatePage() {
-    // const supabase = await createClient()
 
-    // const { data, error } = await supabase.auth.getUser()
-    // if (error || !data?.user) {
-    //     redirect('/login')
-    // }
+    const user = await getUser();
 
     return (
         <Wrapper>
             <Header>
-                <HeaderTitle>Profil użytkownika</HeaderTitle>
+                <HeaderTitle>Profil użytkownika{user?.email}</HeaderTitle>
             </Header>
 
         </Wrapper>

@@ -1,50 +1,63 @@
 'use server'
 
-import { createClient } from '@/app/core/supabase/server'
+import { createSupabaseClient } from '@/app/core/supabase/server'
+import { getErrorMessage } from './utils';
 
-const supabase = await createClient()
+const supabase = await createSupabaseClient()
 
 
-export async function authLogin(email: string, password: string) {
-    const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-    });
+export const signUpAction = async (formData: FormData) => {
+    try {
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
 
-    if (error) {
-        console.log(error.message);
-        return { error: error.message };
-    };
-    return { success: true };
+        const { auth } = supabase;
+
+        const { error } = await auth.signUp({
+            email,
+            password,
+        });
+
+        if (error) throw error;
+
+        return { errorMessage: null };
+    } catch (error) {
+        return { errorMessage: getErrorMessage(error) };
+    }
 };
 
-export async function authSignUp(email: string, password: string, name: string, surname: string) {
 
-    const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-            data: {
-                name: name,
-                surname: surname,
-            },
-        },
-    });
+export const logInAction = async (formData: FormData) => {
+    try {
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
 
-    if (error) {
-        console.log(error.message);
-        return { error: error.message };
-    };
+        const { auth } = supabase;
 
-    return { success: true };
-}
+        const { error } = await auth.signInWithPassword({
+            email,
+            password,
+        });
+
+        if (error) throw error;
+
+        return { errorMessage: null };
+    } catch (error) {
+        return { errorMessage: getErrorMessage(error) };
+    }
+};
 
 
-export async function signOut() {
-    const { error } = await supabase.auth.signOut()
+export const signOutAction = async () => {
+    try {
+        const { auth } = supabase;
 
-    if (error) {
-        console.log(error.message);
-        return { error: error.message };
-    };
+        const { error } = await auth.signOut();
+
+        if (error) throw error;
+
+        return { errorMessage: null };
+    } catch (error) {
+        return { errorMessage: getErrorMessage(error) };
+    }
 };

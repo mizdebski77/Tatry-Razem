@@ -181,3 +181,8 @@ export const Loader = styled(Loader2)`
     };
 }`;
 
+export const AuthSpan = styled.span`
+    color: ${theme.palette.error};
+    font-size: 18px;
+`;
+

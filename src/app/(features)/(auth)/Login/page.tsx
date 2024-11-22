@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useTransition } from "react";
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, Loader, Text, TextWrapper, Title, Wrapper, } from "../authComponents";
+import { AuthButton, AuthButtonImage, AuthButtonWrapper, AuthSpan, Loader, Text, TextWrapper, Title, Wrapper, } from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
 import facebook from '../../../common/Images/AuthImages/facebook.svg';
 import google from '../../../common/Images/AuthImages/google.svg';
@@ -11,6 +11,7 @@ import { Button, Form, FormSpan, FormTitle, SectionSpan } from "../authComponent
 import { logInAction } from "../authActions";
 
 export default function LogIn() {
+    const [authError, setAuthError] = useState('');
 
     const router = useRouter();
 
@@ -20,9 +21,9 @@ export default function LogIn() {
         startTransition(async () => {
             const { errorMessage } = await logInAction(formData);
             if (errorMessage) {
-                toast.error(errorMessage);
+                setAuthError(errorMessage)
             } else {
-                toast.success("Successfully logged in");
+                toast.success("Zalogowano pomyślnie");
                 router.push("/");
             }
         });
@@ -31,7 +32,6 @@ export default function LogIn() {
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const [authError, setAuthError] = useState('');
 
     const isEmailValid = (email: string) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -103,7 +103,7 @@ export default function LogIn() {
                     type="password" />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                {/* {authError && <ErrorSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</ErrorSpan>} */}
+                {authError && <AuthSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</AuthSpan>}
 
                 <Button
                     disabled={!isFormValid || isPending}>

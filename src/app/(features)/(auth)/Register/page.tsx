@@ -61,8 +61,9 @@ export default function Register() {
         email: (value: string) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value) || 'Niepoprawny E-mail',
         password: (value: string) => value.length >= 6 || 'Hasło powinno zawierać co najmniej 6 znaków',
         rpassword: (value: string) => value === formData.password || 'Hasła nie są identyczne',
-        name: (value: string) => /^[a-zA-Z]+$/.test(value) || 'Wpisz poprawne imię',
-        surname: (value: string) => /^[a-zA-Z]+$/.test(value) || 'Wpisz poprawne naziwsko',
+        name: (value: string) => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/.test(value) || 'Wpisz poprawne imię',
+        surname: (value: string) => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/.test(value) || 'Wpisz poprawne nazwisko',
+
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

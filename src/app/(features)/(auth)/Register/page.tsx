@@ -32,6 +32,7 @@ export default function Register() {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
 
+
     const handleSignUp = (formData: FormData) => {
         startTransition(async () => {
             const { errorMessage } = await SignUp(formData);
@@ -46,7 +47,6 @@ export default function Register() {
     };
 
 
-    
 
     const [formErrors, setFormErrors] = useState<formFields>({
         email: '',

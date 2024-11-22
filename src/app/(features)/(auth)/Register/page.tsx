@@ -8,7 +8,7 @@ import google from '../../../common/Images/AuthImages/google.svg';
 import { RegisterInputs } from "@/app/common/arrays";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
-import { signUpAction } from "../authActions";
+import { SignUp } from "../authActions";
 import { Button, Form, FormTitle, SectionSpan } from "../authComponents";
 
 type formFields = {
@@ -34,7 +34,7 @@ export default function Register() {
 
     const handleSignUp = (formData: FormData) => {
         startTransition(async () => {
-            const { errorMessage } = await signUpAction(formData);
+            const { errorMessage } = await SignUp(formData);
 
             if (errorMessage) {
                 toast.error(errorMessage);
@@ -46,6 +46,7 @@ export default function Register() {
     };
 
 
+    
 
     const [formErrors, setFormErrors] = useState<formFields>({
         email: '',

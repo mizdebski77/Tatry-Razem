@@ -25,7 +25,7 @@ export default async function Navigation() {
                     <>
                         <ProfileWrapper href='/Profile'>
                             <ProfileIcon src={profile.src} alt='profile' />
-                            <ProfileSpan>{data.user?.email}</ProfileSpan>
+                            <ProfileSpan>{data.user?.user_metadata.name}</ProfileSpan>
                         </ProfileWrapper>
                         <div>
                             <SignOut />

@@ -107,7 +107,7 @@ export default function Register() {
                         onChange={handleInputChange}
                     />
                 ))}
-                <Button disabled={isPending}>
+                <Button disabled={isPending || !isFormValid}>
                     {isPending ? <Loader /> : 'Zarejestruj'}
                 </Button>
                 <SectionSpan>Lub</SectionSpan>

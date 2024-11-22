@@ -9,6 +9,7 @@ export default async function Navigation() {
 
     const user = await getUser();
 
+    console.log(user);
 
     return (
         <Wrapper>

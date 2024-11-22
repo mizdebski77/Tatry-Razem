@@ -1,29 +1,25 @@
-'use client'
-
-import { useRouter } from 'next/navigation';
-import { useTransition } from 'react';
-import { signOutAction } from '../authActions';
-import { toast } from 'react-hot-toast';
-import { Button, Loader } from '../authComponents';
+import { redirect } from 'next/navigation';
+import { Button } from '../authComponents';
+import { createClient } from '@/app/core/supabase/server';
 
 export function SignOut() {
-    const router = useRouter();
+    const Logout = async () => {
+        'use server';
 
-    const [isPending, startTransition] = useTransition();
+        const supabase = await createClient();
 
-    const handleSignOut = () => {
-        startTransition(async () => {
-            const { errorMessage } = await signOutAction();
-            if (errorMessage) {
-                toast.error(errorMessage);
-            } else {
-                toast.success("Wylogowano pomyślnie");
-                router.push("/");
-            }
-        });
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            redirect('/error.message');
+        } else {
+            redirect('/');
+        }
     };
 
     return (
-        <Button disabled={isPending} onClick={handleSignOut} > {isPending ? <Loader /> : 'Wyloguj'}</Button >
-    )
+        <Button onClick={Logout}>
+            Wyloguj
+        </Button>
+    );
 }

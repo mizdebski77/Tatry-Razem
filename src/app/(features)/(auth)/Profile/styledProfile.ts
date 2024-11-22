@@ -30,8 +30,9 @@ export const Header = styled.header`
 
 export const HeaderTitle = styled.h1`
     color: white;
-    font-size: 96px;
+    font-size: 64px;
     font-weight: normal;
+    text-align: center;
     letter-spacing: 5px;
 `;
 

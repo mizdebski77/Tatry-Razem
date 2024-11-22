@@ -1,7 +1,7 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export async function createSupabaseClient() {
+export async function createClient() {
     const cookieStore = await cookies()
 
     return createServerClient(
@@ -24,21 +24,12 @@ export async function createSupabaseClient() {
                     }
                 },
             },
+            auth: {
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: true,
+            }
         }
+
     )
-};
-
-
-
-export async function getUser() {
-    const supabase = await createSupabaseClient();
-    const { auth } = supabase;
-    const user = (await auth.getUser()).data.user;
-
-    return user;
-}
-
-export async function protectRoute() {
-    const user = await getUser();
-    if (!user) throw new Error("Unauthorized");
 }

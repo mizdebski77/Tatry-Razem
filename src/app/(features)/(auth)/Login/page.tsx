@@ -8,7 +8,7 @@ import google from '../../../common/Images/AuthImages/google.svg';
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { Button, Form, FormSpan, FormTitle, SectionSpan } from "../authComponents";
-import { logInAction } from "../authActions";
+import { LogInAction } from "../authActions";
 
 export default function LogIn() {
     const [authError, setAuthError] = useState('');
@@ -17,17 +17,19 @@ export default function LogIn() {
 
     const [isPending, startTransition] = useTransition();
 
-    const handleLogIn = (formData: FormData) => {
-        startTransition(async () => {
-            const { errorMessage } = await logInAction(formData);
-            if (errorMessage) {
-                setAuthError(errorMessage)
-            } else {
-                toast.success("Zalogowano pomyślnie");
-                router.push("/");
-            }
-        });
-    };
+    // const handleLogIn = (formData: FormData) => {
+    //     startTransition(async () => {
+    //         const { errorMessage } = await LogInAction(formData);
+    //         if (errorMessage) {
+    //             setAuthError(errorMessage)
+    //         } else {
+    //             toast.success("Zalogowano pomyślnie");
+    //             router.push("/");
+    //         }
+    //     });
+    // };
+
+
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
@@ -80,7 +82,7 @@ export default function LogIn() {
                 />
             </TextWrapper>
 
-            <Form action={handleLogIn}>
+            <Form >
                 <FormTitle>Logowanie</FormTitle>
                 <Input
                     onChange={handleEmailChange}
@@ -106,6 +108,7 @@ export default function LogIn() {
                 {authError && <AuthSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</AuthSpan>}
 
                 <Button
+                    formAction={LogInAction}
                     disabled={!isFormValid || isPending}>
                     {isPending ? <Loader /> : 'Zaloguj'}
                 </Button>

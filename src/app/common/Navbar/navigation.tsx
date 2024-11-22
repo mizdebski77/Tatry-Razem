@@ -2,12 +2,15 @@ import { AuthWrapper, Link, LinkImage, Logo, ProfileIcon, ProfileSpan, ProfileWr
 import homeImage from '../Images/NavImages/home.svg';
 import { ButtonLink } from '../UI/UI';
 import profile from '../Images/NavImages/profile.svg';
-import { SignOut } from '@/app/(features)/(auth)/singOut/signOut';
-import { getUser } from '@/app/core/supabase/server';
+import { SignOut } from '@/app/(features)/(auth)/SingOut/signOut';
+import { createClient } from '@/app/core/supabase/server';
 
 export default async function Navigation() {
 
-    const user = await getUser();
+    const supabase = await createClient()
+
+    const { data, error } = await supabase.auth.getUser()
+
 
     return (
         <Wrapper>
@@ -18,11 +21,11 @@ export default async function Navigation() {
             </Link>
 
             <AuthWrapper>
-                {user ? (
+                {data.user ? (
                     <>
                         <ProfileWrapper href='/Profile'>
                             <ProfileIcon src={profile.src} alt='profile' />
-                            <ProfileSpan>{user.user_metadata?.name ?? 'Użytkownik'}</ProfileSpan>
+                            <ProfileSpan>{data.user?.email}</ProfileSpan>
                         </ProfileWrapper>
                         <div>
                             <SignOut />

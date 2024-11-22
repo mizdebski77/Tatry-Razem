@@ -1,30 +1,25 @@
-'use client';
 
 import { Header, HeaderTitle, Wrapper } from './styledProfile';
-import { createSupabaseClient } from '@/app/core/supabase/client';
-import { useState } from 'react';
-import { User } from '@supabase/supabase-js';
+import { createClient } from '@/app/core/supabase/server';
+import { redirect } from 'next/navigation';
 
-function PrivatePage() {
 
-    const [user, setUser] = useState<User | null>(null);
+export default async function PrivatePage() {
+    const supabase = await createClient()
 
-    const { auth } = createSupabaseClient();
-
-    auth.onAuthStateChange((event, session) => {
-        setUser(session?.user || null);
-    });
-
-    console.log(user);
-
+    const { data, error } = await supabase.auth.getUser()
+    if (error || !data?.user) {
+        redirect('/login')
+    }
 
     return (
         <Wrapper>
             <Header>
-                <HeaderTitle>Profil użytkownika{user?.email}</HeaderTitle>
+                <HeaderTitle>
+                    Profil użytkownika {data.user ? data.user.email : 'Nieznany'}
+                </HeaderTitle>
             </Header>
         </Wrapper>
     );
 }
 
-export default PrivatePage;

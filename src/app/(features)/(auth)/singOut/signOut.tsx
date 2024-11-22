@@ -17,7 +17,7 @@ export function SignOut() {
             if (errorMessage) {
                 toast.error(errorMessage);
             } else {
-                toast.success("Successfully Sign Out");
+                toast.success("Wylogowano pomyślnie");
                 router.push("/");
             }
         });

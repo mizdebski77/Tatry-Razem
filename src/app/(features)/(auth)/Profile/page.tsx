@@ -2,16 +2,26 @@
 
 import { Header, HeaderTitle, Wrapper } from './styledProfile';
 import { createSupabaseClient } from '@/app/core/supabase/client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
-import { useRouter } from 'next/navigation';
 
 function PrivatePage() {
+
+    const [user, setUser] = useState<User | null>(null);
+
+    const { auth } = createSupabaseClient();
+
+    auth.onAuthStateChange((event, session) => {
+        setUser(session?.user || null);
+    });
+
+    console.log(user);
+
 
     return (
         <Wrapper>
             <Header>
-                <HeaderTitle>Profil użytkownika</HeaderTitle>
+                <HeaderTitle>Profil użytkownika{user?.email}</HeaderTitle>
             </Header>
         </Wrapper>
     );

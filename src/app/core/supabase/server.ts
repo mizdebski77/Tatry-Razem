@@ -26,7 +26,9 @@ export async function createSupabaseClient() {
             },
         }
     )
-}
+};
+
+
 
 export async function getUser() {
     const supabase = await createSupabaseClient();

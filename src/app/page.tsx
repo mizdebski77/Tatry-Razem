@@ -39,7 +39,7 @@ export default function Home() {
 
         <ButtonLink
           text="Zaproponuj trasę"
-          href="/profile"
+          href="/Profile"
           $background="blue"
         />
       </Header>

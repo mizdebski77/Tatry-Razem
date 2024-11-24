@@ -17,17 +17,18 @@ export default function LogIn() {
 
     const [isPending, startTransition] = useTransition();
 
-    // const handleLogIn = (formData: FormData) => {
-    //     startTransition(async () => {
-    //         const { errorMessage } = await LogInAction(formData);
-    //         if (errorMessage) {
-    //             setAuthError(errorMessage)
-    //         } else {
-    //             toast.success("Zalogowano pomyślnie");
-    //             router.push("/");
-    //         }
-    //     });
-    // };
+    const handleLogIn = (formData: FormData) => {
+        startTransition(async () => {
+            const { errorMessage } = await LogInAction(formData);
+            if (errorMessage) {
+                setAuthError(errorMessage)
+            } else {
+                toast.success("Zalogowano pomyślnie");
+                router.push("/");
+            }
+        });
+    };
+
 
 
     const [email, setEmail] = useState('');
@@ -108,7 +109,7 @@ export default function LogIn() {
                 {authError && <AuthSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</AuthSpan>}
 
                 <Button
-                    formAction={LogInAction}
+                    formAction={handleLogIn}
                     disabled={!isFormValid || isPending}>
                     {isPending ? <Loader /> : 'Zaloguj'}
                 </Button>

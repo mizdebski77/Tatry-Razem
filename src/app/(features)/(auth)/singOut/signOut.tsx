@@ -1,26 +1,42 @@
-import { redirect } from 'next/navigation';
+'use client'
 import { Button } from '../authComponents';
-import { createClient } from '@/app/core/supabase/server';
 import { toast } from "react-hot-toast";
+import { useTransition } from 'react';
+import { useRouter } from "next/navigation";
+import { SignOutAction } from '../authActions';
 
 export function SignOut() {
-    const Logout = async () => {
-        'use server';
+    const [isPending, startTransition] = useTransition();
+    const router = useRouter();
 
-        const supabase = await createClient();
+    const handleSignOut = () => {
+        startTransition(async () => {
+            const { errorMessage } = await SignOutAction();
+            if (errorMessage) {
+                toast.error(errorMessage);
+            } else {
+                router.push("/");
+                toast.success("Wylogowano pomyślnie");
+            }
+        })
+    }
+    // const Logout = async () => {
+    //     'use server';
 
-        const { error } = await supabase.auth.signOut();
+    //     const supabase = await createClient();
 
-        if (error) {
-            redirect('/error.message');
-        } else {
-            toast.success("Wylogowano pomyślnie");
-            redirect('/');
-        }
-    };
+    //     const { error } = await supabase.auth.signOut();
+
+    //     if (error) {
+    //         redirect('/error.message');
+    //     } else {
+    //         toast.success("Wylogowano pomyślnie");
+    //         redirect('/');
+    //     }
+    // };
 
     return (
-        <Button onClick={Logout}>
+        <Button onClick={handleSignOut}>
             Wyloguj
         </Button>
     );

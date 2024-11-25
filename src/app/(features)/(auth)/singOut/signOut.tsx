@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '../authComponents';
+import { Button, Loader } from '../authComponents';
 import { toast } from "react-hot-toast";
 import { useTransition } from 'react';
 import { useRouter } from "next/navigation";
@@ -37,7 +37,7 @@ export function SignOut() {
 
     return (
         <Button onClick={handleSignOut}>
-            Wyloguj
+            {isPending ? <Loader /> : 'Wyloguj'}
         </Button>
     );
 }

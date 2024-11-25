@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { Button } from '../authComponents';
 import { createClient } from '@/app/core/supabase/server';
+import { toast } from "react-hot-toast";
 
 export function SignOut() {
     const Logout = async () => {
@@ -13,6 +14,7 @@ export function SignOut() {
         if (error) {
             redirect('/error.message');
         } else {
+            toast.success("Wylogowano pomyślnie");
             redirect('/');
         }
     };

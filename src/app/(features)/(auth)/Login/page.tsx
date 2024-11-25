@@ -78,7 +78,7 @@ export default function LogIn() {
                 <Text>Zarejestruj się klikając w poniższy link!</Text>
                 <ButtonLink
                     $background="blue"
-                    href="/Private"
+                    href="/Register"
                     text='Rejestracja'
                 />
             </TextWrapper>

@@ -89,7 +89,7 @@ export default function Register() {
                 <Text>Zaloguj się klikając w poniższy link!</Text>
                 <ButtonLink
                     $background="blue"
-                    href="/LogIn"
+                    href="/Login"
                     text='Logowanie'
                 />
             </TextWrapper>

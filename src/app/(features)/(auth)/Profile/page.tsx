@@ -1,28 +1,45 @@
-
+'use client';
+import { createClient } from '@/app/core/supabase/client';
 import { Header, HeaderTitle, Wrapper } from './styledProfile';
-import { createClient } from '@/app/core/supabase/server';
-import { redirect } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+import { Loader } from '@/app/common/Loader/loader';
+import { FetchError } from '@/app/common/Error/error';
 
+export default function Profile() {
+    const [file, setFile] = useState('');
 
-export default async function Profile() {
-    const supabase = await createClient()
+    const { data: user, isLoading, isError } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const supabase = createClient();
+            const { data, error } = await supabase.auth.getUser();
+            if (error || !data?.user) {
+                throw new Error('User not found');
+            }
+            return data.user;
+        },
+    });
 
-    const { data, error } = await supabase.auth.getUser()
-    if (error || !data?.user) {
-        redirect('/Login')
-    };
+    if (isLoading) {
+        return <Loader />;
+    }
 
-    console.log(data);
-    
+    if (isError) {
+        return <FetchError />
+    }
+
+    console.log(file);
+
 
     return (
         <Wrapper>
             <Header>
                 <HeaderTitle>
-                    Profil użytkownika {data.user ? data.user.user_metadata.name : 'Nieznany'}
+                    Profil użytkownika {user?.user_metadata?.name || 'Nieznany'}
                 </HeaderTitle>
             </Header>
+            <input onChange={(e) => setFile(e.target.value)} type="file" />
         </Wrapper>
     );
 }
-

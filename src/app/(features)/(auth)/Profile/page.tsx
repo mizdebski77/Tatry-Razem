@@ -1,12 +1,12 @@
 'use client';
 import { createClient } from '@/app/core/supabase/client';
-import { Container, Tile, TileData, TileLInksWrapper, TileSpan, TileTitle, Title, UserImage, Wrapper } from './styledProfile';
+import { Container, DataWrapper, Tile, TileData, TileLInksWrapper, TileSpan, TileTitle, TilesWrapper, Title, UserImage, Wrapper } from './styledProfile';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Loader } from '@/app/common/Loader/loader';
 import { FetchError } from '@/app/common/Error/error';
 import { UserRound } from 'lucide-react';
-import { Button } from '@/app/common/UI/UI';
+import { Button, ButtonLink } from '@/app/common/UI/UI';
 
 export default function Profile() {
     const [file, setFile] = useState('');
@@ -42,9 +42,9 @@ export default function Profile() {
             <Container>
                 <Tile>
                     <UserImage>
-                        <UserRound style={{ color: 'white', width: '240px', height: '240px' }} />
+                        <UserRound style={{ color: 'white', width: '180px', height: '180px' }} />
                     </UserImage>
-                    <TileTitle>Podstawowe dane</TileTitle>
+                    <TileTitle>Podstawowe dane:</TileTitle>
                     <TileSpan>Bio: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ratione est mollitia dignissimos, ad officiis, vitae nam delectus adipisci corporis modi ducimus sunt eligendi cum tempore ab fuga quod facere?</TileSpan>
                     <TileSpan>Imię i Nazwisko: <TileData>{user?.user_metadata.name} {user?.user_metadata.surname}</TileData> </TileSpan>
                     <TileSpan>E-Mail: <TileData>{user?.email}</TileData> </TileSpan>
@@ -61,6 +61,25 @@ export default function Profile() {
                         disabled={false}
                     />
                 </Tile>
+
+                <TilesWrapper>
+                    <Tile>
+                        <TileTitle>Twoje propozycje:</TileTitle>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                    </Tile>
+
+                    <Tile>
+                        <TileTitle>Twoje propozycje:</TileTitle>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                    </Tile>
+
+                </TilesWrapper>
             </Container>
         </Wrapper >
     );

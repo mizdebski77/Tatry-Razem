@@ -1,7 +1,6 @@
 'use client'
 
 import { styled } from "styled-components";
-import headerBackground from '../../../common/Images/Profile/header.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
 
 
@@ -27,10 +26,16 @@ export const Container = styled.article`
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 40px;
+    gap: 40px;
+`;
+
+export const TilesWrapper = styled.div`
+    display: grid;
+    gap: 40px;
 `;
 
 export const Tile = styled.div`
-    padding: 80px 40px;
+    padding:40px;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -40,6 +45,14 @@ export const Tile = styled.div`
     align-items: center;
     gap: 32px;
     text-align: center;
+`;
+
+export const DataWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
 `;
 
 export const UserImage = styled.div`
@@ -54,7 +67,7 @@ export const UserImage = styled.div`
 `;
 
 export const TileTitle = styled.p`
-    font-size: 40px;
+    font-size: 32px;
 `;
 
 export const TileSpan = styled.p`
@@ -62,6 +75,8 @@ export const TileSpan = styled.p`
     padding: 12px;
     width: 100%;
     background: #f3f3f3;
+    display: flex;
+    gap: 20px;
 `;
 
 export const TileData = styled.span`

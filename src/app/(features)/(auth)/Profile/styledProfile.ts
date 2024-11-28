@@ -94,9 +94,9 @@ export const UserImage = styled.div`
 export const TileTitle = styled.p`
     font-size: 32px;
 
-        @media (max-width: ${theme.mediaQuery.mobileMd}) {
-            font-size: 24px;
-        };
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 24px;
+    };
 `;
 
 export const TileSpan = styled.p`

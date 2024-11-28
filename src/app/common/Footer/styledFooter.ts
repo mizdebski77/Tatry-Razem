@@ -24,7 +24,7 @@ export const AppSection = styled.div`
     margin: 0 auto;
     gap: 20px;
 
-    @media (max-width: ${theme.mediaQuery.tablet}) {
+    @media (max-width: ${theme.mediaQuery.tabletMd}) {
         flex-direction: column;
     };
 `;

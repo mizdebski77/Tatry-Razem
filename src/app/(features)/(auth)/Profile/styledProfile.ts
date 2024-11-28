@@ -9,6 +9,10 @@ export const Wrapper = styled.section`
     background-position: center;
     background-size: cover;
     padding: 160px 80px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 120px 20px;
+    };
 `;
 
 export const Title = styled.h1`
@@ -19,19 +23,30 @@ export const Title = styled.h1`
     letter-spacing: 5px;
     color: black;
     font-weight: bold;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 32px;
+        margin-bottom: 20px;
+    };
 `;
 
 export const Container = styled.article`
-    display: flex;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 40px;
     gap: 40px;
+
+    @media (max-width: ${theme.mediaQuery.tabletMd}) {
+        grid-template-columns: 1fr;
+        padding: 0px;
+    };
 `;
 
 export const TilesWrapper = styled.div`
     display: grid;
     gap: 40px;
+
+
 `;
 
 export const Tile = styled.div`
@@ -45,6 +60,11 @@ export const Tile = styled.div`
     align-items: center;
     gap: 32px;
     text-align: center;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 24px 12px;
+        gap: 20px;
+    };
 `;
 
 export const DataWrapper = styled.div`
@@ -53,6 +73,11 @@ export const DataWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 20px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        gap: 12px;
+        justify-content: center;
+    };
 `;
 
 export const UserImage = styled.div`
@@ -68,6 +93,10 @@ export const UserImage = styled.div`
 
 export const TileTitle = styled.p`
     font-size: 32px;
+
+        @media (max-width: ${theme.mediaQuery.mobileMd}) {
+            font-size: 24px;
+        };
 `;
 
 export const TileSpan = styled.p`
@@ -77,6 +106,14 @@ export const TileSpan = styled.p`
     background: #f3f3f3;
     display: flex;
     gap: 20px;
+    text-align: center;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 14px;
+        display: grid;
+        padding: 8px;
+        gap: 12px;
+    };
 `;
 
 export const TileData = styled.span`

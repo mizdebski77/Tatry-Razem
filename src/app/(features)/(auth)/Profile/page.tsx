@@ -67,7 +67,7 @@ export default function Profile() {
                         <TileTitle>Twoje propozycje:</TileTitle>
                         <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
                         <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
-                        <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
+                        <DataWrapper><TileSpan>Mięguszowiecka przełęcz pod chłopkiem <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
                         <DataWrapper><TileSpan>Rysy <TileData>23.11.2024</TileData> </TileSpan><ButtonLink $background='blue' href='/Profile' text='Sprawdź' /> </DataWrapper>
                     </Tile>
 

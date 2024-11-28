@@ -28,6 +28,7 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
+        padding: 10px 32px;
     };
 `;
 
@@ -54,6 +55,7 @@ export const StyledButton = styled.button <StyledButtonProps>`
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
+        padding: 10px 32px;
     };
 `;
 

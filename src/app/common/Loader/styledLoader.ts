@@ -20,6 +20,11 @@ export const Spinner = styled(Loader2)`
     height: 400px;
     color: ${theme.palette.blue};
 
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        width: 180px;
+        height: 180px;
+    };
+
     @keyframes spinner {
         0% {
         transform: rotate(0deg);
@@ -27,12 +32,17 @@ export const Spinner = styled(Loader2)`
         100% {
         transform: rotate(360deg);
     };
+
+    
 }`;
 
 export const Title = styled.h1`
     font-size: 44px;
     font-weight: normal;
     text-align: center;
-    /* color: ${({ theme }) => theme.color.secondColor}; */
+ 
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 24px;
+    };
 `;
 

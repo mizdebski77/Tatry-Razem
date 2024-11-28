@@ -48,5 +48,6 @@ export const RegisterInputs = [
     { id: 3, required: false, text: 'Niepoprawny E-mail', placeholder: 'E-mail *', name: 'email', type: 'email', },
     { id: 4, required: false, text: 'Niepoprawne Hasło', placeholder: 'Hasło *', name: 'password', type: 'password', },
     { id: 5, required: false, text: 'Hasła nie są identyczne', placeholder: 'Powtórz hasło', name: 'rpassword', type: 'password', },
+    { id: 6, required: false, text: 'Niepoprawna nazwa miejscowości', placeholder: 'Wpisz miejscowość', name: 'location', type: 'text', },
 
-]
+];

@@ -34,7 +34,7 @@ export async function SignUp(formData: FormData) {
         const password = formData.get("password") as string;
         const name = formData.get('name') as string;
         const surname = formData.get('surname') as string;
-
+        const location = formData.get('location') as string;
 
         const { auth } = supabase;
 
@@ -44,7 +44,8 @@ export async function SignUp(formData: FormData) {
             options: {
                 data: {
                     name: name,
-                    surname: surname
+                    surname: surname,
+                    location: location
                 }
             }
         });
@@ -68,5 +69,33 @@ export async function SignOutAction() {
     } catch (error) {
         return { errorMessage: getErrorMessage(error) };
     }
-}
+};
 
+export async function updateUser(formData: FormData) {
+    const supabase = await createClient();
+
+    try {
+        const email = formData.get('email') as string;
+        const name = formData.get('name') as string;
+        const surname = formData.get('surname') as string;
+        const location = formData.get("location") as string;
+
+
+        const { error } = await supabase.auth.updateUser({
+            email,
+            data: {
+                name: name,
+                surname: surname,
+                location: location
+            }
+        });
+
+
+        if (error) throw error;
+
+        return { errorMessage: null };
+
+    } catch (error) {
+        return { errorMessage: getErrorMessage(error) };
+    }
+};

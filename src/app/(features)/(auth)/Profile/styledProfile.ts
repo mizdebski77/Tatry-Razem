@@ -105,7 +105,7 @@ export const TileSpan = styled.p`
     width: 100%;
     background: #f3f3f3;
     display: flex;
-    gap: 20px;
+    gap: 8px;
     text-align: center;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
@@ -117,7 +117,6 @@ export const TileSpan = styled.p`
 `;
 
 export const TileData = styled.span`
-    font-weight: bold;
     color: ${theme.palette.blue};
 `;
 
@@ -148,7 +147,7 @@ export const EditWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 120px auto;
 `;
 
 export const EditTitle = styled.h2`
@@ -166,6 +165,20 @@ export const Form = styled.form`
     gap:20px;
 `;
 
+export const TextArea = styled.textarea`
+    border: 2px solid ${theme.palette.blue};
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+    background: none;
+    width: 100%;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 16px;
+    };
+`;
 export const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;

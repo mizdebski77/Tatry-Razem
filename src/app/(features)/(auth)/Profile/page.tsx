@@ -1,15 +1,18 @@
 'use client';
 import { createClient } from '@/app/core/supabase/client';
-import { Container, DataWrapper, Tile, TileData, TileLInksWrapper, TileSpan, TileTitle, TilesWrapper, Title, UserImage, Wrapper } from './styledProfile';
+import { Container, DataWrapper, EditSection, EditTitle, Form, EditWrapper, Tile, TileData, TileLInksWrapper, TileSpan, TileTitle, TilesWrapper, Title, UserImage, Wrapper, ButtonWrapper, AlertWrapper, AlertTitle, AlertSpan } from './styledProfile';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Loader } from '@/app/common/Loader/loader';
 import { FetchError } from '@/app/common/Error/error';
 import { UserRound } from 'lucide-react';
-import { Button, ButtonLink } from '@/app/common/UI/UI';
+import { Button, ButtonLink, Input } from '@/app/common/UI/UI';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import { motion } from 'framer-motion';
 
 export default function Profile() {
-    const [file, setFile] = useState('');
+    const [editPgae, setEditPage] = useState(false);
 
     const { data: user, isLoading, isError } = useQuery({
         queryKey: ['user'],
@@ -23,15 +26,45 @@ export default function Profile() {
         },
     });
 
+    const handleEditPage = () => {
+        setEditPage(!editPgae)
+    }
+
     if (isLoading) {
         return <Loader />;
-    }
+    };
 
     if (isError) {
         return <FetchError />
-    }
+    };
 
-    console.log(file);
+    console.log(editPgae);
+
+
+    const closeWindow = () => {
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                    <AlertWrapper >
+                        <AlertTitle>Na pewno chcesz zamknąć?</AlertTitle>
+                        <AlertSpan>Twoje dane nie zostaną zapisane?</AlertSpan>
+                        <Button type='button' text='Nie zamykaj' $background='white' onClick={onClose} disabled={false} />
+                        <Button
+                            text='Tak zamknij'
+                            $background='red'
+                            type='button'
+                            disabled={false}
+                            onClick={() => {
+                                setEditPage(false)
+                                onClose();
+                            }}
+                        />
+
+                    </AlertWrapper >
+                );
+            }
+        });
+    };
 
 
     return (
@@ -56,9 +89,10 @@ export default function Profile() {
                     </TileLInksWrapper>
                     <Button
                         $background='blue'
-                        onClick={() => setFile('hej')}
+                        onClick={() => handleEditPage()}
                         text='Edytuj dane'
                         disabled={false}
+                        type='button'
                     />
                 </Tile>
 
@@ -81,6 +115,95 @@ export default function Profile() {
 
                 </TilesWrapper>
             </Container>
+
+            {editPgae && (
+                <EditSection
+                    as={motion.div}
+                    initial={{ opacity: 0 }}
+                    animate={editPgae ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <EditWrapper>
+                        <EditTitle>Edytuj swój profil</EditTitle>
+                        <Form>
+                            <Input
+                                placeHolder='Siema'
+                                required={false}
+                                text='Bio'
+                                name='Siema'
+                                type='Siema'
+                                isError={1}
+                                value="Cześć"
+                                onChange={() => (console.log('siema'))}
+                            />
+                            <Input
+                                placeHolder='Siema'
+                                required={false}
+                                text='Imię'
+                                name='Siema'
+                                type='Siema'
+                                isError={1}
+                                value="Cześć"
+                                onChange={() => (console.log('siema'))}
+                            />
+
+                            <Input
+                                placeHolder='Siema'
+                                required={false}
+                                text='Nazwisko'
+                                name='Siema'
+                                type='Siema'
+                                isError={1}
+                                value="Cześć"
+                                onChange={() => (console.log('siema'))}
+                            />
+
+                            <Input
+                                placeHolder='E-Mail'
+                                required={false}
+                                text='E-Mail'
+                                name='Siema'
+                                type='Siema'
+                                isError={1}
+                                value="Cześć"
+                                onChange={() => (console.log('siema'))}
+                            />
+
+                            <Input
+                                placeHolder='Siema'
+                                required={false}
+                                text='Miejscowość'
+                                name='Siema'
+                                type='Siema'
+                                isError={1}
+                                value="Cześć"
+                                onChange={() => (console.log('siema'))}
+                            />
+
+                            <ButtonWrapper>
+                                <Button
+                                    $background='blue'
+                                    onClick={() => handleEditPage()}
+                                    text='Zapisz'
+                                    type='button'
+                                    disabled={false}
+                                />
+
+                                <Button
+                                    $background='red'
+                                    onClick={() => closeWindow()}
+                                    text='Anuluj'
+                                    type='button'
+                                    disabled={false}
+                                />
+                            </ButtonWrapper>
+
+                        </Form>
+
+                    </EditWrapper>
+                </EditSection>
+
+            )}
         </Wrapper >
     );
 }

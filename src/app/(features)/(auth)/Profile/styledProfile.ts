@@ -127,3 +127,70 @@ export const TileLInksWrapper = styled.div`
     max-width: 320px;
     width: 100%;
 `;
+
+
+export const EditSection = styled.div`
+    display: block;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+`;
+
+export const EditWrapper = styled.div`
+    background: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+`;
+
+export const EditTitle = styled.h2`
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    font-weight: normal;
+`;
+
+export const Form = styled.form`
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    gap:20px;
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 240px;
+    width: 100%;
+    margin: 0 auto;
+`;
+
+
+export const AlertWrapper = styled.div`
+    background: ${theme.palette.blue};
+    padding: 80px;
+    border-radius: 20px;
+    color: white;
+    display: grid;
+    gap: 20px;
+    text-align: center;
+`;
+
+export const AlertTitle = styled.h1`
+    font-size: 32px;
+`;
+
+export const AlertSpan = styled.p`
+    font-size: 24px;
+`;

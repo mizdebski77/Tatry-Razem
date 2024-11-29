@@ -22,7 +22,7 @@ export const Title = styled.h1`
     text-align: center;
     letter-spacing: 5px;
     color: black;
-    font-weight: bold;
+
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 32px;
@@ -35,6 +35,8 @@ export const Container = styled.article`
     grid-template-columns: 1fr 1fr;
     padding: 40px;
     gap: 40px;
+    max-width: 1800px;
+    margin: 0 auto;
 
     @media (max-width: ${theme.mediaQuery.tabletMd}) {
         grid-template-columns: 1fr;
@@ -85,7 +87,6 @@ export const UserImage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
     max-width: fit-content;
     padding: 12px;
     margin: 0 auto;
@@ -99,14 +100,16 @@ export const TileTitle = styled.p`
     };
 `;
 
-export const TileSpan = styled.p`
+export const TileSpanWrapper = styled.label`
     font-size: 20px;
     padding: 12px;
     width: 100%;
     background: #f3f3f3;
-    display: flex;
+    display: grid;
     gap: 8px;
     text-align: center;
+    align-items: start;
+
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 14px;
@@ -116,9 +119,18 @@ export const TileSpan = styled.p`
     };
 `;
 
-export const TileData = styled.span`
-    color: ${theme.palette.blue};
+export const TileSpanLegend = styled.legend`
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-weight: bold;
 `;
+
+export const TileSpan = styled.p`
+    text-align: justify;
+    font-size: 18px;
+`;
+
 
 export const TileLInksWrapper = styled.div`
     display: flex;
@@ -128,83 +140,7 @@ export const TileLInksWrapper = styled.div`
 `;
 
 
-export const EditSection = styled.div`
-    display: block;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-`;
 
 
-export const EditWrapper = styled.div`
-    background: white;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 120px auto;
-`;
-
-export const EditTitle = styled.h2`
-    color: black;
-    font-size: 40px;
-    text-align: center;
-    font-weight: normal;
-`;
-
-export const Form = styled.form`
-    max-width: 640px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    gap:20px;
-`;
-
-export const TextArea = styled.textarea`
-    border: 2px solid ${theme.palette.blue};
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 18px;
-    outline: none;
-    resize: none;
-    background: none;
-    width: 100%;
-
-    @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        font-size: 16px;
-    };
-`;
-export const ButtonWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    max-width: 240px;
-    width: 100%;
-    margin: 0 auto;
-`;
 
 
-export const AlertWrapper = styled.div`
-    background: ${theme.palette.blue};
-    padding: 80px;
-    border-radius: 20px;
-    color: white;
-    display: grid;
-    gap: 20px;
-    text-align: center;
-`;
-
-export const AlertTitle = styled.h1`
-    font-size: 32px;
-`;
-
-export const AlertSpan = styled.p`
-    font-size: 24px;
-`;

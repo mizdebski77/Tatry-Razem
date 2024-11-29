@@ -140,6 +140,7 @@ export const EditSection = styled.div`
     padding: 40px;
 `;
 
+
 export const EditWrapper = styled.div`
     background: white;
     padding: 40px;

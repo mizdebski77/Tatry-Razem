@@ -69,6 +69,7 @@ export const Form = styled.form`
     };
 `;
 
+
 export const ErrorSpan = styled.span`
     color: ${theme.palette.error};
     font-size: 18px;

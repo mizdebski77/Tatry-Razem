@@ -1,7 +1,6 @@
 'use server'
 
 import { createClient } from '@/app/core/supabase/server';
-import { redirect } from 'next/navigation';
 import { getErrorMessage } from './utils';
 
 
@@ -34,7 +33,6 @@ export async function SignUp(formData: FormData) {
         const password = formData.get("password") as string;
         const name = formData.get('name') as string;
         const surname = formData.get('surname') as string;
-        const location = formData.get('location') as string;
 
         const { auth } = supabase;
 
@@ -45,7 +43,6 @@ export async function SignUp(formData: FormData) {
                 data: {
                     name: name,
                     surname: surname,
-                    location: location
                 }
             }
         });
@@ -79,6 +76,7 @@ export async function updateUser(formData: FormData) {
         const name = formData.get('name') as string;
         const surname = formData.get('surname') as string;
         const location = formData.get("location") as string;
+        const bio = formData.get("bio") as string;
 
 
         const { error } = await supabase.auth.updateUser({
@@ -86,7 +84,7 @@ export async function updateUser(formData: FormData) {
             data: {
                 name: name,
                 surname: surname,
-                location: location
+                bio: bio
             }
         });
 

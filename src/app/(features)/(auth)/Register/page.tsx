@@ -17,7 +17,6 @@ type formFields = {
     rpassword: string;
     name: string;
     surname: string;
-    location: string;
 };
 
 export default function Register() {
@@ -28,7 +27,6 @@ export default function Register() {
         rpassword: '',
         name: '',
         surname: '',
-        location: '',
     });
 
     const router = useRouter();
@@ -56,7 +54,6 @@ export default function Register() {
         rpassword: '',
         name: '',
         surname: '',
-        location: '',
     });
 
 
@@ -66,7 +63,6 @@ export default function Register() {
         rpassword: (value: string) => value === formData.password || 'Hasła nie są identyczne',
         name: (value: string) => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/.test(value) || 'Wpisz poprawne imię',
         surname: (value: string) => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/.test(value) || 'Wpisz poprawne nazwisko',
-        location: (value: string) => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/.test(value) || 'Wpisz poprawną nazwę miejscowości',
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,6 +108,7 @@ export default function Register() {
                         onChange={handleInputChange}
                     />
                 ))}
+
                 <Button disabled={isPending || !isFormValid}>
                     {isPending ? <Loader /> : 'Zarejestruj'}
                 </Button>

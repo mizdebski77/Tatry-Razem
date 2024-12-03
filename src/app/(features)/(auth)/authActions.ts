@@ -77,6 +77,9 @@ export async function updateUser(formData: FormData) {
         const surname = formData.get('surname') as string;
         const location = formData.get("location") as string;
         const bio = formData.get("bio") as string;
+        const facebook_url = formData.get("facebook_url") as string;
+        const youtube_url = formData.get("youtube_url") as string;
+        const instagram_url = formData.get("instagram_url") as string;
 
 
         const { error } = await supabase.auth.updateUser({
@@ -86,6 +89,9 @@ export async function updateUser(formData: FormData) {
                 surname: surname,
                 bio: bio,
                 location: location,
+                facebook_url: facebook_url,
+                youtube_url: youtube_url,
+                instagram_url: instagram_url,
             }
         });
 

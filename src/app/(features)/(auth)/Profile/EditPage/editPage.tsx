@@ -38,6 +38,9 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
     const [location, setLocation] = useState('');
     const [isPending, startTransition] = useTransition();
     const [bio, setBio] = useState('');
+    const [facebook_url, setFacebook_url] = useState('');
+    const [instagram_url, setInstagram_url] = useState('');
+    const [youtube_url, setYoutube_url] = useState('');
 
     useEffect(() => {
         if (user) {
@@ -45,6 +48,10 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             setSurname(user.user_metadata?.surname || '');
             setEmail(user.email || '');
             setLocation(user.user_metadata?.location || '');
+            setBio(user.user_metadata?.bio || '');
+            setFacebook_url(user.user_metadata?.facebook_url || '');
+            setInstagram_url(user.user_metadata?.instagram_url || '');
+            setYoutube_url(user.user_metadata?.youtube_url || '');
         }
     }, [user]);
 
@@ -80,6 +87,9 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                                 formData.append('email', email);
                                 formData.append('location', location);
                                 formData.append('bio', bio);
+                                formData.append('facebook_url', facebook_url);
+                                formData.append('youtube_url', youtube_url);
+                                formData.append('instagram_url', instagram_url);
                                 handleUpdate(formData);
                                 setEditPage(false);
                                 onClose();
@@ -187,17 +197,17 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                     <FormHeader>Social media:</FormHeader>
                     <SocialWrapper>
                         <FaFacebook style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='Facebook link' />
+                        <SocialInput placeholder='FaceBook link' name='facebook_url' type='text' value={facebook_url} onChange={(e) => setFacebook_url(e.target.value)} />
                     </SocialWrapper>
 
                     <SocialWrapper>
                         <BsYoutube style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='YouTube link' />
+                        <SocialInput placeholder='Youtube link' name='Youtube' type='text' value={youtube_url} onChange={(e) => setYoutube_url(e.target.value)} />
                     </SocialWrapper>
 
                     <SocialWrapper>
                         <RiInstagramFill style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='Instagram link' />
+                        <SocialInput placeholder='Instahram link' name='Instagram' type='text' value={instagram_url} onChange={(e) => setInstagram_url(e.target.value)} />
                     </SocialWrapper>
 
                     <ButtonWrapper>

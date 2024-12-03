@@ -43,7 +43,6 @@ export default function Profile() {
         setEditPage(!editPgae)
     };
 
-    console.log(user);
 
 
 
@@ -87,9 +86,9 @@ export default function Profile() {
 
 
                             <TileLInksWrapper>
-                                <SocialLinks url="https://www.facebook.com/?locale=pl_PL" />
-                                <SocialLinks url="youtube.com" />
-                                <SocialLinks url="https://www.instagram.com/raynavallandingham/" />
+                                <SocialLinks url={user?.user_metadata.facebook_url} target="_blank" />
+                                <SocialLinks url={user?.user_metadata.youtube_url} target="_blank" />
+                                <SocialLinks url={user?.user_metadata.instagram_url} target="_blank" />
                             </TileLInksWrapper>
                             <Button
                                 $background='blue'

@@ -17,19 +17,15 @@ export const MobileWrapper = styled.div`
     position: fixed;
     z-index: 8;
     width: 60%;
-    height: 90vh;
+    top: 0;
+    height: 100vh;
     backdrop-filter: blur(42px);
     background: rgba(0, 0, 0, 0.9);
     left: 0;
-    top: 88px;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        top: 72px;
-    };
 
     @media (min-width: ${theme.mediaQuery.mobileXl}) {
         display: none;

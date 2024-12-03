@@ -4,8 +4,9 @@ import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle
 import app from '../Images/FooterImages/phone.svg';
 import google from '../Images/FooterImages/googleStore.svg';
 import store from '../Images/FooterImages/appStore.svg';
-import { FooterLinks, SocialLinks } from '../arrays';
+import { FooterLinks, } from '../arrays';
 import logo from '../Images/logo.png';
+import { SocialIcon } from 'react-social-icons';
 
 export const Footer = () => {
     return (
@@ -40,9 +41,10 @@ export const Footer = () => {
                 <SocialsWrapper>
                     <LinksTitle>Obserwuj nas na:</LinksTitle>
                     <SocialContainer>
-                        {SocialLinks.map((link) => (
-                            <SocialLink src={link.img.src} alt={link.alt} key={link.id} />
-                        ))}
+                        <SocialIcon url="https://www.facebook.com/?locale=pl_PL" />
+                        <SocialIcon url="youtube.com" />
+                        <SocialIcon url="https://www.instagram.com/raynavallandingham/" />
+
                     </SocialContainer>
                 </SocialsWrapper>
             </Content>

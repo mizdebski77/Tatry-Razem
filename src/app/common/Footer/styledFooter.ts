@@ -97,7 +97,7 @@ export const AppStore = styled.img`
 export const Content = styled.div`
     padding: 120px 80px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-evenly;
     align-items: center;
     border-bottom: 2px solid #aeaeae;
@@ -164,7 +164,7 @@ export const LinksWrapper = styled.div`
 export const LinksTitle = styled.span`
     color: white;
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     text-align: center;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
@@ -176,6 +176,7 @@ export const Link = styled.a`
     color: #aeaeae;
     font-size: 20px;
     text-align: center;
+    text-decoration: none;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 16px;

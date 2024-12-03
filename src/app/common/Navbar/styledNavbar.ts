@@ -14,11 +14,28 @@ export const Wrapper = styled.nav`
     justify-content: space-between;
     align-items: center;
     transition: transform 0.3s ease;
+
+    @media (max-width: ${theme.mediaQuery.tabletXl}) {
+        padding: 20px;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 12px;
+    };
 `;
+
 
 export const Container = styled.div`
     display: flex;
-    gap: 32px;
+    gap: 40px;
+
+    @media (max-width: ${theme.mediaQuery.tabletXl}) {
+        gap: 20px;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileXl}) {
+        display: none;
+    };
 `;
 
 export const Logo = styled.a`
@@ -29,10 +46,31 @@ export const Logo = styled.a`
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        font-size: 24px;
+        gap: 10px;
+    };
+    
+    @media (max-width: ${theme.mediaQuery.tabletXl}) {
+        font-size: 32px;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        font-size: 18px;
+    };
 `;
 
 export const LogoImg = styled.img`
     max-width: 64px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        max-width: 40px;
+    };
+
+    @media (max-width: ${theme.mediaQuery.mobileSm}) {
+        max-width: 32px;
+    };
 `;
 
 export const Link = styled.a`
@@ -47,16 +85,22 @@ export const Link = styled.a`
 
     &:hover {
         transform: translateY(-4px);
-    }
-`;
+    };
 
-export const LinkImage = styled.img`
-
+    @media (max-width: ${theme.mediaQuery.mobileXl}) {
+        font-size: 16px;
+        border-bottom: 1px solid white;
+        padding-bottom: 12px;
+    };
 `;
 
 export const AuthWrapper = styled.div`
     display: flex;
     gap: 32px;
+
+    @media (max-width: ${theme.mediaQuery.mobileXl}) {
+        display: none;
+    };
 `;
 
 export const ProfileWrapper = styled.a`

@@ -12,7 +12,7 @@ export const StyledButtonLink = styled.a <StyledButtonProps>`
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
-    padding: 12px 40px;
+    padding: 12px 32px;
     transition: 0.3s;
     margin: 0 auto;
     text-decoration: none;

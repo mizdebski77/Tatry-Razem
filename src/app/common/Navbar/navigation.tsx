@@ -1,4 +1,4 @@
-import { AuthWrapper, Container, Link, LinkImage, Logo, LogoImg, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
+import { AuthWrapper, Container, Link, Logo, LogoImg, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
 import { ButtonLink } from '../UI/UI';
 import { SignOut } from '@/app/(features)/(auth)/SingOut/signOut';
 import { createClient } from '@/app/core/supabase/server';
@@ -7,6 +7,7 @@ import { FaHome } from 'react-icons/fa';
 import { MdAdd } from 'react-icons/md';
 import { Search } from 'lucide-react';
 import { CgProfile } from "react-icons/cg";
+import MobileMenu from './MobileMenu/mobileMenu';
 
 export default async function Navigation() {
 
@@ -40,7 +41,6 @@ export default async function Navigation() {
 
             </Container>
 
-
             <AuthWrapper>
                 {data.user ? (
                     <>
@@ -59,6 +59,8 @@ export default async function Navigation() {
                     </>
                 )}
             </AuthWrapper>
+
+            <MobileMenu user={data?.user} />
         </Wrapper>
     );
 }

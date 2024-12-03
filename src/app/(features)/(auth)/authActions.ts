@@ -84,7 +84,8 @@ export async function updateUser(formData: FormData) {
             data: {
                 name: name,
                 surname: surname,
-                bio: bio
+                bio: bio,
+                location: location,
             }
         });
 

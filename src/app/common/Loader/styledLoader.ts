@@ -16,8 +16,8 @@ export const Wrapper = styled.section`
 export const Spinner = styled(Loader2)`
     animation: spinner 2s linear infinite;
     font-size: 40px;
-    width: 400px;
-    height: 400px;
+    width: 320px;
+    height: 320px;
     color: ${theme.palette.blue};
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {

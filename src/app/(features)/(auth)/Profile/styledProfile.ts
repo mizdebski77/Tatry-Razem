@@ -2,6 +2,7 @@
 
 import { styled } from "styled-components";
 import { theme } from "@/app/core/StyledComponents/theme";
+import { SocialIcon } from "react-social-icons";
 
 
 export const Wrapper = styled.section`
@@ -137,6 +138,14 @@ export const TileLInksWrapper = styled.div`
     justify-content: space-evenly;
     max-width: 320px;
     width: 100%;
+`;
+
+export const SocialLinks = styled(SocialIcon)`
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
 `;
 
 

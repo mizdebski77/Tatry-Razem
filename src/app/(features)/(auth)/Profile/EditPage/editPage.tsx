@@ -60,7 +60,6 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         })
     };
 
-
     const closeWindowPositive = () => {
         confirmAlert({
             customUI: ({ onClose }) => {
@@ -80,6 +79,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                                 formData.append('surname', surname);
                                 formData.append('email', email);
                                 formData.append('location', location);
+                                formData.append('bio', bio);
                                 handleUpdate(formData);
                                 setEditPage(false);
                                 onClose();
@@ -90,7 +90,6 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             }
         });
     };
-
 
     const closeWindowNegative = () => {
         confirmAlert({
@@ -180,6 +179,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
 
                     <TextArea
                         placeholder='Opisz siebie'
+                        name='bio'
                         onChange={(e) => setBio(e.target.value)}
                         value={bio}
                     />

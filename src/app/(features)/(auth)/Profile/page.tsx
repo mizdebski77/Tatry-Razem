@@ -5,7 +5,7 @@ import {
     DataWrapper,
     Tile,
     TileLInksWrapper,
-    TileSpanWrapper, TileTitle, TilesWrapper, Title, UserImage, Wrapper, TileSpan, TileSpanLegend
+    TileSpanWrapper, TileTitle, TilesWrapper, Title, UserImage, Wrapper, TileSpan, TileSpanLegend, SocialLinks
 } from './styledProfile';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
@@ -43,6 +43,9 @@ export default function Profile() {
         setEditPage(!editPgae)
     };
 
+    console.log(user);
+
+
 
 
     return (
@@ -61,13 +64,8 @@ export default function Profile() {
                             <TileSpanWrapper>
                                 <TileSpanLegend><MdDescription />Opis:</TileSpanLegend>
                                 <TileSpan style={{ fontSize: '16px' }}>
-                                    Frontend Developer with 1+ years of experience in building modern, responsive web
-                                    applications. Proficient in React, TypeScript, Angular, HTML & CSS, Redux, and
-                                    GitHub. Experienced in e-commerce stores, training applications, CRM systems, and
-                                    landing pages. Skilled in API integration, delivering functional applications. Familiar
-                                    with Agile methodologies (Scrum) and tools like JIRA and Trello.
+                                    {user?.user_metadata.bio}
                                 </TileSpan>
-                                {user?.user_metadata.bio}
 
                             </TileSpanWrapper>
 
@@ -89,9 +87,9 @@ export default function Profile() {
 
 
                             <TileLInksWrapper>
-                                <SocialIcon url="https://www.facebook.com/?locale=pl_PL" />
-                                <SocialIcon url="youtube.com" />
-                                <SocialIcon url="https://www.instagram.com/raynavallandingham/" />
+                                <SocialLinks url="https://www.facebook.com/?locale=pl_PL" />
+                                <SocialLinks url="youtube.com" />
+                                <SocialLinks url="https://www.instagram.com/raynavallandingham/" />
                             </TileLInksWrapper>
                             <Button
                                 $background='blue'

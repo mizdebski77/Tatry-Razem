@@ -3,6 +3,7 @@
 import { styled } from "styled-components";
 import background from '../Images/FooterImages/footerBackground.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
+import { SocialIcon } from "react-social-icons";
 
 export const Wrapper = styled.footer`
     background-image: url(${background.src});
@@ -144,12 +145,16 @@ export const SocialsWrapper = styled.div`
 export const SocialContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
-    gap: 12px;
+    gap: 24px;
 `;
 
-export const SocialLink = styled.img`
-    max-width: 32px;
+export const SocialLink = styled(SocialIcon)`
     cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
 `;
 
 export const LinksWrapper = styled.div`
@@ -177,6 +182,11 @@ export const Link = styled.a`
     font-size: 20px;
     text-align: center;
     text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 16px;

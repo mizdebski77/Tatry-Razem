@@ -41,9 +41,9 @@ export const Footer = () => {
                 <SocialsWrapper>
                     <LinksTitle>Obserwuj nas na:</LinksTitle>
                     <SocialContainer>
-                        <SocialIcon url="https://www.facebook.com/?locale=pl_PL" />
-                        <SocialIcon url="youtube.com" />
-                        <SocialIcon url="https://www.instagram.com/raynavallandingham/" />
+                        <SocialLink url="https://www.facebook.com/?locale=pl_PL" />
+                        <SocialLink url="youtube.com" />
+                        <SocialLink url="https://www.instagram.com/raynavallandingham/" />
 
                     </SocialContainer>
                 </SocialsWrapper>

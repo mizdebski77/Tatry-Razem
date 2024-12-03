@@ -16,6 +16,11 @@ export const Wrapper = styled.nav`
     transition: transform 0.3s ease;
 `;
 
+export const Container = styled.div`
+    display: flex;
+    gap: 32px;
+`;
+
 export const Logo = styled.a`
     font-size: 40px;
     color: white;
@@ -61,11 +66,7 @@ export const ProfileWrapper = styled.a`
     text-decoration: none;
 `;
 
-export const ProfileIcon = styled.img`
-    margin: 0 auto;
-    width: 100%;
-    max-width: 36px;
-`;
+
 
 export const ProfileSpan = styled.span`
     font-size: 18px;

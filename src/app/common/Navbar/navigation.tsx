@@ -1,10 +1,12 @@
-import { AuthWrapper, Link, LinkImage, Logo, LogoImg, ProfileIcon, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
-import homeImage from '../Images/NavImages/home.svg';
+import { AuthWrapper, Container, Link, LinkImage, Logo, LogoImg, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
 import { ButtonLink } from '../UI/UI';
-import profile from '../Images/NavImages/profile.svg';
 import { SignOut } from '@/app/(features)/(auth)/SingOut/signOut';
 import { createClient } from '@/app/core/supabase/server';
 import logo from '../Images/logo.png';
+import { FaHome } from 'react-icons/fa';
+import { MdAdd } from 'react-icons/md';
+import { Search } from 'lucide-react';
+import { CgProfile } from "react-icons/cg";
 
 export default async function Navigation() {
 
@@ -19,16 +21,31 @@ export default async function Navigation() {
                 <LogoImg src={logo.src} alt='logo' />
                 Tatry Razem
             </Logo>
-            <Link href='/'>
-                <LinkImage src={homeImage.src} alt='Link' />
-                Strona Główna
-            </Link>
+
+            <Container>
+                <Link href='/'>
+                    <FaHome />
+                    Strona Główna
+                </Link>
+
+                <Link href='/'>
+                    <MdAdd />
+                    Dodaj propozycję
+                </Link>
+
+                <Link href='/'>
+                    <Search />
+                    Znajdź propzycję
+                </Link>
+
+            </Container>
+
 
             <AuthWrapper>
                 {data.user ? (
                     <>
                         <ProfileWrapper href='/Profile'>
-                            <ProfileIcon src={profile.src} alt='profile' />
+                            <CgProfile style={{ margin: '0 auto', fontSize: '24px', color: 'white' }} />
                             <ProfileSpan>{data.user?.user_metadata.name}</ProfileSpan>
                         </ProfileWrapper>
                         <div>

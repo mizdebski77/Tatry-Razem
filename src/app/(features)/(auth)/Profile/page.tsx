@@ -1,6 +1,12 @@
 'use client';
 import { createClient } from '@/app/core/supabase/client';
-import { Container, DataWrapper, Tile, TileLInksWrapper, TileSpanWrapper, TileTitle, TilesWrapper, Title, UserImage, Wrapper, TileSpan, TileSpanLegend } from './styledProfile';
+import {
+    Container,
+    DataWrapper,
+    Tile,
+    TileLInksWrapper,
+    TileSpanWrapper, TileTitle, TilesWrapper, Title, UserImage, Wrapper, TileSpan, TileSpanLegend
+} from './styledProfile';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Loader } from '@/app/common/Loader/loader';

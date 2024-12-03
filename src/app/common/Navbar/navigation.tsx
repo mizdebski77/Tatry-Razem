@@ -1,9 +1,10 @@
-import { AuthWrapper, Link, LinkImage, Logo, ProfileIcon, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
+import { AuthWrapper, Link, LinkImage, Logo, LogoImg, ProfileIcon, ProfileSpan, ProfileWrapper, Wrapper } from './styledNavbar';
 import homeImage from '../Images/NavImages/home.svg';
 import { ButtonLink } from '../UI/UI';
 import profile from '../Images/NavImages/profile.svg';
 import { SignOut } from '@/app/(features)/(auth)/SingOut/signOut';
 import { createClient } from '@/app/core/supabase/server';
+import logo from '../Images/logo.png';
 
 export default async function Navigation() {
 
@@ -14,7 +15,10 @@ export default async function Navigation() {
 
     return (
         <Wrapper>
-            <Logo href='/'>CHwG</Logo>
+            <Logo href='/'>
+                <LogoImg src={logo.src} alt='logo' />
+                Tatry Razem
+            </Logo>
             <Link href='/'>
                 <LinkImage src={homeImage.src} alt='Link' />
                 Strona Główna

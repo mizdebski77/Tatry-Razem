@@ -1,10 +1,11 @@
 'use client'
 import React from 'react';
-import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, ContentLogo, Creator, Link, LinksTitle, LinksWrapper, SocialContainer, SocialLink, SocialsWrapper, Wrapper } from './styledFooter';
+import { AppImage, AppSection, AppStore, AppStoresWrapper, AppText, AppTextTitle, AppTextWrapper, Content, Creator, Link, LinksTitle, LinksWrapper, Logo, LogoImg, SocialContainer, SocialLink, SocialsWrapper, Wrapper } from './styledFooter';
 import app from '../Images/FooterImages/phone.svg';
 import google from '../Images/FooterImages/googleStore.svg';
 import store from '../Images/FooterImages/appStore.svg';
 import { FooterLinks, SocialLinks } from '../arrays';
+import logo from '../Images/logo.png';
 
 export const Footer = () => {
     return (
@@ -22,7 +23,11 @@ export const Footer = () => {
             </AppSection>
 
             <Content>
-                <ContentLogo>CHwG</ContentLogo>
+                <Logo href='/'>
+                    <LogoImg src={logo.src} alt='logo' />
+                    Tatry Razem
+                </Logo>
+
                 {FooterLinks.map((footerLink) => (
                     <LinksWrapper key={footerLink.id}>
                         <LinksTitle>{footerLink.title}:</LinksTitle>
@@ -42,7 +47,7 @@ export const Footer = () => {
                 </SocialsWrapper>
             </Content>
 
-            <Creator>© ZSW - Projekt oraz realizacja: Marcin Izdebski</Creator>
+            <Creator>© TatryRazem - Projekt oraz realizacja: Marcin Izdebski</Creator>
         </Wrapper>
     );
 };

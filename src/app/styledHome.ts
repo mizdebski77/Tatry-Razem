@@ -220,7 +220,8 @@ export const IdeaWrapper = styled.section`
     max-width: 1200px; 
     margin: 120px auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
     gap: 40px;
     padding: 40px;
 
@@ -247,12 +248,12 @@ export const IdeaTitle = styled.h4`
 `;
 
 export const IdeaText = styled.p`
-    font-size: 24px;
+    font-size: 20px;
     text-align: justify;
     opacity: 0.7;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        font-size: 16px;
+        font-size: 14px;
     };
 `;
 

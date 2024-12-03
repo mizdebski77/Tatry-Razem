@@ -3,7 +3,7 @@ import { theme } from "@/app/core/StyledComponents/theme";
 import { styled } from "styled-components";
 
 export const Wrapper = styled.nav`
-    padding: 28px;
+    padding: 20px 32px;
     position: fixed;
     z-index: 10;
     top: 0;
@@ -21,6 +21,13 @@ export const Logo = styled.a`
     color: white;
     cursor: pointer;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+`;
+
+export const LogoImg = styled.img`
+    max-width: 64px;
 `;
 
 export const Link = styled.a`

@@ -114,11 +114,22 @@ export const Content = styled.div`
     };
 `;
 
-export const ContentLogo = styled.span`
+export const Logo = styled.a`
     font-size: 40px;
     color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+    gap: 0px;
+    justify-content: center;
+`;
+
+export const LogoImg = styled.img`
+    max-width: 180px;
     margin: 0 auto;
 `;
+
 
 export const SocialsWrapper = styled.div`
     display: grid;

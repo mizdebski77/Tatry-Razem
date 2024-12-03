@@ -80,12 +80,14 @@ export default function Home() {
         <IdeaTextWrapper>
           <IdeaTitle>Skąd pomysł na taką stronę?</IdeaTitle>
           <IdeaText>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem sed sint asperiores eum nobis doloribus minima alias eius? Accusamus dignissimos praesentium quos vitae hic enim quis ut rem est.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem sed sint asperiores eum nobis doloribus minima alias eius? Accusamus dignissimos praesentium quos vitae hic enim quis ut rem est.
+            Inspiracją do stworzenia aplikacji była moja aktywność w znanej grupie na Facebooku – Tatromaniaków. Często zauważałem (i wciąż widzę), że wiele osób zamieszcza tam ogłoszenia, szukając towarzyszy do wspólnych wędrówek po górach. Niestety, ogromna liczba postów publikowanych na tej grupie sprawia, że takie ogłoszenia łatwo giną w natłoku treści i nie zawsze trafiają do zainteresowanych.
+          </IdeaText>
+          <IdeaText>
+            Stąd zrodził się pomysł, aby stworzyć miejsce, które pozwoli zebrać wszystkie propozycje wspólnych wyjść w góry w jednym, łatwo dostępnym miejscu. Dzięki temu każdy będzie mógł szybko i wygodnie znaleźć kompana na szlak. Dodatkowo aplikacja umożliwi filtrowanie ogłoszeń według określonych kryteriów, co znacznie ułatwi proces poszukiwania. Wierzę, że takie rozwiązanie będzie nie tylko praktyczne, ale też przyczyni się do budowania społeczności miłośników górskich wędrówek.
           </IdeaText>
         </IdeaTextWrapper>
         <IdeaImage src={hall.src} alt="Hala Gąsienicowa" />
       </IdeaWrapper>
-    </Wrapper>
+    </Wrapper >
   );
 }

@@ -24,6 +24,7 @@ import { updateUser } from '../../authActions';
 import { toast } from 'react-hot-toast';
 import { User } from '@supabase/supabase-js';
 import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 interface EditPageProps {
     user: User | undefined;

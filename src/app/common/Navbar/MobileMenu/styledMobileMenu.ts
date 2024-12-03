@@ -22,7 +22,7 @@ export const MobileWrapper = styled.div`
     backdrop-filter: blur(42px);
     background: rgba(0, 0, 0, 0.9);
     left: 0;
-    padding: 40px 20px;
+    padding: 52px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -45,7 +45,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
     return (
         <>
             <PhoneNavbar onClick={toggleMenu}>
-                <Hamburger color='#2659C3' size={24} toggled={isOpen} />
+                <Hamburger color='#ffffff' size={24} toggled={isOpen} />
             </PhoneNavbar>
             <AnimatePresence>
                 {isOpen && (

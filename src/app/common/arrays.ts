@@ -43,3 +43,9 @@ export const SocialInputs = [
     { id: 7, icon: BsYoutube, placeholder: 'YouTube link', name: 'youtube_url', type: 'text', },
     { id: 8, icon: RiInstagramFill, placeholder: 'Instagram link', name: 'instagram_url', type: 'text', },
 ];
+
+export const SocialLinks = [
+    { id: 1, url: 'https://www.facebook.com/?locale=pl_PL' },
+    { id: 2, url: 'youtube.com' },
+    { id: 3, url: 'https://www.instagram.com/raynavallandingham/' },
+];

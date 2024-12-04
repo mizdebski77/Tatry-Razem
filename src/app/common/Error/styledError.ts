@@ -13,7 +13,6 @@ export const Wrapper = styled.section`
     padding: 12px;
 `;
 
-
 export const Error = styled(CircleX)`
     font-size: 40px;
     width: 400px;

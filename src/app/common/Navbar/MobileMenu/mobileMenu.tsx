@@ -1,17 +1,23 @@
-'use client'; // Wymusza klientowe zachowanie komponentu
+"use client"; // Wymusza klientowe zachowanie komponentu
 
-import React, { useState } from 'react';
-import { MobileWrapper, PhoneNavbar, Container, AuthWrapper } from './styledMobileMenu';
-import Hamburger from 'hamburger-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Link, ProfileSpan, ProfileWrapper } from '../styledNavbar';
-import { FaHome } from 'react-icons/fa';
-import { MdAdd } from 'react-icons/md';
-import { Search } from 'lucide-react';
-import { CgProfile } from 'react-icons/cg';
-import { SignOut } from '@/app/(features)/(auth)/SingOut/signOut';
-import { ButtonLink } from '../../UI/UI';
-import { User } from '@supabase/supabase-js';
+import React, { useState } from "react";
+import {
+    MobileWrapper,
+    PhoneNavbar,
+    Container,
+    AuthWrapper,
+} from "./styledMobileMenu";
+import Hamburger from "hamburger-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link, ProfileSpan, ProfileWrapper } from "../styledNavbar";
+import { FaHome } from "react-icons/fa";
+import { MdAdd } from "react-icons/md";
+import { Search } from "lucide-react";
+import { CgProfile } from "react-icons/cg";
+import { SignOut } from "@/app/(features)/(auth)/SingOut/signOut";
+import { ButtonLink } from "../../UI/UI";
+import { User } from "@supabase/supabase-js";
+import { NavLinks } from "../../arrays";
 
 interface MobileMenuProps {
     user: User | null;
@@ -29,23 +35,23 @@ export default function MobileMenu({ user }: MobileMenuProps) {
             opacity: 1,
             transition: {
                 x: { velocity: 100 },
-                duration: 0.3
-            }
+                duration: 0.3,
+            },
         },
         hidden: {
             x: -250,
             opacity: 0,
             transition: {
                 x: { velocity: 100 },
-                duration: 0.3
-            }
-        }
-    }
+                duration: 0.3,
+            },
+        },
+    };
 
     return (
         <>
             <PhoneNavbar onClick={toggleMenu}>
-                <Hamburger color='#ffffff' size={24} toggled={isOpen} />
+                <Hamburger color="#ffffff" size={24} toggled={isOpen} />
             </PhoneNavbar>
             <AnimatePresence>
                 {isOpen && (
@@ -57,29 +63,28 @@ export default function MobileMenu({ user }: MobileMenuProps) {
                         variants={animation}
                     >
                         <Container>
-                            <Link href='/'>
-                                <FaHome />
-                                Strona Główna
-                            </Link>
-
-                            <Link href='/'>
-                                <MdAdd />
-                                Dodaj propozycję
-                            </Link>
-
-                            <Link href='/'>
-                                <Search />
-                                Znajdź propzycję
-                            </Link>
-
+                            {NavLinks.map((link) => (
+                                <Link key={link.id} href={link.link}>
+                                    <link.icon />
+                                    {link.text}
+                                </Link>
+                            ))}
                         </Container>
 
                         <AuthWrapper>
                             {user ? (
                                 <>
-                                    <ProfileWrapper href='/Profile'>
-                                        <CgProfile style={{ margin: '0 auto', fontSize: '24px', color: 'white' }} />
-                                        <ProfileSpan>{user.user_metadata.name}</ProfileSpan>
+                                    <ProfileWrapper href="/Profile">
+                                        <CgProfile
+                                            style={{
+                                                margin: "0 auto",
+                                                fontSize: "24px",
+                                                color: "white",
+                                            }}
+                                        />
+                                        <ProfileSpan>
+                                            {user.user_metadata.name}
+                                        </ProfileSpan>
                                     </ProfileWrapper>
                                     <div>
                                         <SignOut />
@@ -87,15 +92,22 @@ export default function MobileMenu({ user }: MobileMenuProps) {
                                 </>
                             ) : (
                                 <>
-                                    <ButtonLink $background='blue' text='Zaloguj się' href='/Login' />
-                                    <ButtonLink $background='white' text='Rejestracja' href='/Register' />
+                                    <ButtonLink
+                                        $background="blue"
+                                        text="Zaloguj się"
+                                        href="/Login"
+                                    />
+                                    <ButtonLink
+                                        $background="white"
+                                        text="Rejestracja"
+                                        href="/Register"
+                                    />
                                 </>
                             )}
                         </AuthWrapper>
                     </MobileWrapper>
                 )}
             </AnimatePresence>
-
         </>
     );
 }

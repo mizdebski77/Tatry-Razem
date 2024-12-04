@@ -1,6 +1,9 @@
 import { FaFacebook } from 'react-icons/fa';
 import { BsYoutube } from 'react-icons/bs';
 import { RiInstagramFill } from "react-icons/ri";
+import { FaHome } from "react-icons/fa";
+import { MdAdd } from "react-icons/md";
+import { Search } from "lucide-react";
 
 export const HowItWorks = [
     { number: 1, text: 'Logujesz się na swoje konto' },
@@ -48,4 +51,10 @@ export const SocialLinks = [
     { id: 1, url: 'https://www.facebook.com/?locale=pl_PL' },
     { id: 2, url: 'youtube.com' },
     { id: 3, url: 'https://www.instagram.com/raynavallandingham/' },
+];
+
+export const NavLinks = [
+    { id: 1, link: '/', icon: FaHome, text: 'Strona główna' },
+    { id: 2, link: '/', icon: MdAdd, text: 'Dodaj propozycję' },
+    { id: 3, link: '/', icon: Search, text: 'Znajdź propzycję' },
 ];

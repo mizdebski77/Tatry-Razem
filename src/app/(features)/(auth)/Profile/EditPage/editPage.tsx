@@ -17,41 +17,56 @@ import {
 } from './styledEditPage';
 import { motion } from 'framer-motion';
 import { Button, Input } from '@/app/common/UI/UI';
-import { FaFacebook } from 'react-icons/fa';
-import { BsYoutube } from 'react-icons/bs';
-import { RiInstagramFill } from "react-icons/ri";
 import { updateUser } from '../../authActions';
 import { toast } from 'react-hot-toast';
 import { User } from '@supabase/supabase-js';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { EditInputs, SocialInputs } from '@/app/common/arrays';
 
 interface EditPageProps {
     user: User | undefined;
     setEditPage: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+interface formFields {
+    name: string;
+    surname: string;
+    email: string;
+    location: string;
+    bio: string;
+    facebook_url: string;
+    instagram_url: string;
+    youtube_url: string;
 }
 
 export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [location, setLocation] = useState('');
+
+
     const [isPending, startTransition] = useTransition();
-    const [bio, setBio] = useState('');
-    const [facebook_url, setFacebook_url] = useState('');
-    const [instagram_url, setInstagram_url] = useState('');
-    const [youtube_url, setYoutube_url] = useState('');
+    const [formData, setFormData] = useState<formFields>({
+        name: '',
+        surname: '',
+        email: '',
+        location: '',
+        bio: '',
+        facebook_url: '',
+        instagram_url: '',
+        youtube_url: '',
+    });
 
     useEffect(() => {
         if (user) {
-            setName(user.user_metadata?.name || '');
-            setSurname(user.user_metadata?.surname || '');
-            setEmail(user.email || '');
-            setLocation(user.user_metadata?.location || '');
-            setBio(user.user_metadata?.bio || '');
-            setFacebook_url(user.user_metadata?.facebook_url || '');
-            setInstagram_url(user.user_metadata?.instagram_url || '');
-            setYoutube_url(user.user_metadata?.youtube_url || '');
+            setFormData({
+                name: user.user_metadata?.name || '',
+                surname: user.user_metadata?.surname || '',
+                email: user.email || '',
+                location: user.user_metadata?.location || '',
+                bio: user.user_metadata?.bio || '',
+                facebook_url: user.user_metadata?.facebook_url || '',
+                instagram_url: user.user_metadata?.instagram_url || '',
+                youtube_url: user.user_metadata?.youtube_url || ''
+            });
         }
     }, [user]);
 
@@ -62,9 +77,26 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             if (errorMessage) {
                 toast.error(errorMessage);
             } else {
-                toast.success(email === '' || email === user?.email ? 'Dane zakutalizowano pomyślnie. Odśwież stronę' : "Potwierdź zakutalizowany E-Mail.");
+                window.location.reload();
             }
         })
+    };
+
+    const showConfirmationDialog = (
+        title: string,
+        message: string,
+        onConfirm: () => void
+    ) => {
+        confirmAlert({
+            customUI: ({ onClose }) => (
+                <AlertWrapper>
+                    <AlertTitle>{title}</AlertTitle>
+                    <AlertSpan>{message}</AlertSpan>
+                    <Button type="button" text="Nie" $background="white" onClick={onClose} disabled={false} />
+                    <Button type="button" text="Tak" $background="red" onClick={() => { onConfirm(); onClose(); }} disabled={false} />
+                </AlertWrapper>
+            )
+        });
     };
 
     const closeWindowPositive = () => {
@@ -81,16 +113,16 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                             type='button'
                             disabled={false}
                             onClick={() => {
-                                const formData = new FormData();
-                                formData.append('name', name);
-                                formData.append('surname', surname);
-                                formData.append('email', email);
-                                formData.append('location', location);
-                                formData.append('bio', bio);
-                                formData.append('facebook_url', facebook_url);
-                                formData.append('youtube_url', youtube_url);
-                                formData.append('instagram_url', instagram_url);
-                                handleUpdate(formData);
+                                const formDataToSend = new FormData();
+                                formDataToSend.append('name', formData.name);
+                                formDataToSend.append('surname', formData.surname);
+                                formDataToSend.append('email', formData.email);
+                                formDataToSend.append('location', formData.location);
+                                formDataToSend.append('bio', formData.bio);
+                                formDataToSend.append('facebook_url', formData.facebook_url);
+                                formDataToSend.append('youtube_url', formData.youtube_url);
+                                formDataToSend.append('instagram_url', formData.instagram_url);
+                                handleUpdate(formDataToSend);
                                 setEditPage(false);
                                 onClose();
                             }}
@@ -126,6 +158,16 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         });
     };
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+
+
 
     return (
         <EditSection
@@ -139,76 +181,45 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                 <Form>
                     <FormHeader>Dane podstawowe</FormHeader>
 
-
-                    <Input
-                        placeHolder='Imię'
-                        required={false}
-                        text=''
-                        name='name'
-                        type='text'
-                        isError={0}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-
-                    <Input
-                        placeHolder='Nazwisko'
-                        required={false}
-                        text=''
-                        name='surname'
-                        type='text'
-                        isError={0}
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
-                    />
-
-                    <Input
-                        placeHolder='E-Mail'
-                        required={false}
-                        text=''
-                        name='email'
-                        type='email'
-                        isError={0}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
-                    <Input
-                        placeHolder='Miejscowość'
-                        required={false}
-                        text=''
-                        name='location'
-                        type='text'
-                        isError={0}
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                    />
-
-
-                    <FormHeader>Opisz siebie żeby można było cię lepiej poznać</FormHeader>
-
-                    <TextArea
-                        placeholder='Opisz siebie'
-                        name='bio'
-                        onChange={(e) => setBio(e.target.value)}
-                        value={bio}
-                    />
+                    {EditInputs.map((field) => (
+                        field.component === 'input' ? (
+                            <Input
+                                key={field.id}
+                                placeHolder={field.placeholder}
+                                name={field.name}
+                                required={false}
+                                text=''
+                                isError={0}
+                                type='text'
+                                value={formData[field.name as keyof formFields]}
+                                onChange={handleInputChange}
+                            />
+                        ) : (
+                            <React.Fragment key={field.id}> {/* Wrap in Fragment with key */}
+                                <FormHeader>Opisz siebie żeby można było cię lepiej poznać</FormHeader>
+                                <TextArea
+                                    placeholder={field.placeholder}
+                                    name={field.name}
+                                    value={formData[field.name as keyof formFields]}
+                                    onChange={handleInputChange}
+                                />
+                            </React.Fragment>
+                        )
+                    ))}
 
                     <FormHeader>Social media:</FormHeader>
-                    <SocialWrapper>
-                        <FaFacebook style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='FaceBook link' name='facebook_url' type='text' value={facebook_url} onChange={(e) => setFacebook_url(e.target.value)} />
-                    </SocialWrapper>
-
-                    <SocialWrapper>
-                        <BsYoutube style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='Youtube link' name='Youtube' type='text' value={youtube_url} onChange={(e) => setYoutube_url(e.target.value)} />
-                    </SocialWrapper>
-
-                    <SocialWrapper>
-                        <RiInstagramFill style={{ fontSize: '28px' }} />
-                        <SocialInput placeholder='Instahram link' name='Instagram' type='text' value={instagram_url} onChange={(e) => setInstagram_url(e.target.value)} />
-                    </SocialWrapper>
+                    {SocialInputs.map((social) => (
+                        <SocialWrapper key={social.id}>
+                            <social.icon style={{ fontSize: '28px' }} />
+                            <SocialInput
+                                placeholder={social.placeholder}
+                                name={social.name}
+                                type={social.type}
+                                value={formData[social.name as keyof formFields]}
+                                onChange={handleInputChange}
+                            />
+                        </SocialWrapper>
+                    ))}
 
                     <ButtonWrapper>
                         <Button

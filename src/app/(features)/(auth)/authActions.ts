@@ -83,7 +83,7 @@ export async function updateUser(formData: FormData) {
 
 
         const { error } = await supabase.auth.updateUser({
-            email,
+            email: email,
             data: {
                 name: name,
                 surname: surname,

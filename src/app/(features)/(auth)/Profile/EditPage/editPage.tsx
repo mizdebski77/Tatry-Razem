@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState, useTransition } from 'react';
 import {
     EditSection,
@@ -13,7 +13,6 @@ import {
     AlertTitle,
     AlertSpan,
     ButtonWrapper,
-
 } from './styledEditPage';
 import { motion } from 'framer-motion';
 import { Button, Input } from '@/app/common/UI/UI';
@@ -27,9 +26,9 @@ import { EditInputs, SocialInputs } from '@/app/common/arrays';
 interface EditPageProps {
     user: User | undefined;
     setEditPage: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
-interface formFields {
+interface FormFields {
     name: string;
     surname: string;
     email: string;
@@ -41,10 +40,8 @@ interface formFields {
 }
 
 export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
-
-
     const [isPending, startTransition] = useTransition();
-    const [formData, setFormData] = useState<formFields>({
+    const [formData, setFormData] = useState<FormFields>({
         name: '',
         surname: '',
         email: '',
@@ -57,131 +54,67 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
 
     useEffect(() => {
         if (user) {
-            setFormData({
-                name: user.user_metadata?.name || '',
-                surname: user.user_metadata?.surname || '',
-                email: user.email || '',
-                location: user.user_metadata?.location || '',
-                bio: user.user_metadata?.bio || '',
-                facebook_url: user.user_metadata?.facebook_url || '',
-                instagram_url: user.user_metadata?.instagram_url || '',
-                youtube_url: user.user_metadata?.youtube_url || ''
-            });
+            const { user_metadata } = user;
+            setFormData(prevData => ({
+                ...prevData,
+                ...user_metadata,
+                email: user.email || prevData.email,
+            }));
         }
     }, [user]);
 
 
-    const handleUpdate = (formData: FormData) => {
+    const handleUpdate = async (data: FormData) => {
         startTransition(async () => {
-            const { errorMessage } = await updateUser(formData);
+            const { errorMessage } = await updateUser(data);
             if (errorMessage) {
                 toast.error(errorMessage);
             } else {
-                window.location.reload();
+                toast.success(formData.email === '' || formData.email === user?.email ? 'Dane zakutalizowano pomyślnie. ' : "Potwierdź zakutalizowany E-Mail.");
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000)
+
             }
-        })
+        });
     };
 
-    const showConfirmationDialog = (
-        title: string,
-        message: string,
-        onConfirm: () => void
-    ) => {
+    const showConfirmationDialog = (title: string, message: string, onConfirm: () => void) => {
         confirmAlert({
             customUI: ({ onClose }) => (
                 <AlertWrapper>
                     <AlertTitle>{title}</AlertTitle>
                     <AlertSpan>{message}</AlertSpan>
-                    <Button type="button" text="Nie" $background="white" onClick={onClose} disabled={false} />
-                    <Button type="button" text="Tak" $background="red" onClick={() => { onConfirm(); onClose(); }} disabled={false} />
+                    <Button type='button' disabled={false} text="Nie" $background="white" onClick={onClose} />
+                    <Button type='button' disabled={false} text="Tak" $background="red" onClick={() => { onConfirm(); onClose(); }} />
                 </AlertWrapper>
-            )
+            ),
         });
     };
 
-    const closeWindowPositive = () => {
-        confirmAlert({
-            customUI: ({ onClose }) => {
-                return (
-                    <AlertWrapper >
-                        <AlertTitle>Na pewno chcesz zapisać dane?</AlertTitle>
-                        <AlertSpan>Twoje dane zostaną zakutalizowane?</AlertSpan>
-                        <Button type='button' text='Nie zapisuj' $background='white' onClick={onClose} disabled={false} />
-                        <Button
-                            text='Zapisz'
-                            $background='red'
-                            type='button'
-                            disabled={false}
-                            onClick={() => {
-                                const formDataToSend = new FormData();
-                                formDataToSend.append('name', formData.name);
-                                formDataToSend.append('surname', formData.surname);
-                                formDataToSend.append('email', formData.email);
-                                formDataToSend.append('location', formData.location);
-                                formDataToSend.append('bio', formData.bio);
-                                formDataToSend.append('facebook_url', formData.facebook_url);
-                                formDataToSend.append('youtube_url', formData.youtube_url);
-                                formDataToSend.append('instagram_url', formData.instagram_url);
-                                handleUpdate(formDataToSend);
-                                setEditPage(false);
-                                onClose();
-                            }}
-                        />
-                    </AlertWrapper >
-                );
-            }
+    const handleFormSubmit = () => {
+        const formDataToSend = new FormData();
+        Object.keys(formData).forEach((key) => {
+            formDataToSend.append(key, formData[key as keyof FormFields]);
         });
-    };
-
-    const closeWindowNegative = () => {
-        confirmAlert({
-            customUI: ({ onClose }) => {
-                return (
-                    <AlertWrapper >
-                        <AlertTitle>Na pewno chcesz zamknąć?</AlertTitle>
-                        <AlertSpan>Twoje dane nie zostaną zapisane?</AlertSpan>
-                        <Button type='button' text='Nie zamykaj' $background='white' onClick={onClose} disabled={false} />
-                        <Button
-                            text='Tak zamknij'
-                            $background='red'
-                            type='button'
-                            disabled={false}
-                            onClick={() => {
-                                setEditPage(false)
-                                onClose();
-                            }}
-                        />
-
-                    </AlertWrapper >
-                );
-            }
-        });
+        handleUpdate(formDataToSend);
+        setEditPage(false);
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        setFormData(prevData => ({ ...prevData, [name]: value }));
     };
 
-
-
-
     return (
-        <EditSection
-            as={motion.div}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-        >
+        <EditSection as={motion.div} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <EditWrapper>
                 <EditTitle>Edytuj swój profil</EditTitle>
                 <Form>
                     <FormHeader>Dane podstawowe</FormHeader>
 
-                    {EditInputs.map((field) => (
+                    {EditInputs.map(field => (
                         field.component === 'input' ? (
                             <Input
                                 key={field.id}
@@ -191,16 +124,15 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                                 text=''
                                 isError={0}
                                 type='text'
-                                value={formData[field.name as keyof formFields]}
+                                value={formData[field.name as keyof FormFields]}
                                 onChange={handleInputChange}
                             />
                         ) : (
-                            <React.Fragment key={field.id}> {/* Wrap in Fragment with key */}
+                            <React.Fragment key={field.id}>
                                 <FormHeader>Opisz siebie żeby można było cię lepiej poznać</FormHeader>
                                 <TextArea
-                                    placeholder={field.placeholder}
                                     name={field.name}
-                                    value={formData[field.name as keyof formFields]}
+                                    value={formData[field.name as keyof FormFields]}
                                     onChange={handleInputChange}
                                 />
                             </React.Fragment>
@@ -208,14 +140,13 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                     ))}
 
                     <FormHeader>Social media:</FormHeader>
-                    {SocialInputs.map((social) => (
+                    {SocialInputs.map(social => (
                         <SocialWrapper key={social.id}>
                             <social.icon style={{ fontSize: '28px' }} />
                             <SocialInput
                                 placeholder={social.placeholder}
                                 name={social.name}
-                                type={social.type}
-                                value={formData[social.name as keyof formFields]}
+                                value={formData[social.name as keyof FormFields]}
                                 onChange={handleInputChange}
                             />
                         </SocialWrapper>
@@ -223,24 +154,30 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
 
                     <ButtonWrapper>
                         <Button
-                            $background='blue'
-                            onClick={() => closeWindowPositive()}
-                            text='Zapisz'
+                            $background="blue"
                             type='button'
                             disabled={false}
-                        />
+                            onClick={() => showConfirmationDialog(
+                                'Na pewno chcesz zapisać dane?',
+                                'Twoje dane zostaną zaktualizowane.',
+                                handleFormSubmit
+                            )}
+                            text="Zapisz"
 
+                        />
                         <Button
-                            $background='red'
-                            onClick={() => closeWindowNegative()}
-                            text='Anuluj'
+                            $background="red"
+                            onClick={() => showConfirmationDialog(
+                                'Na pewno chcesz zamknąć?',
+                                'Twoje dane nie zostaną zapisane.',
+                                () => setEditPage(false)
+                            )}
+                            text="Anuluj"
                             type='button'
                             disabled={false}
                         />
                     </ButtonWrapper>
-
                 </Form>
-
             </EditWrapper>
         </EditSection>
     );

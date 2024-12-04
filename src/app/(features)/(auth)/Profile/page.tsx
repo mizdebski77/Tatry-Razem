@@ -13,7 +13,6 @@ import { Loader } from '@/app/common/Loader/loader';
 import { FetchError } from '@/app/common/Error/error';
 import { UserRound } from 'lucide-react';
 import { Button, ButtonLink, } from '@/app/common/UI/UI';
-import { SocialIcon } from 'react-social-icons';
 import { IoIosHome } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
@@ -43,7 +42,29 @@ export default function Profile() {
         setEditPage(!editPgae)
     };
 
+    const userFields = [
+        {
+            icon: <MdDescription />,
+            label: "Opis",
+            value: user?.user_metadata.bio,
+        },
+        {
+            icon: <MdEmail />,
+            label: "E-mail",
+            value: user?.email,
+        },
+        {
+            icon: <IoIosHome />,
+            label: "Miejscowość",
+            value: user?.user_metadata.location,
+        },
+    ];
 
+    const socialLinks = [
+        { url: user?.user_metadata.facebook_url },
+        { url: user?.user_metadata.youtube_url },
+        { url: user?.user_metadata.instagram_url }
+    ];
 
 
 
@@ -60,36 +81,21 @@ export default function Profile() {
                                 <UserRound style={{ color: 'white', width: '180px', height: '180px' }} />
                             </UserImage>
                             <TileTitle>{user?.user_metadata.name} {user?.user_metadata.surname}</TileTitle>
-                            <TileSpanWrapper>
-                                <TileSpanLegend><MdDescription />Opis:</TileSpanLegend>
-                                <TileSpan style={{ fontSize: '16px' }}>
-                                    {user?.user_metadata.bio}
-                                </TileSpan>
-
-                            </TileSpanWrapper>
-
-
-                            <TileSpanWrapper>
-                                <TileSpanLegend><MdEmail />E-mail:</TileSpanLegend>
-                                <TileSpan>
-                                    {user?.email}
-                                </TileSpan>
-                            </TileSpanWrapper>
-
-
-                            <TileSpanWrapper>
-                                <TileSpanLegend><IoIosHome />Miejscowość:</TileSpanLegend>
-                                <TileSpan>
-                                    {user?.user_metadata.location}
-                                </TileSpan>
-                            </TileSpanWrapper>
-
+                            {userFields.map((field, index) => (
+                                <TileSpanWrapper key={index}>
+                                    <TileSpanLegend>{field.icon}{field.label}:</TileSpanLegend>
+                                    <TileSpan style={{ fontSize: '16px' }}>
+                                        {field.value}
+                                    </TileSpan>
+                                </TileSpanWrapper>
+                            ))}
 
                             <TileLInksWrapper>
-                                <SocialLinks url={user?.user_metadata.facebook_url} target="_blank" />
-                                <SocialLinks url={user?.user_metadata.youtube_url} target="_blank" />
-                                <SocialLinks url={user?.user_metadata.instagram_url} target="_blank" />
+                                {socialLinks.map((link, index) => (
+                                    <SocialLinks key={index} url={link.url} target="_blank" />
+                                ))}
                             </TileLInksWrapper>
+
                             <Button
                                 $background='blue'
                                 onClick={() => handleEditPage()}

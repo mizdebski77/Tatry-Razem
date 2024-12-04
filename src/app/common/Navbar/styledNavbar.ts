@@ -110,7 +110,12 @@ export const ProfileWrapper = styled.a`
     text-decoration: none;
 `;
 
-
+export const NavImage = styled.img`
+    max-width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    border-radius: 50%;
+`;
 
 export const ProfileSpan = styled.span`
     font-size: 18px;

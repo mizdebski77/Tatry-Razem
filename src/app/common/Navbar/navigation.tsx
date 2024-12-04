@@ -4,6 +4,7 @@ import {
     Link,
     Logo,
     LogoImg,
+    NavImage,
     ProfileSpan,
     ProfileWrapper,
     Wrapper,
@@ -41,13 +42,19 @@ export default async function Navigation() {
                 {data.user ? (
                     <>
                         <ProfileWrapper href="/Profile">
-                            <CgProfile
-                                style={{
-                                    margin: "0 auto",
-                                    fontSize: "24px",
-                                    color: "white",
-                                }}
-                            />
+                            {data.user.user_metadata.avatar_url ? (
+                                <NavImage
+                                    src={data.user.user_metadata.avatar_url}
+                                />
+                            ) : (
+                                <CgProfile
+                                    style={{
+                                        margin: "0 auto",
+                                        fontSize: "24px",
+                                        color: "white",
+                                    }}
+                                />
+                            )}
                             <ProfileSpan>
                                 {data.user?.user_metadata.name}
                             </ProfileSpan>

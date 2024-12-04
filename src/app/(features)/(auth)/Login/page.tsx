@@ -71,6 +71,7 @@ export default function LogIn() {
     const isFormValid = !emailError && !passwordError && email && password;
 
 
+
     return (
         <Wrapper>
             <TextWrapper>

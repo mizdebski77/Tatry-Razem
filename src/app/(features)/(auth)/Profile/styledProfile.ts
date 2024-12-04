@@ -83,7 +83,7 @@ export const DataWrapper = styled.div`
     };
 `;
 
-export const UserImage = styled.div`
+export const UserImage = styled.img`
     background: ${theme.palette.blue};
     display: flex;
     align-items: center;

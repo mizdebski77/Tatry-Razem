@@ -74,7 +74,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
 
                 setTimeout(() => {
                     window.location.reload();
-                }, 3000)
+                }, 2000)
 
             }
         });

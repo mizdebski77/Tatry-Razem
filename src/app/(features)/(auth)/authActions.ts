@@ -14,7 +14,6 @@ export async function LogInAction(formData: FormData) {
 
         const { error } = await supabase.auth.signInWithPassword(data);
 
-
         if (error) throw error;
 
         return { errorMessage: null };
@@ -60,7 +59,6 @@ export async function SignOutAction() {
 
     try {
         const { error } = await supabase.auth.signOut();
-
         if (error) throw error;
         return { errorMessage: null };
     } catch (error) {
@@ -80,7 +78,6 @@ export async function updateUser(formData: FormData) {
         const facebook_url = formData.get("facebook_url") as string;
         const youtube_url = formData.get("youtube_url") as string;
         const instagram_url = formData.get("instagram_url") as string;
-
 
         const { error } = await supabase.auth.updateUser({
             email: email,

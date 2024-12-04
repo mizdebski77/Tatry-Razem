@@ -12,7 +12,6 @@ export const Wrapper = styled.section`
     min-height: 100vh;
 `;
 
-
 export const Spinner = styled(Loader2)`
     animation: spinner 2s linear infinite;
     font-size: 40px;
@@ -32,8 +31,6 @@ export const Spinner = styled(Loader2)`
         100% {
         transform: rotate(360deg);
     };
-
-    
 }`;
 
 export const Title = styled.h1`

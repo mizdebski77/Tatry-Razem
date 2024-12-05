@@ -1,9 +1,9 @@
-'use client'
-import { Button, Loader } from '../authComponents';
+"use client";
+import { Button, Loader } from "../authComponents";
 import { toast } from "react-hot-toast";
-import { useTransition } from 'react';
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { SignOutAction } from '../authActions';
+import { SignOutAction } from "../authActions";
 
 export function SignOut() {
     const [isPending, startTransition] = useTransition();
@@ -18,12 +18,12 @@ export function SignOut() {
                 router.push("/");
                 toast.success("Wylogowano pomyślnie");
             }
-        })
-    }
+        });
+    };
 
     return (
         <Button onClick={handleSignOut}>
-            {isPending ? <Loader /> : 'Wyloguj'}
+            {isPending ? <Loader /> : "Wyloguj"}
         </Button>
     );
 }

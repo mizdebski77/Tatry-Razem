@@ -51,9 +51,6 @@ export const HeaderTitle = styled.h1`
     };
 `;
 
-
-
-
 export const PropositionsWrapper = styled.section`
     padding: 0 80px;
     max-width: 1920px;

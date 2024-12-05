@@ -1,17 +1,18 @@
 import imageCompression from 'browser-image-compression';
 import { v4 as uuidv4 } from 'uuid';
-import { createClient } from './client';
+import { createClient } from '../../core/supabase/client';
 
 function getStorage() {
     const { storage } = createClient();
     return storage;
-}
+};
 
 type UploadProps = {
     file: File;
     bucket: string;
     folder?: string;
 };
+
 export const uploadImage = async ({ file, bucket, folder }: UploadProps) => {
     const fileName = file.name;
     const fileExtension = fileName.slice(fileName.lastIndexOf(".") + 1);

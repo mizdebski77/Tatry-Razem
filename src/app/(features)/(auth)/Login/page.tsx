@@ -1,17 +1,32 @@
-'use client'
-
+"use client";
 import React, { useState, useTransition } from "react";
-import { AuthButton, AuthButtonImage, AuthButtonWrapper, AuthSpan, Loader, Text, TextWrapper, Title, Wrapper, } from "../authComponents";
+import {
+    AuthButton,
+    AuthButtonImage,
+    AuthButtonWrapper,
+    AuthSpan,
+    Loader,
+    Text,
+    TextWrapper,
+    Title,
+    Wrapper,
+} from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
-import facebook from '../../../common/Images/AuthImages/facebook.svg';
-import google from '../../../common/Images/AuthImages/google.svg';
+import facebook from "../../../common/Images/AuthImages/facebook.svg";
+import google from "../../../common/Images/AuthImages/google.svg";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
-import { Button, Form, FormSpan, FormTitle, SectionSpan } from "../authComponents";
+import {
+    Button,
+    Form,
+    FormSpan,
+    FormTitle,
+    SectionSpan,
+} from "../authComponents";
 import { LogInAction } from "../authActions";
 
 export default function LogIn() {
-    const [authError, setAuthError] = useState('');
+    const [authError, setAuthError] = useState("");
 
     const router = useRouter();
 
@@ -21,7 +36,7 @@ export default function LogIn() {
         startTransition(async () => {
             const { errorMessage } = await LogInAction(formData);
             if (errorMessage) {
-                setAuthError(errorMessage)
+                setAuthError(errorMessage);
             } else {
                 toast.success("Zalogowano pomyślnie");
                 router.push("/");
@@ -29,12 +44,10 @@ export default function LogIn() {
         });
     };
 
-
-
-    const [email, setEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     const isEmailValid = (email: string) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -51,9 +64,9 @@ export default function LogIn() {
         setEmail(value);
 
         if (!isEmailValid(value)) {
-            setEmailError('Niepoprawny format E-Maila');
+            setEmailError("Niepoprawny format E-Maila");
         } else {
-            setEmailError('');
+            setEmailError("");
         }
     };
 
@@ -62,15 +75,13 @@ export default function LogIn() {
         setPassword(value);
 
         if (!isPasswordValid(value)) {
-            setPasswordError('Hasło powinno zawierać conajmniej 6 znaków');
+            setPasswordError("Hasło powinno zawierać conajmniej 6 znaków");
         } else {
-            setPasswordError('');
+            setPasswordError("");
         }
     };
 
     const isFormValid = !emailError && !passwordError && email && password;
-
-
 
     return (
         <Wrapper>
@@ -80,18 +91,18 @@ export default function LogIn() {
                 <ButtonLink
                     $background="blue"
                     href="/Register"
-                    text='Rejestracja'
+                    text="Rejestracja"
                 />
             </TextWrapper>
 
-            <Form >
+            <Form>
                 <FormTitle>Logowanie</FormTitle>
                 <Input
                     onChange={handleEmailChange}
                     required={true}
-                    text={emailError ? emailError : ''}
+                    text={emailError ? emailError : ""}
                     placeHolder="E-Mail"
-                    name='email'
+                    name="email"
                     type="email"
                     value={email}
                     isError={emailError ? 1 : 0}
@@ -99,20 +110,28 @@ export default function LogIn() {
                 <Input
                     onChange={handlePasswordChange}
                     required={true}
-                    text={passwordError ? passwordError : ''}
+                    text={passwordError ? passwordError : ""}
                     placeHolder="Hasło"
-                    name='password'
+                    name="password"
                     value={password}
                     isError={passwordError ? 1 : 0}
-                    type="password" />
+                    type="password"
+                />
                 <FormSpan>Zapomniałeś hasła?</FormSpan>
 
-                {authError && <AuthSpan >{authError === 'Invalid login credentials' ? 'Błędny Email lub Hasło' : authError}</AuthSpan>}
+                {authError && (
+                    <AuthSpan>
+                        {authError === "Invalid login credentials"
+                            ? "Błędny Email lub Hasło"
+                            : authError}
+                    </AuthSpan>
+                )}
 
                 <Button
                     formAction={handleLogIn}
-                    disabled={!isFormValid || isPending}>
-                    {isPending ? <Loader /> : 'Zaloguj'}
+                    disabled={!isFormValid || isPending}
+                >
+                    {isPending ? <Loader /> : "Zaloguj"}
                 </Button>
 
                 <SectionSpan>Lub</SectionSpan>
@@ -120,16 +139,21 @@ export default function LogIn() {
                 <AuthButtonWrapper>
                     <AuthButton>
                         <AuthButtonImage src={google.src} alt="Google" />
-                        <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Google</span></span>
+                        <span>
+                            Zaloguj się za pomocą{" "}
+                            <span style={{ fontWeight: "600" }}>Google</span>
+                        </span>
                     </AuthButton>
 
                     <AuthButton>
                         <AuthButtonImage src={facebook.src} alt="Facebook" />
-                        <span>Zaloguj się za pomocą <span style={{ fontWeight: '600' }}>Facebook</span></span>
+                        <span>
+                            Zaloguj się za pomocą{" "}
+                            <span style={{ fontWeight: "600" }}>Facebook</span>
+                        </span>
                     </AuthButton>
                 </AuthButtonWrapper>
-
             </Form>
-        </Wrapper >
+        </Wrapper>
     );
 }

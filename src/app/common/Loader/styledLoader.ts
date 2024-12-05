@@ -1,6 +1,6 @@
 import { theme } from "@/app/core/StyledComponents/theme";
-import { Loader2, } from "lucide-react";
 import styled from "styled-components";
+import { BiLoader } from "react-icons/bi";
 
 export const Wrapper = styled.section`
     display: flex;
@@ -12,11 +12,11 @@ export const Wrapper = styled.section`
     min-height: 100vh;
 `;
 
-export const Spinner = styled(Loader2)`
+export const Spinner = styled(BiLoader)`
     animation: spinner 2s linear infinite;
     font-size: 40px;
-    width: 320px;
-    height: 320px;
+    width: 240px;
+    height: 240px;
     color: ${theme.palette.blue};
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
@@ -34,7 +34,7 @@ export const Spinner = styled(Loader2)`
 }`;
 
 export const Title = styled.h1`
-    font-size: 44px;
+    font-size: 32px;
     font-weight: normal;
     text-align: center;
  

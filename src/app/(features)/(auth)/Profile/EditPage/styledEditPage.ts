@@ -49,16 +49,35 @@ export const FormHeader = styled.span`
     color: ${theme.palette.blue};
 `;
 
+export const ImageWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 40px;
+`;
+
+export const Image = styled.img`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+
+    max-width: 180px;
+    border-radius: 100%;
+    height: 180px;
+`;
+
+
 export const TextArea = styled.textarea`
     border: 2px solid ${theme.palette.blue};
     padding: 12px 20px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
     resize: none;
     background: none;
     width: 100%;
-    min-height: 120px;
+    min-height: 180px;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 16px;

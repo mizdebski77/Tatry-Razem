@@ -1,6 +1,7 @@
 import { theme } from "@/app/core/StyledComponents/theme";
 import { CircleX, } from "lucide-react";
 import styled from "styled-components";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
 
 export const Wrapper = styled.section`
     display: flex;
@@ -13,10 +14,10 @@ export const Wrapper = styled.section`
     padding: 12px;
 `;
 
-export const Error = styled(CircleX)`
+export const Error = styled(MdOutlineReportGmailerrorred )`
     font-size: 40px;
-    width: 400px;
-    height: 400px;
+    width: 280px;
+    height: 280px;
     color: ${theme.palette.error};
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
@@ -26,7 +27,7 @@ export const Error = styled(CircleX)`
 `;
 
 export const Title = styled.h1`
-    font-size: 44px;
+    font-size: 32px;
     font-weight: normal;
     text-align: center;
 

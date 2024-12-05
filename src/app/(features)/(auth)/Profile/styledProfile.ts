@@ -84,13 +84,14 @@ export const DataWrapper = styled.div`
 `;
 
 export const UserImage = styled.img`
-    background: ${theme.palette.blue};
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: fit-content;
-    padding: 12px;
     margin: 0 auto;
+    max-width: 180px;
+    border-radius: 100%;
+    height: 180px;
 `;
 
 export const TileTitle = styled.p`

@@ -1,8 +1,7 @@
 'use server'
 
 import { createClient } from '@/app/core/supabase/server';
-import { getErrorMessage } from './utils';
-
+import { getErrorMessage } from '../../core/supabase/utils';
 
 export async function LogInAction(formData: FormData) {
     const supabase = await createClient();
@@ -23,7 +22,6 @@ export async function LogInAction(formData: FormData) {
     }
 
 };
-
 
 export async function SignUp(formData: FormData) {
     const supabase = await createClient()

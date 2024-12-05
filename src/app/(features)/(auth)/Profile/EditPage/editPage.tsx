@@ -1,5 +1,11 @@
 "use client";
-import React, { useEffect, useState, useTransition } from "react";
+import React, {
+    ChangeEvent,
+    useEffect,
+    useRef,
+    useState,
+    useTransition,
+} from "react";
 import {
     EditSection,
     EditWrapper,
@@ -14,25 +20,21 @@ import {
     AlertSpan,
     ButtonWrapper,
     ImageWrapper,
+    Image,
 } from "./styledEditPage";
 import { motion } from "framer-motion";
 import { Button, Input } from "@/app/common/UI/UI";
-import { updateUser } from "../../authActions";
 import { toast } from "react-hot-toast";
 import { User } from "@supabase/supabase-js";
-import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { EditInputs, SocialInputs } from "@/app/common/arrays";
-import AddImage from "./AddImage/addImage";
 import { createClient } from "@/app/core/supabase/client";
 import { uploadImage } from "@/app/(features)/(auth)/uploadImage";
 import { convertBlobUrlToFile } from "@/app/core/supabase/utils";
-
 interface EditPageProps {
     user: User | undefined;
     setEditPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
 interface FormFields {
     name: string;
     surname: string;
@@ -42,10 +44,14 @@ interface FormFields {
     facebook_url: string;
     instagram_url: string;
     youtube_url: string;
+    avatar: null | string;
 }
 
 export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
     const [isPending, startTransition] = useTransition();
+    const imageInputRef = useRef<HTMLInputElement>(null);
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+
     const [formData, setFormData] = useState<FormFields>({
         name: "",
         surname: "",
@@ -55,8 +61,17 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         facebook_url: "",
         instagram_url: "",
         youtube_url: "",
+        avatr_url: null,
     });
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            const newImageUrl = URL.createObjectURL(file);
+
+            setImageUrl(newImageUrl);
+        }
+    };
 
     useEffect(() => {
         if (user) {
@@ -133,10 +148,28 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                 <Form>
                     <FormHeader>Zdjęcie profilowe</FormHeader>
                     <ImageWrapper>
-                        <AddImage
-                            imageUrl={imageUrl}
-                            setImageUrl={setImageUrl}
+                        <Image
+                            src={
+                                imageUrl === null
+                                    ? user?.user_metadata.avatar_url
+                                    : imageUrl
+                            }
                         />
+                        <input
+                            type="file"
+                            hidden
+                            ref={imageInputRef}
+                            onChange={handleImageChange}
+                        />{" "}
+                        <button
+                            type="button"
+                            onClick={() => imageInputRef.current?.click()}
+                        >
+                            Wybierz zdjęcie
+                        </button>
+                        <button type="button" onClick={() => setImageUrl(null)}>
+                            Usuń
+                        </button>
                     </ImageWrapper>
 
                     <FormHeader>Dane podstawowe</FormHeader>

@@ -19,22 +19,25 @@ import {
     AlertTitle,
     AlertSpan,
     ButtonWrapper,
-    ImageWrapper,
     Image,
+    ImageWrapper,
 } from "./styledEditPage";
 import { motion } from "framer-motion";
 import { Button, Input } from "@/app/common/UI/UI";
 import { toast } from "react-hot-toast";
 import { User } from "@supabase/supabase-js";
+import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { EditInputs, SocialInputs } from "@/app/common/arrays";
-import { createClient } from "@/app/core/supabase/client";
-import { uploadImage } from "@/app/(features)/(auth)/uploadImage";
+import { uploadImage } from "../../uploadImage";
 import { convertBlobUrlToFile } from "@/app/core/supabase/utils";
+import { createClient } from "@/app/core/supabase/client";
+
 interface EditPageProps {
     user: User | undefined;
     setEditPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 interface FormFields {
     name: string;
     surname: string;
@@ -44,14 +47,12 @@ interface FormFields {
     facebook_url: string;
     instagram_url: string;
     youtube_url: string;
-    avatar: null | string;
 }
 
 export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
     const [isPending, startTransition] = useTransition();
     const imageInputRef = useRef<HTMLInputElement>(null);
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-
+    const [avatar_url, setAvatar_url] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormFields>({
         name: "",
         surname: "",
@@ -61,15 +62,13 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         facebook_url: "",
         instagram_url: "",
         youtube_url: "",
-        avatr_url: null,
     });
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
             const newImageUrl = URL.createObjectURL(file);
-
-            setImageUrl(newImageUrl);
+            setAvatar_url(newImageUrl);
         }
     };
 
@@ -84,49 +83,96 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         }
     }, [user]);
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (formDataToSend?: FormData) => {
         startTransition(async () => {
-            try {
-                let uploadedImageUrl = null;
+            let uploadedImageUrl = null;
 
-                if (imageUrl) {
-                    const imageFile = await convertBlobUrlToFile(imageUrl);
-                    const { imageUrl: url, error } = await uploadImage({
-                        file: imageFile,
-                        bucket: "avatars",
-                    });
-
-                    if (error) {
-                        toast.error("Błąd podczas przesyłania obrazu.");
-                        return;
-                    }
-
-                    uploadedImageUrl = url;
-                }
-
-                const supabase = createClient();
-                const updatedData = {
-                    ...formData,
-                    avatar_url:
-                        uploadedImageUrl || user?.user_metadata.avatar_url,
-                };
-
-                const { error } = await supabase.auth.updateUser({
-                    data: updatedData,
+            if (avatar_url) {
+                const imageFile = await convertBlobUrlToFile(avatar_url);
+                const { imageUrl: url, error } = await uploadImage({
+                    file: imageFile,
+                    bucket: "avatars",
                 });
 
                 if (error) {
-                    toast.error("Błąd podczas aktualizacji danych.");
+                    toast.error("Błąd podczas przesyłania obrazu.");
                     return;
                 }
 
-                toast.success("Dane zaktualizowane pomyślnie!");
-                setEditPage(false);
-                setImageUrl(null);
-            } catch (error) {
-                toast.error("Wystąpił błąd podczas aktualizacji.");
+                uploadedImageUrl = url;
             }
+
+            const updatedData = {
+                ...formData,
+                avatar_url: uploadedImageUrl || user?.user_metadata.avatar_url,
+            };
+
+            const supabase = createClient();
+            const email = formData.email as string;
+
+            const { error } = await supabase.auth.updateUser({
+                email: email,
+                data: updatedData,
+            });
+
+            if (error) {
+                toast.error(error.message);
+            } else {
+                toast.success(
+                    formData.email === "" || formData.email === user?.email
+                        ? "Dane zakutalizowano pomyślnie. "
+                        : "Potwierdź zakutalizowany E-Mail."
+                );
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+
+            setEditPage(false);
+            setAvatar_url(null);
         });
+    };
+
+    const showConfirmationDialog = (
+        title: string,
+        message: string,
+        onConfirm: () => void
+    ) => {
+        confirmAlert({
+            customUI: ({ onClose }) => (
+                <AlertWrapper>
+                    <AlertTitle>{title}</AlertTitle>
+                    <AlertSpan>{message}</AlertSpan>
+                    <Button
+                        type="button"
+                        disabled={false}
+                        text="Nie"
+                        $background="white"
+                        onClick={onClose}
+                    />
+                    <Button
+                        type="button"
+                        disabled={false}
+                        text="Tak"
+                        $background="red"
+                        onClick={() => {
+                            onConfirm();
+                            onClose();
+                        }}
+                    />
+                </AlertWrapper>
+            ),
+        });
+    };
+
+    const handleFormSubmit = () => {
+        const formDataToSend = new FormData();
+        Object.keys(formData).forEach((key) => {
+            formDataToSend.append(key, formData[key as keyof FormFields]);
+        });
+        handleUpdate();
+        setEditPage(false);
     };
 
     const handleInputChange = (
@@ -150,9 +196,9 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                     <ImageWrapper>
                         <Image
                             src={
-                                imageUrl === null
+                                avatar_url === null
                                     ? user?.user_metadata.avatar_url
-                                    : imageUrl
+                                    : avatar_url
                             }
                         />
                         <input
@@ -167,12 +213,16 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                         >
                             Wybierz zdjęcie
                         </button>
-                        <button type="button" onClick={() => setImageUrl(null)}>
+                        <button
+                            type="button"
+                            onClick={() => setAvatar_url(null)}
+                        >
                             Usuń
                         </button>
                     </ImageWrapper>
 
                     <FormHeader>Dane podstawowe</FormHeader>
+
                     {EditInputs.map((field) =>
                         field.component === "input" ? (
                             <Input
@@ -222,13 +272,25 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                         <Button
                             $background="blue"
                             type="button"
-                            disabled={isPending}
-                            onClick={handleUpdate}
-                            text={isPending ? "Zapisywanie..." : "Zapisz"}
+                            disabled={false}
+                            onClick={() =>
+                                showConfirmationDialog(
+                                    "Na pewno chcesz zapisać dane?",
+                                    "Twoje dane zostaną zaktualizowane.",
+                                    handleFormSubmit
+                                )
+                            }
+                            text="Zapisz"
                         />
                         <Button
                             $background="red"
-                            onClick={() => setEditPage(false)}
+                            onClick={() =>
+                                showConfirmationDialog(
+                                    "Na pewno chcesz zamknąć?",
+                                    "Twoje dane nie zostaną zapisane.",
+                                    () => setEditPage(false)
+                                )
+                            }
                             text="Anuluj"
                             type="button"
                             disabled={false}

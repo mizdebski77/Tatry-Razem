@@ -9,7 +9,7 @@ import {
     Wrapper,
 } from "./styledAddPage";
 import { Title } from "@/app/common/UI/UI";
-import { Minus, MoveRight } from "lucide-react";
+import BasicsInfo from "./BacicsInfo/basicsInfo";
 
 export default function AddPage() {
     const Links = [
@@ -38,6 +38,7 @@ export default function AddPage() {
                         </React.Fragment>
                     ))}
                 </LinksWrapper>
+                <BasicsInfo />
             </Container>
         </Wrapper>
     );

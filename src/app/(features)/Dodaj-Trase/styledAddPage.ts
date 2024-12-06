@@ -27,6 +27,9 @@ export const Header = styled.header`
 
 export const Container = styled.article`
     padding: 40px;
+    display: grid;
+    gap: 40px;
+    justify-content: center;
 `;
 
 export const LinksWrapper = styled.div`

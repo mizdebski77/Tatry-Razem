@@ -5,7 +5,8 @@ export const theme = {
   palette: {
     blue: '#2659C3',
     white: '#ffffff',
-    error: '#d1291d'
+    error: '#d1291d',
+    lightBlue: '#6C91DE',
   },
 
   mediaQuery: {

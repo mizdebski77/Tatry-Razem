@@ -25,18 +25,7 @@ export const Header = styled.header`
     };
 `;
 
-export const Title = styled.h1`
-    color: white;
-    font-size: 64px;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 5px;
 
-    @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        font-size: 32px;
-        margin-bottom: 20px;
-    };
-`;
 
 export const Container = styled.article`
     display: grid;

@@ -8,7 +8,6 @@ import {
     TileSpanWrapper,
     TileTitle,
     TilesWrapper,
-    Title,
     UserImage,
     Wrapper,
     TileSpan,
@@ -21,7 +20,7 @@ import { useState } from "react";
 import { Loader } from "@/app/common/Loader/loader";
 import { FetchError } from "@/app/common/Error/error";
 import { UserRound } from "lucide-react";
-import { Button, ButtonLink } from "@/app/common/UI/UI";
+import { Button, ButtonLink, Title } from "@/app/common/UI/UI";
 import { IoIosHome } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
@@ -89,7 +88,7 @@ export default function Profile() {
             ) : (
                 <Wrapper>
                     <Header>
-                        <Title>Profil użytkownika.</Title>
+                        <Title text="Profil użytkownika" color="white" />
                     </Header>
                     <Container>
                         <Tile>
@@ -113,8 +112,6 @@ export default function Profile() {
                                     <TileSpan>{field.value}</TileSpan>
                                 </TileSpanWrapper>
                             ))}
-
-
 
                             <Button
                                 $background="blue"

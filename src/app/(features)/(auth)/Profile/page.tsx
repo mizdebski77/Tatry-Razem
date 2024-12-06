@@ -14,6 +14,7 @@ import {
     TileSpan,
     TileSpanLegend,
     SocialLinks,
+    Header,
 } from "./styledProfile";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -25,7 +26,6 @@ import { IoIosHome } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
 import { EditPage } from "./EditPage/editPage";
-import AddImage from "./EditPage/AddImage/addImage";
 
 export default function Profile() {
     const [editPage, setEditPage] = useState(false);
@@ -82,7 +82,9 @@ export default function Profile() {
                 <FetchError />
             ) : (
                 <Wrapper>
-                    <Title>Profil użytkownika.</Title>
+                    <Header>
+                        <Title>Profil użytkownika.</Title>
+                    </Header>
                     <Container>
                         <Tile>
                             <UserImage src={user?.user_metadata.avatar_url} />

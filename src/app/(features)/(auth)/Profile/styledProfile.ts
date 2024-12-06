@@ -3,27 +3,36 @@
 import { styled } from "styled-components";
 import { theme } from "@/app/core/StyledComponents/theme";
 import { SocialIcon } from "react-social-icons";
-
+import header from '../../../common/Images/Profile/header.jpg';
 
 export const Wrapper = styled.section`
     min-height: 100vh;
     background-position: center;
     background-size: cover;
-    padding: 160px 80px;
+
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         padding: 120px 20px;
     };
 `;
 
+export const Header = styled.header`
+    background-image: url(${header.src});
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    box-shadow:inset 0px 95px 234px 72px #000000;
+`;
+
 export const Title = styled.h1`
     color: white;
     font-size: 64px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: center;
     letter-spacing: 5px;
-    color: black;
-
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
         font-size: 32px;

@@ -9,11 +9,6 @@ export const Wrapper = styled.section`
     min-height: 100vh;
     background-position: center;
     background-size: cover;
-
-
-    @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        padding: 120px 20px;
-    };
 `;
 
 export const Header = styled.header`
@@ -25,6 +20,11 @@ export const Header = styled.header`
     align-items: center;
     min-height: 40vh;
     box-shadow:inset 0px 95px 234px 72px #000000;
+    padding: 24px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        box-shadow:inset 0px 95px 234px 2px #000000;
+    };
 `;
 
 export const Title = styled.h1`
@@ -50,7 +50,7 @@ export const Container = styled.article`
 
     @media (max-width: ${theme.mediaQuery.tabletMd}) {
         grid-template-columns: 1fr;
-        padding: 0px;
+        padding: 12px;
     };
 `;
 
@@ -66,12 +66,11 @@ export const Tile = styled.div`
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-
     gap: 32px;
     text-align: center;
 
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        padding: 24px 12px;
+        padding: 0 0 20px;
         gap: 20px;
     };
 `;
@@ -104,10 +103,11 @@ export const TileTitle = styled.p`
     font-size: 32px;
     background: ${theme.palette.blue};
     color: white;
-    border-radius: 20px 20px 0 0 ;
+    border-radius: 8px 8px 0 0 ;
     padding: 12px;
+
     @media (max-width: ${theme.mediaQuery.mobileMd}) {
-        font-size: 24px;
+        font-size: 20px;
     };
 `;
 

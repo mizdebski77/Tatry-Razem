@@ -72,7 +72,6 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             const newImageUrl = URL.createObjectURL(file);
             setAvatar_url(newImageUrl);
 
-            // Reset input file value to allow re-uploading the same image
             if (imageInputRef.current) {
                 imageInputRef.current.value = "";
             }
@@ -180,7 +179,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
     };
 
     const handleFormSubmit = () => {
-        setUpdateTriggered(true); // Informacja, że update został wywołany
+        setUpdateTriggered(true);
         handleUpdate();
     };
 

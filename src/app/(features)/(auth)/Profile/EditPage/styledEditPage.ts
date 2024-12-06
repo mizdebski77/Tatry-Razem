@@ -75,8 +75,9 @@ export const Image = styled.img`
     align-items: center;
     justify-content: center;
     max-width: fit-content;
-
+    background: ${theme.palette.blue};
     max-width: 180px;
+    width: 100%;
     border-radius: 100%;
     height: 180px;
 `;

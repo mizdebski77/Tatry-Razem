@@ -220,18 +220,24 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                             ref={imageInputRef}
                             onChange={handleImageChange}
                         />
-                        <button
-                            type="button"
-                            onClick={() => imageInputRef.current?.click()}
-                        >
-                            Wybierz zdjęcie
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setAvatar_url(null)}
-                        >
-                            Usuń
-                        </button>
+                        <ButtonWrapper>
+                            <Button
+                                $background="blue"
+                                type="button"
+                                disabled={false}
+                                text="Wybierz zdjęcie"
+                                onClick={() => imageInputRef.current?.click()}
+                            />
+                            {avatar_url && (
+                                <Button
+                                    $background="red"
+                                    type="button"
+                                    disabled={false}
+                                    text="Usuń"
+                                    onClick={() => setAvatar_url(null)}
+                                />
+                            )}
+                        </ButtonWrapper>
                     </ImageWrapper>
 
                     <FormHeader>Dane podstawowe</FormHeader>

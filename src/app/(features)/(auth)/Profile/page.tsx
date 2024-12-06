@@ -26,6 +26,7 @@ import { IoIosHome } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { MdDescription } from "react-icons/md";
 import { EditPage } from "./EditPage/editPage";
+import { CgProfile } from "react-icons/cg";
 
 export default function Profile() {
     const [editPage, setEditPage] = useState(false);
@@ -51,6 +52,11 @@ export default function Profile() {
     };
 
     const userFields = [
+        {
+            icon: <CgProfile />,
+            label: "Imię i nazwisko",
+            value: `${user?.user_metadata.surname} ${user?.user_metadata.name}`,
+        },
         {
             icon: <MdDescription />,
             label: "Opis",
@@ -87,24 +93,8 @@ export default function Profile() {
                     </Header>
                     <Container>
                         <Tile>
+                            <TileTitle>Dane użytkownika</TileTitle>
                             <UserImage src={user?.user_metadata.avatar_url} />
-
-                            <TileTitle>
-                                {user?.user_metadata.name}{" "}
-                                {user?.user_metadata.surname}
-                            </TileTitle>
-                            {userFields.map((field, index) => (
-                                <TileSpanWrapper key={index}>
-                                    <TileSpanLegend>
-                                        {field.icon}
-                                        {field.label}:
-                                    </TileSpanLegend>
-                                    <TileSpan style={{ fontSize: "16px" }}>
-                                        {field.value}
-                                    </TileSpan>
-                                </TileSpanWrapper>
-                            ))}
-
                             <TileLInksWrapper>
                                 {socialLinks.map((link, index) => (
                                     <SocialLinks
@@ -114,6 +104,17 @@ export default function Profile() {
                                     />
                                 ))}
                             </TileLInksWrapper>
+                            {userFields.map((field, index) => (
+                                <TileSpanWrapper key={index}>
+                                    <TileSpanLegend>
+                                        {field.icon}
+                                        {field.label}:
+                                    </TileSpanLegend>
+                                    <TileSpan>{field.value}</TileSpan>
+                                </TileSpanWrapper>
+                            ))}
+
+
 
                             <Button
                                 $background="blue"
@@ -126,7 +127,7 @@ export default function Profile() {
 
                         <TilesWrapper>
                             <Tile>
-                                <TileTitle>Twoje propozycje:</TileTitle>
+                                <TileTitle>Twoje propozycje</TileTitle>
                                 <DataWrapper>
                                     <TileSpanWrapper>Rysy</TileSpanWrapper>
                                     <ButtonLink
@@ -137,7 +138,7 @@ export default function Profile() {
                                 </DataWrapper>
                             </Tile>
                             <Tile>
-                                <TileTitle>Obserwujesz:</TileTitle>
+                                <TileTitle>Obserwujesz</TileTitle>
                                 <DataWrapper>
                                     <TileSpanWrapper>Rysy </TileSpanWrapper>
                                     <ButtonLink

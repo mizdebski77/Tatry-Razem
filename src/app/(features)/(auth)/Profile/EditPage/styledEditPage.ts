@@ -12,10 +12,15 @@ export const EditSection = styled.div`
     background: rgba(0, 0, 0, 0.7);
     padding: 40px;
     overflow: auto;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 12px;
+    };
+    
 `;
 
 export const LoadingOverlay = styled.div`
-        position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -25,6 +30,7 @@ export const LoadingOverlay = styled.div`
     justify-content: center;
     align-items: center;
     color: white;
+    padding: 20px;
     font-size: 1.5rem;
     z-index: 1000;
 `;
@@ -47,6 +53,10 @@ export const EditTitle = styled.h2`
     font-size: 40px;
     text-align: center;
     font-weight: normal;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        margin: o auto;
+    };
 `;
 
 export const Form = styled.form`
@@ -68,6 +78,10 @@ export const ImageWrapper = styled.div`
     align-items: center;
     justify-content: start;
     gap: 40px;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        flex-direction: column;
+    };
 `;
 
 export const Image = styled.img`
@@ -139,6 +153,10 @@ export const AlertWrapper = styled.div`
     display: grid;
     gap: 20px;
     text-align: center;
+
+    @media (max-width: ${theme.mediaQuery.mobileMd}) {
+        padding: 40px 20px;
+    };
 `;
 
 export const AlertTitle = styled.h1`

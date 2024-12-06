@@ -55,6 +55,6 @@ export const SocialLinks = [
 
 export const NavLinks = [
     { id: 1, link: '/', icon: FaHome, text: 'Strona główna' },
-    { id: 2, link: '/', icon: MdAdd, text: 'Dodaj propozycję' },
+    { id: 2, link: '/Dodaj-Trase', icon: MdAdd, text: 'Dodaj propozycję' },
     { id: 3, link: '/', icon: Search, text: 'Znajdź propzycję' },
 ];

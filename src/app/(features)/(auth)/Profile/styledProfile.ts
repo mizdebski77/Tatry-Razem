@@ -7,8 +7,6 @@ import header from '../../../common/Images/Profile/header.jpg';
 
 export const Wrapper = styled.section`
     min-height: 100vh;
-    background-position: center;
-    background-size: cover;
 `;
 
 export const Header = styled.header`

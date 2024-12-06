@@ -21,6 +21,7 @@ import {
     ButtonWrapper,
     Image,
     ImageWrapper,
+    LoadingOverlay,
 } from "./styledEditPage";
 import { motion } from "framer-motion";
 import { Button, Input } from "@/app/common/UI/UI";
@@ -63,12 +64,18 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         instagram_url: "",
         youtube_url: "",
     });
+    const [updateTriggered, setUpdateTriggered] = useState(false);
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
             const newImageUrl = URL.createObjectURL(file);
             setAvatar_url(newImageUrl);
+
+            // Reset input file value to allow re-uploading the same image
+            if (imageInputRef.current) {
+                imageInputRef.current.value = "";
+            }
         }
     };
 
@@ -83,7 +90,14 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
         }
     }, [user]);
 
-    const handleUpdate = async (formDataToSend?: FormData) => {
+    useEffect(() => {
+        if (!isPending && updateTriggered) {
+            setEditPage(false);
+            setUpdateTriggered(false);
+        }
+    }, [isPending, updateTriggered, setEditPage]);
+
+    const handleUpdate = async () => {
         startTransition(async () => {
             let uploadedImageUrl = null;
 
@@ -120,8 +134,8 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             } else {
                 toast.success(
                     formData.email === "" || formData.email === user?.email
-                        ? "Dane zakutalizowano pomyślnie. "
-                        : "Potwierdź zakutalizowany E-Mail."
+                        ? "Dane zaktualizowano pomyślnie."
+                        : "Potwierdź zaktualizowany E-Mail."
                 );
 
                 setTimeout(() => {
@@ -129,7 +143,6 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                 }, 2000);
             }
 
-            setEditPage(false);
             setAvatar_url(null);
         });
     };
@@ -154,7 +167,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                     <Button
                         type="button"
                         disabled={false}
-                        text="Tak"
+                        text={"Tak"}
                         $background="red"
                         onClick={() => {
                             onConfirm();
@@ -167,12 +180,8 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
     };
 
     const handleFormSubmit = () => {
-        const formDataToSend = new FormData();
-        Object.keys(formData).forEach((key) => {
-            formDataToSend.append(key, formData[key as keyof FormFields]);
-        });
+        setUpdateTriggered(true); // Informacja, że update został wywołany
         handleUpdate();
-        setEditPage(false);
     };
 
     const handleInputChange = (
@@ -189,6 +198,11 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
+            {isPending && (
+                <LoadingOverlay>
+                    <p>Proszę czekać, dane są aktualizowane...</p>
+                </LoadingOverlay>
+            )}
             <EditWrapper>
                 <EditTitle>Edytuj swój profil</EditTitle>
                 <Form>
@@ -206,7 +220,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                             hidden
                             ref={imageInputRef}
                             onChange={handleImageChange}
-                        />{" "}
+                        />
                         <button
                             type="button"
                             onClick={() => imageInputRef.current?.click()}

@@ -12,8 +12,6 @@ import {
     Wrapper,
 } from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
-import facebook from "../../../common/Images/AuthImages/facebook.svg";
-import google from "../../../common/Images/AuthImages/google.svg";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import {
@@ -134,9 +132,9 @@ export default function LogIn() {
                     {isPending ? <Loader /> : "Zaloguj"}
                 </Button>
 
-                <SectionSpan>Lub</SectionSpan>
+                {/* <SectionSpan>Lub</SectionSpan> */}
 
-                <AuthButtonWrapper>
+                {/* <AuthButtonWrapper>
                     <AuthButton>
                         <AuthButtonImage src={google.src} alt="Google" />
                         <span>
@@ -152,7 +150,7 @@ export default function LogIn() {
                             <span style={{ fontWeight: "600" }}>Facebook</span>
                         </span>
                     </AuthButton>
-                </AuthButtonWrapper>
+                </AuthButtonWrapper> */}
             </Form>
         </Wrapper>
     );

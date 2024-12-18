@@ -12,8 +12,6 @@ import {
     Wrapper,
 } from "../authComponents";
 import { ButtonLink, Input } from "@/app/common/UI/UI";
-import facebook from "../../../common/Images/AuthImages/facebook.svg";
-import google from "../../../common/Images/AuthImages/google.svg";
 import { RegisterInputs } from "@/app/common/arrays";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
@@ -128,7 +126,7 @@ export default function Register() {
                 <Button disabled={isPending || !isFormValid}>
                     {isPending ? <Loader /> : "Zarejestruj"}
                 </Button>
-                <SectionSpan>Lub</SectionSpan>
+                {/* <SectionSpan>Lub</SectionSpan>
 
                 <AuthButtonWrapper>
                     <AuthButton>
@@ -146,7 +144,7 @@ export default function Register() {
                             <span style={{ fontWeight: "600" }}>Facebook</span>
                         </span>
                     </AuthButton>
-                </AuthButtonWrapper>
+                </AuthButtonWrapper> */}
             </Form>
         </Wrapper>
     );

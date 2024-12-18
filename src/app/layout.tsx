@@ -6,7 +6,6 @@ import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
 import { Footer } from "./common/Footer/footer";
 import { TanstackProvider } from "./core/TanstackQuery/tanstackProvider";
 import { Toaster } from "react-hot-toast";
-import Navigation from "./common/Navbar/navigation";
 
 const kameron = Kameron({
     subsets: ["latin"],
@@ -31,7 +30,7 @@ export default function RootLayout({}: Readonly<{
             <body className={kameron.className}>
                 <StyledComponentsRegistry>
                     <TanstackProvider>
-                        <Navigation />
+                        {/* <Navigation /> */}
                         <GlobalStyle />
                         <Footer />
                     </TanstackProvider>

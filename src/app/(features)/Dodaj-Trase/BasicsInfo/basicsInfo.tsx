@@ -72,6 +72,10 @@ export default function BasicsInfo() {
                             : ""}
                     </CalendarSpan>
                 )}
+            </SectionWrapper>
+
+
+            <SectionWrapper>
                 <SectionTitle>Godzina startu z parkingu.</SectionTitle>
                 <Input
                     placeHolder="No: Giewont"
@@ -84,7 +88,6 @@ export default function BasicsInfo() {
                     value=""
                 />
             </SectionWrapper>
-
             <Button
                 $background="blue"
                 disabled={false}

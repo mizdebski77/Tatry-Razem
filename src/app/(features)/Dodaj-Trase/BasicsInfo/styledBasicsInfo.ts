@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const SectionWrapper = styled.div`
     margin-top: 40px;
     display: grid;
-    gap: 20px;
+    gap: 12px;
     justify-content: center;
 `;
 
@@ -34,9 +34,17 @@ export const FlagContainer = styled.div<{ marked?: 1 | 0 }>`
     gap: 12px;
     font-size: 20px;
     opacity: 0.4;
+    transition: 0.3s;
+    &:hover {
+        opacity: 0.6;
+    };
 
     ${({ marked }) => marked && css`
         opacity: 1;
+
+        &:hover {
+            opacity: 1;
+        };
     `};
 `;
 
@@ -48,6 +56,8 @@ export const FlagIcon = styled.button`
     height: 120px;
     border: none;
     margin: 0 auto;
+    cursor: pointer;
+
 `;
 
 export const StyledCalendar = styled(Calendar)`

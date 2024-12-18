@@ -1,9 +1,6 @@
 "use client";
 import React, { useState, useTransition } from "react";
 import {
-    AuthButton,
-    AuthButtonImage,
-    AuthButtonWrapper,
     AuthSpan,
     Loader,
     Text,
@@ -19,7 +16,6 @@ import {
     Form,
     FormSpan,
     FormTitle,
-    SectionSpan,
 } from "../authComponents";
 import { LogInAction } from "../authActions";
 

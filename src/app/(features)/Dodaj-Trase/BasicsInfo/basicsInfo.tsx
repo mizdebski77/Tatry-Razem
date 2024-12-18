@@ -1,103 +1,41 @@
 "use client";
 import React, { useState } from "react";
 import {
+    CalendarSpan,
     FlagContainer,
     FlagIcon,
     FlagWrapper,
     SectionTitle,
     SectionWrapper,
+    StyledCalendar,
     Wrapper,
 } from "./styledBasicsInfo";
 import Slovakia from "../../../common/Images/AddPage/slv.svg";
 import Poland from "../../../common/Images/AddPage/pl.svg";
-import { Input } from "@/app/common/UI/UI";
-import Calendar from "react-calendar";
+import { Button, Input } from "@/app/common/UI/UI";
+// @ts-ignore
+import { TimePicker } from "react-ios-time-picker";
 
-import styled from "styled-components";
-import { theme } from "@/app/core/StyledComponents/theme";
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function BasicsInfo() {
     const [jd, setJd] = useState("");
+    const [value, onChange] = useState<Value>(null);
+    const [time, setTitme] = useState("");
 
-    const StyledCalendar = styled(Calendar)`
-        border: none;
-        background: #fafafa;
-        max-width: 400px;
-        padding: 12px;
-        border-radius: 20px;
-
-        .react-calendar__navigation__label {
-            background: none;
-            border: none;
-            font-size: 20px;
-            opacity: 0.9;
-        }
-
-        .react-calendar__navigation__next-button,
-        .react-calendar__navigation__prev-button {
-            border: none;
-            font-size: 32px;
-            color: ${theme.palette.blue};
-            cursor: pointer;
-            background: none;
-        }
-
-        .react-calendar__navigation__next2-button,
-        .react-calendar__navigation__prev2-button {
-            display: none;
-        }
-
-        .react-calendar__navigation {
-            margin: 0 auto 20px;
-            border: none;
-            display: flex;
-            justify-content: center;
-            border-bottom: 1px solid #f2f2f2;
-            padding-bottom: 20px;
-        }
-        .basicsInfo__StyledCalendar {
-            background: red;
-        }
-
-        .react-calendar__month-view__days {
-            margin-top: 20px;
-        }
-
-        .react-calendar__month-view__days__day--neighboringMonth {
-            opacity: 0.3;
-        }
-
-        .react-calendar__tile {
-            background: none;
-            border: none;
-            padding: 12px;
-            font-size: 20px;
-            border-radius: 5px;
-            border: 1px solid white;
-
-            &:hover {
-                background-color: #e0e0e0;
-                cursor: pointer;
-            }
-        }
-
-        .react-calendar__tile--active {
-            border: 1px solid ${theme.palette.blue};
-            color: ${theme.palette.blue};
-            background-color: none;
-        }
-    `;
     return (
         <Wrapper>
             <SectionWrapper>
                 <SectionTitle>Którą część Tatr chcesz wybrać?</SectionTitle>
                 <FlagWrapper>
-                    <FlagContainer>
+                    <FlagContainer marked={1}>
                         <FlagIcon>
                             <img src={Poland.src} alt="Poland Flag" />
                         </FlagIcon>
                         Tatry Polskie
                     </FlagContainer>
+
                     <FlagContainer>
                         <FlagIcon>
                             <img src={Slovakia.src} alt="Slovakia Flag" />
@@ -125,8 +63,35 @@ export default function BasicsInfo() {
 
             <SectionWrapper>
                 <SectionTitle>Data która cię interesuje.</SectionTitle>
-                <StyledCalendar />
+                <StyledCalendar onChange={onChange} value={value} />
+                {value && (
+                    <CalendarSpan>
+                        Wybrano:{" "}
+                        {value instanceof Date
+                            ? value.toLocaleDateString()
+                            : ""}
+                    </CalendarSpan>
+                )}
+                <SectionTitle>Godzina startu z parkingu.</SectionTitle>
+                <Input
+                    placeHolder="No: Giewont"
+                    type="time"
+                    text=""
+                    name="destiny"
+                    required={true}
+                    onChange={(e) => setJd(e.target.value)}
+                    isError={0}
+                    value=""
+                />
             </SectionWrapper>
+
+            <Button
+                $background="blue"
+                disabled={false}
+                onClick={() => alert}
+                text="Przejdź dalej ➜"
+                type="button"
+            />
         </Wrapper>
     );
 }

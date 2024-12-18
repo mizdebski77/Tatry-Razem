@@ -2,13 +2,14 @@ import { theme } from '@/app/core/StyledComponents/theme';
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    
+    display: grid;
+    gap: 64px;
 `;
 
 export const SectionWrapper = styled.div`
     margin-top: 40px;
     display: grid;
-    gap: 40px;
+    gap: 20px;
     justify-content: center;
 `;
 
@@ -22,7 +23,7 @@ export const FlagWrapper = styled.div`
     justify-content: center;
 `;
 
-export const FlagContainer = styled.button`
+export const FlagContainer = styled.div`
     display: grid;
     justify-content: center;
     background: none;
@@ -40,10 +41,4 @@ export const FlagIcon = styled.button`
     border: none;
     margin: 0 auto;
 `;
-
-export const Flag = styled.img`
-
-
-`;
-
 

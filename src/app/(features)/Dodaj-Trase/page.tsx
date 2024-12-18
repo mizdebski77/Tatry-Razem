@@ -9,7 +9,7 @@ import {
     Wrapper,
 } from "./styledAddPage";
 import { Title } from "@/app/common/UI/UI";
-import BasicsInfo from "./BacicsInfo/basicsInfo";
+import BasicsInfo from "./BasicsInfo/basicsInfo";
 
 export default function AddPage() {
     const Links = [

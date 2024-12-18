@@ -1,5 +1,4 @@
 import { theme } from "@/app/core/StyledComponents/theme";
-import { CircleX, } from "lucide-react";
 import styled from "styled-components";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
 

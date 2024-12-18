@@ -20,7 +20,7 @@ import { SignOut } from "@/app/(auth)/SingOut/signOut";
 export default async function Navigation() {
     const supabase = await createClient();
 
-    const { data, error } = await supabase.auth.getUser();
+    const { data } = await supabase.auth.getUser();
 
     return (
         <Wrapper>

@@ -10,9 +10,6 @@ import {
 import Hamburger from "hamburger-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, ProfileSpan, ProfileWrapper } from "../styledNavbar";
-import { FaHome } from "react-icons/fa";
-import { MdAdd } from "react-icons/md";
-import { Search } from "lucide-react";
 import { CgProfile } from "react-icons/cg";
 import { ButtonLink } from "../../UI/UI";
 import { User } from "@supabase/supabase-js";

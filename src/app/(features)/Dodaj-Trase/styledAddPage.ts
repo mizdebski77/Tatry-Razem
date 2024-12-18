@@ -2,7 +2,6 @@
 import { theme } from '@/app/core/StyledComponents/theme';
 import styled from 'styled-components'
 import header from '../../common/Images/AddPage/header.jpg';
-import css from 'styled-jsx/css';
 
 export const Wrapper = styled.section`
     min-height: 100vh;

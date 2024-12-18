@@ -1,6 +1,6 @@
 import imageCompression from 'browser-image-compression';
 import { v4 as uuidv4 } from 'uuid';
-import { createClient } from '../../core/supabase/client';
+import { createClient } from '../core/supabase/client';
 
 function getStorage() {
     const { storage } = createClient();

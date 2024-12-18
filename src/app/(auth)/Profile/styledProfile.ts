@@ -3,7 +3,7 @@
 import { styled } from "styled-components";
 import { theme } from "@/app/core/StyledComponents/theme";
 import { SocialIcon } from "react-social-icons";
-import header from '../../../common/Images/Profile/header.jpg';
+import header from '../../common/Images/Profile/header.jpg';
 
 export const Wrapper = styled.section`
     min-height: 100vh;

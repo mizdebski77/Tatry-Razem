@@ -10,12 +10,12 @@ import {
     Wrapper,
 } from "./styledNavbar";
 import { ButtonLink } from "../UI/UI";
-import { SignOut } from "@/app/(features)/(auth)/SingOut/signOut";
 import { createClient } from "@/app/core/supabase/server";
 import logo from "../Images/logo.png";
 import { CgProfile } from "react-icons/cg";
 import MobileMenu from "./MobileMenu/mobileMenu";
 import { NavLinks } from "../arrays";
+import { SignOut } from "@/app/(auth)/SingOut/signOut";
 
 export default async function Navigation() {
     const supabase = await createClient();

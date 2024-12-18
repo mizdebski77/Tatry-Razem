@@ -30,9 +30,9 @@ import { User } from "@supabase/supabase-js";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { EditInputs, SocialInputs } from "@/app/common/arrays";
-import { uploadImage } from "../../uploadImage";
 import { convertBlobUrlToFile } from "@/app/core/supabase/utils";
 import { createClient } from "@/app/core/supabase/client";
+import { uploadImage } from "../../uploadImage";
 
 interface EditPageProps {
     user: User | undefined;

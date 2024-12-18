@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/app/core/supabase/server';
-import { getErrorMessage } from '../../core/supabase/utils';
+import { getErrorMessage } from '../core/supabase/utils';
 
 export async function LogInAction(formData: FormData) {
     const supabase = await createClient();

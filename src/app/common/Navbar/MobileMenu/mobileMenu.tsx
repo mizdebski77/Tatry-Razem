@@ -14,10 +14,10 @@ import { FaHome } from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 import { Search } from "lucide-react";
 import { CgProfile } from "react-icons/cg";
-import { SignOut } from "@/app/(features)/(auth)/SingOut/signOut";
 import { ButtonLink } from "../../UI/UI";
 import { User } from "@supabase/supabase-js";
 import { NavLinks } from "../../arrays";
+import { SignOut } from "@/app/(auth)/SingOut/signOut";
 
 interface MobileMenuProps {
     user: User | null;

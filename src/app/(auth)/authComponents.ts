@@ -1,6 +1,6 @@
 'use client'
 import { styled } from "styled-components";
-import background from '../../common/Images/AuthImages/background.jpg';
+import background from '../common/Images/AuthImages/background.jpg';
 import { theme } from "@/app/core/StyledComponents/theme";
 import { Loader2 } from "lucide-react";
 

@@ -13,8 +13,6 @@ import {
 import Slovakia from "../../../common/Images/AddPage/slv.svg";
 import Poland from "../../../common/Images/AddPage/pl.svg";
 import { Button, Input } from "@/app/common/UI/UI";
-// @ts-ignore
-import { TimePicker } from "react-ios-time-picker";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -23,6 +21,8 @@ export default function BasicsInfo() {
     const [jd, setJd] = useState("");
     const [value, onChange] = useState<Value>(null);
     const [time, setTitme] = useState("");
+
+    console.log(time, jd);
 
     return (
         <Wrapper>
@@ -74,7 +74,6 @@ export default function BasicsInfo() {
                 )}
             </SectionWrapper>
 
-
             <SectionWrapper>
                 <SectionTitle>Godzina startu z parkingu.</SectionTitle>
                 <Input
@@ -83,7 +82,7 @@ export default function BasicsInfo() {
                     text=""
                     name="destiny"
                     required={true}
-                    onChange={(e) => setJd(e.target.value)}
+                    onChange={(e) => setTitme(e.target.value)}
                     isError={0}
                     value=""
                 />

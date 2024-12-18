@@ -208,6 +208,7 @@ export const EditPage: React.FC<EditPageProps> = ({ user, setEditPage }) => {
                     <FormHeader>Zdjęcie profilowe</FormHeader>
                     <ImageWrapper>
                         <Image
+                            alt="avatar"
                             src={
                                 avatar_url === null
                                     ? user?.user_metadata.avatar_url

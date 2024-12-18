@@ -2,9 +2,6 @@
 
 import React, { useState, useTransition } from "react";
 import {
-    AuthButton,
-    AuthButtonImage,
-    AuthButtonWrapper,
     Loader,
     Text,
     TextWrapper,
@@ -16,7 +13,7 @@ import { RegisterInputs } from "@/app/common/arrays";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { SignUp } from "../authActions";
-import { Button, Form, FormTitle, SectionSpan } from "../authComponents";
+import { Button, Form, FormTitle } from "../authComponents";
 
 type formFields = {
     email: string;

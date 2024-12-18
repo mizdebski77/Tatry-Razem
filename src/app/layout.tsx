@@ -4,7 +4,6 @@ import { Kameron } from 'next/font/google';
 import StyledComponentsRegistry from "./core/StyledComponents/register";
 import { GlobalStyle } from "./core/StyledComponents/GlobalStyles";
 import { Footer } from "./common/Footer/footer";
-import { ReduxProvider } from "@/redux/features/provider";
 import { TanstackProvider } from "./core/TanstackQuery/tanstackProvider";
 import { Toaster } from "react-hot-toast";
 import Navigation from "./common/Navbar/navigation";
@@ -37,9 +36,6 @@ export default function RootLayout({
           <TanstackProvider>
             <Navigation />
             <GlobalStyle />
-            <ReduxProvider>
-              {children}
-            </ReduxProvider>
             <Footer />
           </TanstackProvider>
         </StyledComponentsRegistry>
